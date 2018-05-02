@@ -41,13 +41,13 @@ class ViewController: UIViewController , UITextFieldDelegate {
         case 0:
             signInView.isHidden = false
             registerView.isHidden = true
-//            signInView.becomeFirstResponder()
-            print("A")
+            signInView.becomeFirstResponder()
+            
             
         case 1:
             signInView.isHidden = true
             registerView.isHidden = false
-            print("B")
+            signInView.resignFirstResponder()
         
         default:
             break
@@ -61,28 +61,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
     }//segmentClicked
     
     
-    
-    func showView () {
-        
-        switch segmentController.selectedSegmentIndex {
-        case 0:
-            signInView.isHidden = false
-            registerView.isHidden = true
-            signInView.becomeFirstResponder()
-            print("A")
-        
-        case 1:
-            signInView.isHidden = true
-            registerView.isHidden = false
-            print("B")
-        default:
-            break
-        }
-        
-        
-       
-        
-    }//showView
+   
     
     
     
