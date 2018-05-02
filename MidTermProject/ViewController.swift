@@ -8,19 +8,92 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-var a = ""
+class ViewController: UIViewController , UITextFieldDelegate {
+
+    @IBOutlet var segmentController: UISegmentedControl!
+    @IBOutlet var signInView: UIView!
+    @IBOutlet var emailTextField: UITextField!
+    @IBOutlet var passwordTextField: UITextField!
+    @IBOutlet var registerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
+        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        emailTextField.delegate = self
+        emailTextField.delegate = self
+        emailTextField.delegate = self
+        
+        showView ()
+    }//load
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
+    
+    
+    
+    
+    
+    @IBAction func segmentClicked(_ sender: UISegmentedControl) {
+    
+        
+        switch segmentController.selectedSegmentIndex {
+        case 0:
+            signInView.isHidden = false
+            registerView.isHidden = true
+//            signInView.becomeFirstResponder()
+            print("A")
+            
+        case 1:
+            signInView.isHidden = true
+            registerView.isHidden = false
+            print("B")
+        
+        default:
+            break
+        }
+        
+    
+    
+    
+    
+    
+    }//segmentClicked
+    
+    
+    
+    func showView () {
+        
+        switch segmentController.selectedSegmentIndex {
+        case 0:
+            signInView.isHidden = false
+            registerView.isHidden = true
+            signInView.becomeFirstResponder()
+            print("A")
+        
+        case 1:
+            signInView.isHidden = true
+            registerView.isHidden = false
+            print("B")
+        default:
+            break
+        }
+        
+        
+       
+        
+    }//showView
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 
-}
+}//end
 
