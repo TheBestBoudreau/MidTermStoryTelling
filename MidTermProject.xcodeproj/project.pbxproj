@@ -14,6 +14,12 @@
 		7EA3CF7C209A58B600007961 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3CF7B209A58B600007961 /* Assets.xcassets */; };
 		7EA3CF7F209A58B600007961 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3CF7D209A58B600007961 /* LaunchScreen.storyboard */; };
 		7EA3CF87209A59B300007961 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3CF86209A59B200007961 /* GoogleService-Info.plist */; };
+		F182B6C1209A62AA00CCE11B /*  Register@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6BB209A62AA00CCE11B /*  Register@3x.png */; };
+		F182B6C2209A62AA00CCE11B /*  Register.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6BC209A62AA00CCE11B /*  Register.png */; };
+		F182B6C3209A62AA00CCE11B /* Launch Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6BD209A62AA00CCE11B /* Launch Screen.png */; };
+		F182B6C4209A62AA00CCE11B /*  Register@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6BE209A62AA00CCE11B /*  Register@2x.png */; };
+		F182B6C5209A62AA00CCE11B /* Launch Screen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6BF209A62AA00CCE11B /* Launch Screen@2x.png */; };
+		F182B6C6209A62AA00CCE11B /* Launch Screen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6C0209A62AA00CCE11B /* Launch Screen@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +34,12 @@
 		7EA3CF7E209A58B600007961 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7EA3CF80209A58B600007961 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7EA3CF86209A59B200007961 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F182B6BB209A62AA00CCE11B /*  Register@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = " Register@3x.png"; path = "Tandem Images/ Register@3x.png"; sourceTree = SOURCE_ROOT; };
+		F182B6BC209A62AA00CCE11B /*  Register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = " Register.png"; path = "Tandem Images/ Register.png"; sourceTree = SOURCE_ROOT; };
+		F182B6BD209A62AA00CCE11B /* Launch Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Launch Screen.png"; path = "Tandem Images/Launch Screen.png"; sourceTree = SOURCE_ROOT; };
+		F182B6BE209A62AA00CCE11B /*  Register@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = " Register@2x.png"; path = "Tandem Images/ Register@2x.png"; sourceTree = SOURCE_ROOT; };
+		F182B6BF209A62AA00CCE11B /* Launch Screen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Launch Screen@2x.png"; path = "Tandem Images/Launch Screen@2x.png"; sourceTree = SOURCE_ROOT; };
+		F182B6C0209A62AA00CCE11B /* Launch Screen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Launch Screen@3x.png"; path = "Tandem Images/Launch Screen@3x.png"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +84,7 @@
 		7EA3CF73209A58B600007961 /* MidTermProject */ = {
 			isa = PBXGroup;
 			children = (
+				F182B6BA209A629400CCE11B /* images */,
 				7EA3CF74209A58B600007961 /* AppDelegate.swift */,
 				7EA3CF76209A58B600007961 /* ViewController.swift */,
 				7EA3CF78209A58B600007961 /* Main.storyboard */,
@@ -81,6 +94,19 @@
 				7EA3CF86209A59B200007961 /* GoogleService-Info.plist */,
 			);
 			path = MidTermProject;
+			sourceTree = "<group>";
+		};
+		F182B6BA209A629400CCE11B /* images */ = {
+			isa = PBXGroup;
+			children = (
+				F182B6BC209A62AA00CCE11B /*  Register.png */,
+				F182B6BE209A62AA00CCE11B /*  Register@2x.png */,
+				F182B6BB209A62AA00CCE11B /*  Register@3x.png */,
+				F182B6BD209A62AA00CCE11B /* Launch Screen.png */,
+				F182B6BF209A62AA00CCE11B /* Launch Screen@2x.png */,
+				F182B6C0209A62AA00CCE11B /* Launch Screen@3x.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 		FD3841CFFE72B7CE717C6BCE /* Frameworks */ = {
@@ -153,9 +179,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EA3CF7F209A58B600007961 /* LaunchScreen.storyboard in Resources */,
+				F182B6C2209A62AA00CCE11B /*  Register.png in Resources */,
+				F182B6C4209A62AA00CCE11B /*  Register@2x.png in Resources */,
+				F182B6C3209A62AA00CCE11B /* Launch Screen.png in Resources */,
 				7EA3CF87209A59B300007961 /* GoogleService-Info.plist in Resources */,
+				F182B6C5209A62AA00CCE11B /* Launch Screen@2x.png in Resources */,
+				F182B6C1209A62AA00CCE11B /*  Register@3x.png in Resources */,
 				7EA3CF7C209A58B600007961 /* Assets.xcassets in Resources */,
 				7EA3CF7A209A58B600007961 /* Main.storyboard in Resources */,
+				F182B6C6209A62AA00CCE11B /* Launch Screen@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
