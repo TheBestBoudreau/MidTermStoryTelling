@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  TylerRamanMidTerm
+//  MidTermProject
 //
 //  Created by Tyler Boudreau on 2018-05-02.
 //  Copyright © 2018 Tyler Boudreau. All rights reserved.
