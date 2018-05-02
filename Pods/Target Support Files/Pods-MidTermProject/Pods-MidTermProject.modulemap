@@ -1,0 +1,6 @@
+framework module Pods_MidTermProject {
+  umbrella header "Pods-MidTermProject-umbrella.h"
+
+  export *
+  module * { export * }
+}
