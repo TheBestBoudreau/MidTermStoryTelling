@@ -13,7 +13,7 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *storyFeedTableView;
 @property (strong, nonatomic) IBOutlet UITextView *storyTextField;
-@property (strong, nonatomic) DatabaseReference *ref;
+@property (strong, nonatomic) FIRDatabaseReference *ref;
 
 
 
@@ -66,25 +66,34 @@
     
     
     
-    self.ref = [[Database database] reference];
+    self.ref = [[FIRDatabase database] reference];
     
     
     
-    Database *messageDB = Database.database().reference().child("Messages")
-    var array = ["A", "B"]
-    let messageDictionary = ["Sender":FIRAuth.auth()?.currentUser?.email, "MessageBody":storyTextField.text!, "TimeStamp":"Today", "Collaborators":array, "Title":"Story Title"]
+//    FIRDatabase *messageDB = FIRDatabase.database().reference().child("Stories")
     
-    messageDB.childByAutoId().setValue(messageDictionary) {
-        (error, reference) in
-        if error != nil {
-            print(error)
-        } else {
-            print("Message saved succesfully")
-            self.messageTextfield.isEnabled = true
-            self.sendButton.isEnabled = true
-            self.messageTextfield.text = ""
-        }
-        
+//    FIRDatabase *messageDB = self.ref.child("Stories");
+    FIRDatabase *messageDB = self.ref.childByAutoId.chi(@"Stories");
+    
+    
+    
+    
+//
+//
+//    var array = ["A", "B"]
+//    let messageDictionary = ["Sender":FIRAuth.auth()?.currentUser?.email, "MessageBody":storyTextField.text!, "TimeStamp":"Today", "Collaborators":array, "Title":"Story Title"]
+//
+//    messageDB.childByAutoId().setValue(messageDictionary) {
+//        (error, reference) in
+//        if error != nil {
+//            print(error)
+//        } else {
+//            print("Message saved succesfully")
+//            self.messageTextfield.isEnabled = true
+//            self.sendButton.isEnabled = true
+//            self.messageTextfield.text = ""
+//        }
+//
     }
 }//doneWithNumberPad
 
