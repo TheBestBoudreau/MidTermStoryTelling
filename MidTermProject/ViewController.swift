@@ -118,6 +118,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
                         } else {
                             print("User addedd succesfully")
                             
+                            
                             self.performSegue(withIdentifier: "goToChat", sender: self)
                         }
                         

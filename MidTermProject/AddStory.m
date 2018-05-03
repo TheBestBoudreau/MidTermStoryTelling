@@ -30,6 +30,12 @@
     [self.storyTitleTextField becomeFirstResponder];
     [self addKeyboardButtons];
     
+//    FIRAuth.auth()?.currentUser?.email
+    
+    
+    self.ref = [[FIRDatabase database] reference];
+    
+    
     
 }//load
 
@@ -71,12 +77,25 @@
     NSMutableDictionary *myDict = [NSMutableDictionary new];
     [myDict setObject:self.storyTitleTextField.text forKey:@"Title"];
     [myDict setObject:self.storyTextView.text forKey:@"Body"];
+    [myDict setObject:[self getDate] forKey:@"Date"];
+    [myDict setObject:[[FIRAuth auth] currentUser].email forKey:@"Sender"];
+        
     
     [[[_ref child:@"Stories"] childByAutoId] setValue:myDict];
     
     }//if empty text
     
 }//doneWithNumberPad
+
+-(NSString *) getDate {
+    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+
+    [dateFormatter setDateFormat:@"dd-MM-yyyy HH:mm:ss a"];
+    // or @"yyyy-MM-dd hh:mm:ss a" if you prefer the time with AM/PM
+    NSLog(@"%@",[dateFormatter stringFromDate:[NSDate date]]);
+    return [dateFormatter stringFromDate:[NSDate date]];
+}
+
 
 
 
