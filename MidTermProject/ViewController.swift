@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController , UITextFieldDelegate {
 
@@ -16,16 +17,21 @@ class ViewController: UIViewController , UITextFieldDelegate {
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var registerView: UIView!
     
+    @IBOutlet var registerEmailTextField: UITextField!
+    @IBOutlet var registerPasswordTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        emailTextField.delegate = self
-        emailTextField.delegate = self
-        emailTextField.delegate = self
+
+        registerEmailTextField.delegate = self
+        registerPasswordTextField.delegate = self
         
-        showView ()
+        
+        registerView.isHidden=true
+        
+   
     }//load
 
     
@@ -60,10 +66,79 @@ class ViewController: UIViewController , UITextFieldDelegate {
     
     }//segmentClicked
     
+
+    @IBAction func signInEmailReturn(_ sender: Any) {
+        if (emailTextField.text != ""){
+            passwordTextField.becomeFirstResponder()
+        }
+    }
+    
+    
+    @IBAction func signInPasswordExit(_ sender: Any) {
+        if (passwordTextField.text != "" && emailTextField.text != ""){
+            Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
+                if error != nil {
+                    print(error)
+                } else {
+                    
+                    print("login Succesful")
+                    self.performSegue(withIdentifier: "goToChat", sender: self)
+                }
+            })//closure
+            
+        }////if
+        
+    }//signIn
     
    
     
     
+    @IBAction func registerEmailReturn(_ sender: Any) {
+        if (registerEmailTextField.text != ""){
+            registerPasswordTextField.becomeFirstResponder()
+        }
+    }
+    
+    
+    @IBAction func registerPasswordExit(_ sender: Any) {
+        if (registerEmailTextField.text != "" && registerPasswordTextField.text != ""){
+            Auth.auth().createUser(withEmail: registerEmailTextField.text!, password: registerPasswordTextField.text!, completion: { (user, error) in
+                
+                
+                if error != nil {
+                    print(error!)
+                } else {
+                    print("Registration Succesful")
+                    let userDB = Database.database().reference().child("Users")
+                    let userDirectory = ["User":Auth.auth().currentUser?.uid, "Name":self.registerEmailTextField.text]
+                    userDB.childByAutoId().setValue(userDirectory) {
+                        (error, reference) in
+                        if error != nil {
+                            print(error)
+                        } else {
+                            print("User addedd succesfully")
+                            
+                            self.performSegue(withIdentifier: "goToChat", sender: self)
+                        }
+                        
+                    }
+                    
+                    
+                    
+                    
+                    
+                    
+                }//else
+                
+            })
+        }
+        
+    }//registerPasswordExit
+    
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
     
     
     
