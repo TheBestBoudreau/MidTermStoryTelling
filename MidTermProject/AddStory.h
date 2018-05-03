@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddStory : UIViewController
+@interface AddStory : UIViewController <UITextViewDelegate, UITextFieldDelegate>
 
 @end

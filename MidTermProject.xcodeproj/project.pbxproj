@@ -14,6 +14,9 @@
 		7EA3CF7C209A58B600007961 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3CF7B209A58B600007961 /* Assets.xcassets */; };
 		7EA3CF7F209A58B600007961 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3CF7D209A58B600007961 /* LaunchScreen.storyboard */; };
 		7EA3CF87209A59B300007961 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3CF86209A59B200007961 /* GoogleService-Info.plist */; };
+		F11497F8209B94B9005674A3 /* line@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F11497F5209B94B7005674A3 /* line@3x.png */; };
+		F11497F9209B94B9005674A3 /* line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F11497F6209B94B8005674A3 /* line@2x.png */; };
+		F11497FA209B94B9005674A3 /* line.png in Resources */ = {isa = PBXBuildFile; fileRef = F11497F7209B94B8005674A3 /* line.png */; };
 		F182B6CD209A632300CCE11B /*  Register.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6C7209A632100CCE11B /*  Register.png */; };
 		F182B6CE209A632300CCE11B /*  Register@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6C8209A632200CCE11B /*  Register@3x.png */; };
 		F182B6CF209A632300CCE11B /* Launch Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6C9209A632200CCE11B /* Launch Screen.png */; };
@@ -48,6 +51,9 @@
 		7EA3CF7E209A58B600007961 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7EA3CF80209A58B600007961 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7EA3CF86209A59B200007961 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F11497F5209B94B7005674A3 /* line@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line@3x.png"; sourceTree = "<group>"; };
+		F11497F6209B94B8005674A3 /* line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line@2x.png"; sourceTree = "<group>"; };
+		F11497F7209B94B8005674A3 /* line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line.png; sourceTree = "<group>"; };
 		F182B6C7209A632100CCE11B /*  Register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = " Register.png"; sourceTree = "<group>"; };
 		F182B6C8209A632200CCE11B /*  Register@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = " Register@3x.png"; sourceTree = "<group>"; };
 		F182B6C9209A632200CCE11B /* Launch Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Launch Screen.png"; sourceTree = "<group>"; };
@@ -123,14 +129,14 @@
 				7EA3CF74209A58B600007961 /* AppDelegate.swift */,
 				7EA3CF76209A58B600007961 /* ViewController.swift */,
 				7EA3CF78209A58B600007961 /* Main.storyboard */,
-				F182B6FE209B881200CCE11B /* AddStory.h */,
-				F182B6FF209B881200CCE11B /* AddStory.m */,
 				7EA3CF7B209A58B600007961 /* Assets.xcassets */,
 				F182B6DA209A80DE00CCE11B /* StoryViewController.h */,
 				F182B6DB209A80DE00CCE11B /* StoryViewController.m */,
 				F182B6E6209A879300CCE11B /* Stories.swift */,
 				F182B6E8209A896F00CCE11B /* User.swift */,
 				F182B6DD209A80EA00CCE11B /* FriendsViewController.h */,
+				F182B6FE209B881200CCE11B /* AddStory.h */,
+				F182B6FF209B881200CCE11B /* AddStory.m */,
 				F182B6FB209B606500CCE11B /* CollectionViewCell.h */,
 				F182B6FC209B606500CCE11B /* CollectionViewCell.m */,
 				F182B6DE209A80EA00CCE11B /* FriendsViewController.m */,
@@ -149,6 +155,9 @@
 		F182B6BA209A629400CCE11B /* images */ = {
 			isa = PBXGroup;
 			children = (
+				F11497F7209B94B8005674A3 /* line.png */,
+				F11497F6209B94B8005674A3 /* line@2x.png */,
+				F11497F5209B94B7005674A3 /* line@3x.png */,
 				F182B6F1209B5C5700CCE11B /* bigAssButton2.png */,
 				F182B6F2209B5C5700CCE11B /* bigAssButton2@2x.png */,
 				F182B6F0209B5C5700CCE11B /* bigAssButton2@3x.png */,
@@ -241,15 +250,18 @@
 				7EA3CF87209A59B300007961 /* GoogleService-Info.plist in Resources */,
 				F182B6D2209A632300CCE11B /*  Register@2x.png in Resources */,
 				F182B6CF209A632300CCE11B /* Launch Screen.png in Resources */,
+				F11497F8209B94B9005674A3 /* line@3x.png in Resources */,
 				F182B6ED209A8B4A00CCE11B /* bigAssButton.png in Resources */,
 				F182B6EE209A8B4A00CCE11B /* bigAssButton@2x.png in Resources */,
 				F182B6F5209B5C5800CCE11B /* bigAssButton2@2x.png in Resources */,
 				F182B6CD209A632300CCE11B /*  Register.png in Resources */,
 				F182B6EF209A8B4A00CCE11B /* bigAssButton@3x.png in Resources */,
+				F11497FA209B94B9005674A3 /* line.png in Resources */,
 				7EA3CF7C209A58B600007961 /* Assets.xcassets in Resources */,
 				F182B6D1209A632300CCE11B /* Launch Screen@2x.png in Resources */,
 				F182B6D0209A632300CCE11B /* Launch Screen@3x.png in Resources */,
 				7EA3CF7A209A58B600007961 /* Main.storyboard in Resources */,
+				F11497F9209B94B9005674A3 /* line@2x.png in Resources */,
 				F182B6CE209A632300CCE11B /*  Register@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
