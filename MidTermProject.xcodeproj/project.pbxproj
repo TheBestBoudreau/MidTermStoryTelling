@@ -25,6 +25,10 @@
 		F182B6E2209A80F400CCE11B /* RandomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B6E1209A80F400CCE11B /* RandomViewController.m */; };
 		F182B6E5209A810900CCE11B /* CurrentStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B6E4209A810900CCE11B /* CurrentStoryViewController.m */; };
 		F182B6E7209A879300CCE11B /* Stories.swift in Sources */ = {isa = PBXBuildFile; fileRef = F182B6E6209A879300CCE11B /* Stories.swift */; };
+		F182B6E9209A896F00CCE11B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F182B6E8209A896F00CCE11B /* User.swift */; };
+		F182B6ED209A8B4A00CCE11B /* bigAssButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6EA209A8B4800CCE11B /* bigAssButton.png */; };
+		F182B6EE209A8B4A00CCE11B /* bigAssButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6EB209A8B4900CCE11B /* bigAssButton@2x.png */; };
+		F182B6EF209A8B4A00CCE11B /* bigAssButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6EC209A8B4900CCE11B /* bigAssButton@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +59,10 @@
 		F182B6E3209A810900CCE11B /* CurrentStoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrentStoryViewController.h; sourceTree = "<group>"; };
 		F182B6E4209A810900CCE11B /* CurrentStoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrentStoryViewController.m; sourceTree = "<group>"; };
 		F182B6E6209A879300CCE11B /* Stories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stories.swift; sourceTree = "<group>"; };
+		F182B6E8209A896F00CCE11B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F182B6EA209A8B4800CCE11B /* bigAssButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigAssButton.png; sourceTree = "<group>"; };
+		F182B6EB209A8B4900CCE11B /* bigAssButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bigAssButton@2x.png"; sourceTree = "<group>"; };
+		F182B6EC209A8B4900CCE11B /* bigAssButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bigAssButton@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +115,7 @@
 				F182B6DA209A80DE00CCE11B /* StoryViewController.h */,
 				F182B6DB209A80DE00CCE11B /* StoryViewController.m */,
 				F182B6E6209A879300CCE11B /* Stories.swift */,
+				F182B6E8209A896F00CCE11B /* User.swift */,
 				F182B6DD209A80EA00CCE11B /* FriendsViewController.h */,
 				F182B6DE209A80EA00CCE11B /* FriendsViewController.m */,
 				F182B6E0209A80F400CCE11B /* RandomViewController.h */,
@@ -124,6 +133,9 @@
 		F182B6BA209A629400CCE11B /* images */ = {
 			isa = PBXGroup;
 			children = (
+				F182B6EA209A8B4800CCE11B /* bigAssButton.png */,
+				F182B6EB209A8B4900CCE11B /* bigAssButton@2x.png */,
+				F182B6EC209A8B4900CCE11B /* bigAssButton@3x.png */,
 				F182B6C7209A632100CCE11B /*  Register.png */,
 				F182B6CC209A632300CCE11B /*  Register@2x.png */,
 				F182B6C8209A632200CCE11B /*  Register@3x.png */,
@@ -208,7 +220,10 @@
 				7EA3CF87209A59B300007961 /* GoogleService-Info.plist in Resources */,
 				F182B6D2209A632300CCE11B /*  Register@2x.png in Resources */,
 				F182B6CF209A632300CCE11B /* Launch Screen.png in Resources */,
+				F182B6ED209A8B4A00CCE11B /* bigAssButton.png in Resources */,
+				F182B6EE209A8B4A00CCE11B /* bigAssButton@2x.png in Resources */,
 				F182B6CD209A632300CCE11B /*  Register.png in Resources */,
+				F182B6EF209A8B4A00CCE11B /* bigAssButton@3x.png in Resources */,
 				7EA3CF7C209A58B600007961 /* Assets.xcassets in Resources */,
 				F182B6D1209A632300CCE11B /* Launch Screen@2x.png in Resources */,
 				F182B6D0209A632300CCE11B /* Launch Screen@3x.png in Resources */,
@@ -277,6 +292,7 @@
 				F182B6E2209A80F400CCE11B /* RandomViewController.m in Sources */,
 				F182B6E5209A810900CCE11B /* CurrentStoryViewController.m in Sources */,
 				7EA3CF77209A58B600007961 /* ViewController.swift in Sources */,
+				F182B6E9209A896F00CCE11B /* User.swift in Sources */,
 				7EA3CF75209A58B600007961 /* AppDelegate.swift in Sources */,
 				F182B6DC209A80DE00CCE11B /* StoryViewController.m in Sources */,
 				F182B6E7209A879300CCE11B /* Stories.swift in Sources */,

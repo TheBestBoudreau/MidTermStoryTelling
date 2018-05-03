@@ -4,4 +4,4 @@
 #import "StoryViewController.h"
 #import "FriendsViewController.h"
 #import "RandomViewController.h"
-#import "CurrentStoryViewController"
+#import "CurrentStoryViewController.h"

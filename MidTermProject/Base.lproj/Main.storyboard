@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -271,12 +272,49 @@
                                     <outlet property="delegate" destination="j5R-jB-0aG" id="Bdp-il-4aw"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L0h-1d-3L0">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="333.5"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ha0-eF-yda">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="326"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" red="0.19677341800000001" green="0.20075914519999999" blue="0.21625766869999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="j5R-jB-0aG" id="Met-tY-vDe"/>
+                                        </connections>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ha0-eF-yda" secondAttribute="trailing" id="8Xf-58-C0f"/>
+                                    <constraint firstItem="ha0-eF-yda" firstAttribute="top" secondItem="L0h-1d-3L0" secondAttribute="top" id="8lV-sC-Ahk"/>
+                                    <constraint firstAttribute="bottom" secondItem="ha0-eF-yda" secondAttribute="bottom" constant="7.5" id="LCc-b8-Yja"/>
+                                    <constraint firstItem="ha0-eF-yda" firstAttribute="leading" secondItem="L0h-1d-3L0" secondAttribute="leading" id="Vpk-j8-9hc"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cC0-sU-6HI">
+                                <rect key="frame" x="140" y="511" width="95" height="95"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="95" id="3bH-vg-pOf"/>
+                                    <constraint firstAttribute="width" constant="95" id="5Wl-RB-Clq"/>
+                                </constraints>
+                                <state key="normal" image="bigAssButton.png"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="L0h-1d-3L0" firstAttribute="trailing" secondItem="oMB-aK-gw6" secondAttribute="trailing" id="Hqb-Oe-j1H"/>
+                            <constraint firstItem="L0h-1d-3L0" firstAttribute="leading" secondItem="oMB-aK-gw6" secondAttribute="leading" id="InU-7E-JpV"/>
                             <constraint firstItem="WZc-Ss-UJ7" firstAttribute="leading" secondItem="oMB-aK-gw6" secondAttribute="leading" id="JpC-Xa-ep2"/>
+                            <constraint firstItem="oMB-aK-gw6" firstAttribute="bottom" secondItem="cC0-sU-6HI" secondAttribute="bottom" constant="12" id="O7u-50-Wiu"/>
+                            <constraint firstItem="L0h-1d-3L0" firstAttribute="top" secondItem="U0d-6v-zpT" secondAttribute="top" id="OOe-Cq-sYu"/>
                             <constraint firstItem="WZc-Ss-UJ7" firstAttribute="trailing" secondItem="oMB-aK-gw6" secondAttribute="trailing" id="TgH-D7-9Sx"/>
+                            <constraint firstItem="L0h-1d-3L0" firstAttribute="height" secondItem="U0d-6v-zpT" secondAttribute="height" multiplier="0.5" id="VoR-KJ-ozO"/>
                             <constraint firstItem="WZc-Ss-UJ7" firstAttribute="top" secondItem="U0d-6v-zpT" secondAttribute="top" id="pdw-Ht-5c1"/>
+                            <constraint firstItem="cC0-sU-6HI" firstAttribute="centerX" secondItem="U0d-6v-zpT" secondAttribute="centerX" id="qVJ-6T-oFA"/>
                             <constraint firstItem="WZc-Ss-UJ7" firstAttribute="bottom" secondItem="oMB-aK-gw6" secondAttribute="bottom" id="zkk-xv-Nas"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oMB-aK-gw6"/>
@@ -284,6 +322,7 @@
                     <tabBarItem key="tabBarItem" title="Feed" id="7GZ-rp-gEs"/>
                     <connections>
                         <outlet property="storyFeedTableView" destination="WZc-Ss-UJ7" id="Tez-dg-Uwx"/>
+                        <outlet property="storyTextField" destination="ha0-eF-yda" id="Yhn-Wl-MvX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pfG-ro-Mpa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -313,5 +352,6 @@
     </scenes>
     <resources>
         <image name=" Register.png" width="375" height="667"/>
+        <image name="bigAssButton.png" width="95" height="95"/>
     </resources>
 </document>

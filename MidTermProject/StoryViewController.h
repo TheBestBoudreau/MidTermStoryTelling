@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+@import Firebase;
 
-@interface StoryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@interface StoryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,UITextViewDelegate>
 
 @end
