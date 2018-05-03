@@ -13,8 +13,6 @@ class Stories: NSObject {
     var storyTitle:String = ""
     var storyBody:String = ""
     var storyDate:String = ""
-    var storyWriters = [String]()
-    var isEditable:String = ""
     var isFinished:String = ""
     
     
