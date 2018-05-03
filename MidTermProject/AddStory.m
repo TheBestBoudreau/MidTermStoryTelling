@@ -40,6 +40,16 @@
     self.storyTextView.delegate = self;
     
     
+    
+    
+    
+    //deleteit
+    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+    
+    dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+    NSLog(@"%@", [dateFormatter stringFromDate:[NSDate date]]);
+    
+    
 }//load
 
 
@@ -85,10 +95,7 @@
 
 -(NSString *) getDate {
     NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
-
-    [dateFormatter setDateFormat:@"dd-MM-yyyy HH:mm:ss a"];
-    // or @"yyyy-MM-dd hh:mm:ss a" if you prefer the time with AM/PM
-    NSLog(@"%@",[dateFormatter stringFromDate:[NSDate date]]);
+    dateFormatter.dateStyle = NSDateFormatterMediumStyle;
     return [dateFormatter stringFromDate:[NSDate date]];
 }
 
@@ -102,10 +109,13 @@
     [myDict setObject:self.storyTextView.text forKey:@"Body"];
     [myDict setObject:[self getDate] forKey:@"Date"];
     [myDict setObject:[[FIRAuth auth] currentUser].email forKey:@"Sender"];
-    
+    [myDict setObject:[[FIRAuth auth] currentUser].email forKey:@"LastCollaborator"];
+    [myDict setObject:@"0" forKey:@"Total Ratings"];
+    [myDict setObject:@"0" forKey:@"Total Raters"];
+    [myDict setObject:[self getDate] forKey:@"Date"];
     
     [[[_ref child:@"Stories"] childByAutoId] setValue:myDict];
-        [self performSegueWithIdentifier:@"takeMeBack" sender:self];
+        [self dismissViewControllerAnimated:true completion:nil];
         
     }//if
 }//publishAction
@@ -114,7 +124,11 @@
 
 - (IBAction)cancelAction:(id)sender {
     
-[self performSegueWithIdentifier:@"takeMeBack" sender:self];
+//[self performSegueWithIdentifier:@"takeMeBack" sender:self];
+
+    [self dismissViewControllerAnimated:true completion:nil];
+    
+    
 
 
 }//cancelAction

@@ -18,6 +18,8 @@
 
 @property (strong, nonatomic) FIRDatabaseReference *ref;
 
+@property (nonatomic) NSMutableArray *storyTitleArray;
+
 
 
 
@@ -32,15 +34,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-
-    
+    self.storyTitleArray = [NSMutableArray new];
     self.storyArray = [NSMutableArray new];
     [self retriveMessages];
     
-    
-    
-    
 }//load
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:true];
+    [self retriveMessages];
+    [self.storyFeedTableView reloadData];
+    [self configureTableView];
+    
+}//viewDidAppear
 
 
 #pragma Setup TableView
@@ -53,12 +59,20 @@
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier: @"storyCell"];
+    TableViewCell * cell = [tableView dequeueReusableCellWithIdentifier: @"storyCell"];
     
     Stories *thisStory = [self.storyArray objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = thisStory.storyTitle;
-//        cell.textLabel.text = @"RR";
+    cell.titleLabel.text = thisStory.storyTitle;
+    cell.dateLabel.text = thisStory.storyDate;
+    cell.bodyLabel.text = thisStory.storyBody;
+    cell.cellView.layer.cornerRadius = 15;
+    cell.cellView.layer.masksToBounds = true;
+    
+    
+    
+    
+    
     return cell;
     
 }
@@ -67,7 +81,7 @@
     self.ref = [[FIRDatabase database] reference];
     [[self.ref child:@"Stories"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         NSDictionary *dict = snapshot.value;
-//        NSLog(@"%@",dict);
+        //        NSLog(@"%@",dict);
         
         
         
@@ -79,22 +93,38 @@
             newStory.storyBody = thisDict[@"Body"];
             newStory.storyDate = thisDict[@"Date"];
             newStory.isFinished = thisDict[@"Sender"];
+            newStory.lastCollaborator = thisDict[@"LastCollaborator"];
             
-            [self.storyArray addObject:newStory];
+            NSString *abc = [NSString stringWithFormat:@"%@%@%@", newStory.storyTitle, newStory.storyBody, newStory.storyDate];
+            if (self.storyArray.count > 0) {
+                
+                if (![self.storyTitleArray containsObject:abc]) {
+                    [self.storyTitleArray addObject:abc];
+                    [self.storyArray insertObject:newStory atIndex:0];
+                }
+            }//0
+            else {
+                [self.storyArray insertObject:newStory atIndex:0];
+            }
             [self.storyFeedTableView reloadData];
-            
-            
+            [self configureTableView];
         }//forLoop
+        
         
     } withCancelBlock:^(NSError * _Nonnull error) {
         NSLog(@"%@", error.localizedDescription);
     }];
     
-    
+
     
 }//retriveMessages
 
-
+-(void)configureTableView {
+    self.storyFeedTableView.rowHeight = UITableViewAutomaticDimension;
+    self.storyFeedTableView.estimatedRowHeight = 120;
+    
+    
+}//configureTableView
 
 
 

@@ -14,6 +14,6 @@ class Stories: NSObject {
    @objc var storyBody:String = ""
     @objc var storyDate:String = ""
     @objc var isFinished:String = ""
-    
+    @objc var lastCollaborator:String = ""
     
 }
