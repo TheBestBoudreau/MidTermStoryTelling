@@ -10,10 +10,10 @@ import UIKit
 
 class Stories: NSObject {
 
-    var storyTitle:String = ""
-    var storyBody:String = ""
-    var storyDate:String = ""
-    var isFinished:String = ""
+   @objc var storyTitle:String = ""
+   @objc var storyBody:String = ""
+    @objc var storyDate:String = ""
+    @objc var isFinished:String = ""
     
     
 }

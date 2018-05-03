@@ -20,6 +20,7 @@
 		F11497FE209B9F16005674A3 /* capsuleButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F11497FB209B9F14005674A3 /* capsuleButton@2x.png */; };
 		F11497FF209B9F16005674A3 /* capsuleButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F11497FC209B9F15005674A3 /* capsuleButton.png */; };
 		F1149800209B9F16005674A3 /* capsuleButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F11497FD209B9F15005674A3 /* capsuleButton@3x.png */; };
+		F1149803209BB0BF005674A3 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1149802209BB0BF005674A3 /* TableViewCell.m */; };
 		F182B6CD209A632300CCE11B /*  Register.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6C7209A632100CCE11B /*  Register.png */; };
 		F182B6CE209A632300CCE11B /*  Register@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6C8209A632200CCE11B /*  Register@3x.png */; };
 		F182B6CF209A632300CCE11B /* Launch Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6C9209A632200CCE11B /* Launch Screen.png */; };
@@ -60,6 +61,8 @@
 		F11497FB209B9F14005674A3 /* capsuleButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capsuleButton@2x.png"; sourceTree = "<group>"; };
 		F11497FC209B9F15005674A3 /* capsuleButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = capsuleButton.png; sourceTree = "<group>"; };
 		F11497FD209B9F15005674A3 /* capsuleButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capsuleButton@3x.png"; sourceTree = "<group>"; };
+		F1149801209BB0BF005674A3 /* TableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
+		F1149802209BB0BF005674A3 /* TableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 		F182B6C7209A632100CCE11B /*  Register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = " Register.png"; sourceTree = "<group>"; };
 		F182B6C8209A632200CCE11B /*  Register@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = " Register@3x.png"; sourceTree = "<group>"; };
 		F182B6C9209A632200CCE11B /* Launch Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Launch Screen.png"; sourceTree = "<group>"; };
@@ -135,6 +138,8 @@
 				7EA3CF74209A58B600007961 /* AppDelegate.swift */,
 				7EA3CF76209A58B600007961 /* ViewController.swift */,
 				7EA3CF78209A58B600007961 /* Main.storyboard */,
+				F1149801209BB0BF005674A3 /* TableViewCell.h */,
+				F1149802209BB0BF005674A3 /* TableViewCell.m */,
 				7EA3CF7B209A58B600007961 /* Assets.xcassets */,
 				F182B6DA209A80DE00CCE11B /* StoryViewController.h */,
 				F182B6DB209A80DE00CCE11B /* StoryViewController.m */,
@@ -343,6 +348,7 @@
 				7EA3CF75209A58B600007961 /* AppDelegate.swift in Sources */,
 				F182B6DC209A80DE00CCE11B /* StoryViewController.m in Sources */,
 				F182B6E7209A879300CCE11B /* Stories.swift in Sources */,
+				F1149803209BB0BF005674A3 /* TableViewCell.m in Sources */,
 				F182B700209B881200CCE11B /* AddStory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
