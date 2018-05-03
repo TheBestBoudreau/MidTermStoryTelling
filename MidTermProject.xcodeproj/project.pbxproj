@@ -29,6 +29,11 @@
 		F182B6ED209A8B4A00CCE11B /* bigAssButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6EA209A8B4800CCE11B /* bigAssButton.png */; };
 		F182B6EE209A8B4A00CCE11B /* bigAssButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6EB209A8B4900CCE11B /* bigAssButton@2x.png */; };
 		F182B6EF209A8B4A00CCE11B /* bigAssButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6EC209A8B4900CCE11B /* bigAssButton@3x.png */; };
+		F182B6F3209B5C5800CCE11B /* bigAssButton2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6F0209B5C5700CCE11B /* bigAssButton2@3x.png */; };
+		F182B6F4209B5C5800CCE11B /* bigAssButton2.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6F1209B5C5700CCE11B /* bigAssButton2.png */; };
+		F182B6F5209B5C5800CCE11B /* bigAssButton2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6F2209B5C5700CCE11B /* bigAssButton2@2x.png */; };
+		F182B6FD209B606500CCE11B /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B6FC209B606500CCE11B /* CollectionViewCell.m */; };
+		F182B700209B881200CCE11B /* AddStory.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B6FF209B881200CCE11B /* AddStory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +68,13 @@
 		F182B6EA209A8B4800CCE11B /* bigAssButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigAssButton.png; sourceTree = "<group>"; };
 		F182B6EB209A8B4900CCE11B /* bigAssButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bigAssButton@2x.png"; sourceTree = "<group>"; };
 		F182B6EC209A8B4900CCE11B /* bigAssButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bigAssButton@3x.png"; sourceTree = "<group>"; };
+		F182B6F0209B5C5700CCE11B /* bigAssButton2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bigAssButton2@3x.png"; sourceTree = "<group>"; };
+		F182B6F1209B5C5700CCE11B /* bigAssButton2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigAssButton2.png; sourceTree = "<group>"; };
+		F182B6F2209B5C5700CCE11B /* bigAssButton2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bigAssButton2@2x.png"; sourceTree = "<group>"; };
+		F182B6FB209B606500CCE11B /* CollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		F182B6FC209B606500CCE11B /* CollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		F182B6FE209B881200CCE11B /* AddStory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddStory.h; sourceTree = "<group>"; };
+		F182B6FF209B881200CCE11B /* AddStory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddStory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,12 +123,16 @@
 				7EA3CF74209A58B600007961 /* AppDelegate.swift */,
 				7EA3CF76209A58B600007961 /* ViewController.swift */,
 				7EA3CF78209A58B600007961 /* Main.storyboard */,
+				F182B6FE209B881200CCE11B /* AddStory.h */,
+				F182B6FF209B881200CCE11B /* AddStory.m */,
 				7EA3CF7B209A58B600007961 /* Assets.xcassets */,
 				F182B6DA209A80DE00CCE11B /* StoryViewController.h */,
 				F182B6DB209A80DE00CCE11B /* StoryViewController.m */,
 				F182B6E6209A879300CCE11B /* Stories.swift */,
 				F182B6E8209A896F00CCE11B /* User.swift */,
 				F182B6DD209A80EA00CCE11B /* FriendsViewController.h */,
+				F182B6FB209B606500CCE11B /* CollectionViewCell.h */,
+				F182B6FC209B606500CCE11B /* CollectionViewCell.m */,
 				F182B6DE209A80EA00CCE11B /* FriendsViewController.m */,
 				F182B6E0209A80F400CCE11B /* RandomViewController.h */,
 				F182B6E1209A80F400CCE11B /* RandomViewController.m */,
@@ -133,6 +149,9 @@
 		F182B6BA209A629400CCE11B /* images */ = {
 			isa = PBXGroup;
 			children = (
+				F182B6F1209B5C5700CCE11B /* bigAssButton2.png */,
+				F182B6F2209B5C5700CCE11B /* bigAssButton2@2x.png */,
+				F182B6F0209B5C5700CCE11B /* bigAssButton2@3x.png */,
 				F182B6EA209A8B4800CCE11B /* bigAssButton.png */,
 				F182B6EB209A8B4900CCE11B /* bigAssButton@2x.png */,
 				F182B6EC209A8B4900CCE11B /* bigAssButton@3x.png */,
@@ -216,12 +235,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F182B6F4209B5C5800CCE11B /* bigAssButton2.png in Resources */,
 				7EA3CF7F209A58B600007961 /* LaunchScreen.storyboard in Resources */,
+				F182B6F3209B5C5800CCE11B /* bigAssButton2@3x.png in Resources */,
 				7EA3CF87209A59B300007961 /* GoogleService-Info.plist in Resources */,
 				F182B6D2209A632300CCE11B /*  Register@2x.png in Resources */,
 				F182B6CF209A632300CCE11B /* Launch Screen.png in Resources */,
 				F182B6ED209A8B4A00CCE11B /* bigAssButton.png in Resources */,
 				F182B6EE209A8B4A00CCE11B /* bigAssButton@2x.png in Resources */,
+				F182B6F5209B5C5800CCE11B /* bigAssButton2@2x.png in Resources */,
 				F182B6CD209A632300CCE11B /*  Register.png in Resources */,
 				F182B6EF209A8B4A00CCE11B /* bigAssButton@3x.png in Resources */,
 				7EA3CF7C209A58B600007961 /* Assets.xcassets in Resources */,
@@ -291,11 +313,13 @@
 				F182B6DF209A80EA00CCE11B /* FriendsViewController.m in Sources */,
 				F182B6E2209A80F400CCE11B /* RandomViewController.m in Sources */,
 				F182B6E5209A810900CCE11B /* CurrentStoryViewController.m in Sources */,
+				F182B6FD209B606500CCE11B /* CollectionViewCell.m in Sources */,
 				7EA3CF77209A58B600007961 /* ViewController.swift in Sources */,
 				F182B6E9209A896F00CCE11B /* User.swift in Sources */,
 				7EA3CF75209A58B600007961 /* AppDelegate.swift in Sources */,
 				F182B6DC209A80DE00CCE11B /* StoryViewController.m in Sources */,
 				F182B6E7209A879300CCE11B /* Stories.swift in Sources */,
+				F182B700209B881200CCE11B /* AddStory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +459,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UE52HE9BWK;
 				INFOPLIST_FILE = MidTermProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tylerboudreau.MidTermProject;
@@ -453,6 +478,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UE52HE9BWK;
 				INFOPLIST_FILE = MidTermProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tylerboudreau.MidTermProject;

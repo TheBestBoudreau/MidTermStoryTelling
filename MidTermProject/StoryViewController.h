@@ -10,6 +10,6 @@
 @import Firebase;
 
 
-@interface StoryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,UITextViewDelegate>
+@interface StoryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @end
