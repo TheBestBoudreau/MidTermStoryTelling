@@ -165,14 +165,24 @@
 -(void) tryThis {
     NSString *key = self.fullStoryLocal.key;
     self.ref = [[FIRDatabase database] reference];
-    NSDictionary *post = @{@"Title": @"RA",
-                           @"Body": self.editStoryTextView.text,
-                           @"Date": @"title",
-                           @"Sender": @"body",
-                           @"LastCollaborator": @"body",
-                           @"Total Ratings": @"body",
-                           @"Total Raters": @"body",
+    NSString *storyBody = self.fullStoryLocal.storyBody;
+    storyBody = [NSString stringWithFormat:@"%@\n%@", self.fullStoryLocal.storyBody, self.editStoryTextView.text];
+    
+    
+    NSDictionary *post = @{@"Title": self.fullStoryLocal.storyTitle,
+                           @"Body": storyBody,
+                           @"Date": self.fullStoryLocal.storyDate,
+                           @"Sender": self.fullStoryLocal.sender,
+                           @"LastCollaborator": [[FIRAuth auth] currentUser].email,
+                           @"Total Ratings": self.fullStoryLocal.totalRatings,
+                           @"Total Raters": self.fullStoryLocal.totalRaters,
                            @"Key": key,
+                           @"Comments": self.fullStoryLocal.comments,
+                           @"Total Collaborators": self.fullStoryLocal.totalCollaborators,
+                           @"Raters Array": self.fullStoryLocal.ratersString,
+                           
+                           
+                           
                            
                            
                            };

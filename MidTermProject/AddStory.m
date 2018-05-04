@@ -110,9 +110,6 @@
         [myDict setObject:[self getDate] forKey:@"Date"];
         [myDict setObject:[[FIRAuth auth] currentUser].email forKey:@"Sender"];
         [myDict setObject:[[FIRAuth auth] currentUser].email forKey:@"LastCollaborator"];
-        [myDict setObject:@"0" forKey:@"Total Ratings"];
-        [myDict setObject:@"0" forKey:@"Total Raters"];
-        [myDict setObject:[self getDate] forKey:@"Date"];
         [myDict setObject:@"0" forKey:@"Total Raters"];
         [myDict setObject:@"0" forKey:@"Total Ratings"];
         [myDict setObject:@"" forKey:@"Comments"];

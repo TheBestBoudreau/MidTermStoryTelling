@@ -13,7 +13,7 @@ class Stories: NSObject {
    @objc var storyTitle:String = ""
    @objc var storyBody:String = ""
     @objc var storyDate:String = ""
-    @objc var isFinished:String = ""
+    @objc var sender:String = ""
     @objc var lastCollaborator:String = ""
     @objc var totalRaters:String = ""
     @objc var totalRatings:String = ""
@@ -21,8 +21,8 @@ class Stories: NSObject {
     @objc var totalCollaborators:String = ""
     @objc var ratersString:String = ""
     @objc var key:String = ""
-    
-    
+    @objc var createdBy:String = ""
+    @objc var ratersArray = [String]()
     
     
     

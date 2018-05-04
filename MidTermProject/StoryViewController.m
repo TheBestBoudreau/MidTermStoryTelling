@@ -116,15 +116,17 @@
             newStory.storyTitle = thisDict[@"Title"];
             newStory.storyBody = thisDict[@"Body"];
             newStory.storyDate = thisDict[@"Date"];
-            newStory.isFinished = thisDict[@"Sender"];
+            newStory.sender = thisDict[@"Sender"];
             newStory.lastCollaborator = thisDict[@"LastCollaborator"];
-            newStory.totalRaters = thisDict[@"Key"];
-            newStory.totalRatings = thisDict[@"Key"];
-            newStory.comments = thisDict[@"Key"];
-            newStory.totalCollaborators = thisDict[@"Key"];
-            newStory.ratersString = thisDict[@"Key"];
+            newStory.totalRaters = thisDict[@"Total Raters"];
+            newStory.totalRatings = thisDict[@"Total Ratings"];
+            newStory.comments = thisDict[@"Comments"];
+            newStory.totalCollaborators = thisDict[@"Total Collaborators"];
             newStory.key = thisDict[@"Key"];
-           
+            newStory.ratersString = thisDict[@"Raters Array"];
+            
+            
+            
             [self.storyArray insertObject:newStory atIndex:0];
             [self.storyFeedTableView reloadData];
             [self configureTableView];

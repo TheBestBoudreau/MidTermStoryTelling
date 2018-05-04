@@ -578,7 +578,6 @@
         <image name="line.png" width="335" height="1"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Zmn-qs-Lmt"/>
         <segue reference="gYI-6g-IlZ"/>
     </inferredMetricsTieBreakers>
 </document>
