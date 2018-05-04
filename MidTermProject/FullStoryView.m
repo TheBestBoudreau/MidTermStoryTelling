@@ -176,7 +176,7 @@
         NSLog(@"%lu", self.storyArray.count);
         
     }//if empty text
-    
+    [self checkLastCollaborator];
 }//publishAction
 
 -(void)hideDoneScreen {
@@ -220,7 +220,13 @@
     
 }//tryThis
 
-
+-(void) checkLastCollaborator {
+    if ([[[FIRAuth auth] currentUser].email isEqualToString:self.fullStoryLocal.lastCollaborator]) {
+        self.editButtonOutlet.enabled = false;
+    } else {
+        self.editButtonOutlet.enabled = true;
+    }
+}//checkLastCollaborator
 
 
 @end
