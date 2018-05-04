@@ -11,4 +11,5 @@ import UIKit
 class User: NSObject {
     var userEmail:String = ""
     var userID:String = ""
+    
 }

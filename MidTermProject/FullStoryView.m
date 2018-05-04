@@ -8,6 +8,8 @@
 
 #import "FullStoryView.h"
 
+
+
 @interface FullStoryView ()
 
 @end
@@ -16,7 +18,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    NSLog(@"MY BODY:::%@",self.fullStoryLocal.storyBody);
+    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -10,7 +10,7 @@
 #import "TableViewCell.h"
 
 #import "MidTermProject-Swift.h"
-
+#import "FullStoryView.h"
 
 @interface StoryViewController ()
 
@@ -26,7 +26,7 @@
 
 @property (nonatomic) NSMutableArray *staticStoryArray;
 
-
+@property (nonatomic) Stories * myStoryProperty;
 
 
 
@@ -44,21 +44,21 @@
     self.storyArray = [NSMutableArray new];
     
     
-    [self searchForIndexNum];
+    
 }//load
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:true];
-    [self retriveMessages];
+//    [self retriveMessages];
     self.storyArray = [NSMutableArray new];
     [self.storyFeedTableView reloadData];
     [self configureTableView];
     
-    [self searchForIndexNum];
+    
     
     _originalIndexArray = [[NSMutableArray alloc] init];
     _changedIndexArray = [[NSMutableArray alloc] init];
-    [self tryThis];
+//    [self tryThis];
 }//viewDidAppear
 
 
@@ -84,11 +84,6 @@
     
     
     
-    
-    
-    
-    
-    
     return cell;
     
 }
@@ -96,16 +91,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     Stories *staticStory = [Stories new];
+    self.myStoryProperty = [_storyArray objectAtIndex:indexPath.row];
     
-    staticStory = [self.storyArray objectAtIndex:indexPath.row];
-    int abc = [self.staticStoryArray indexOfObject:staticStory];
-    NSLog(@"THIS IS THE INDEX %d", abc);
-    NSLog(@"story array count is %lu", self.storyArray.count);
-    NSLog(@"staic array count is %lu", self.staticStoryArray.count);
-    Stories *story = [self.staticStoryArray objectAtIndex:abc];
-    NSLog(@"Title should be %@", story.storyTitle);
-    
-    
+    [self performSegueWithIdentifier:@"fullStory" sender:self];
     
     
 }
@@ -123,65 +111,65 @@
     
 }//tryThis
 
--(void) retriveMessages {
-    self.ref = [[FIRDatabase database] reference];
-    [[self.ref child:@"Stories"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-        NSDictionary *dict = snapshot.value;
-                NSLog(@"%@",dict);
-        
-        
-        
-        for (NSString* thisString in dict) {
-            NSDictionary *thisDict = dict[thisString];
-            Stories *newStory = [Stories new];
-            NSLog(@"The key might be %@", self.ref.childByAutoId.key);
-            
-            newStory.storyTitle = thisDict[@"Title"];
-            newStory.storyBody = thisDict[@"Body"];
-            newStory.storyDate = thisDict[@"Date"];
-            newStory.isFinished = thisDict[@"Sender"];
-            newStory.lastCollaborator = thisDict[@"LastCollaborator"];
-            
-            
-            
-            
-            
-            
-            NSString *abc = [NSString stringWithFormat:@"%@%@%@", newStory.storyTitle, newStory.storyBody, newStory.storyDate];
-//            if (self.storyArray.count > 0) {
+//-(void) retriveMessages {
+//    self.ref = [[FIRDatabase database] reference];
+//    [[self.ref child:@"Stories"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+//        NSDictionary *dict = snapshot.value;
+//        NSLog(@"%@",dict);
 //
-//                if (![self.storyTitleArray containsObject:abc]) {
 //
-//                    [self.originalIndexArray addObject:abc];
-//                    [self.changedIndexArray insertObject:abc atIndex:0];
-//                    [self.staticStoryArray addObject:newStory];
-//                    [self.storyTitleArray addObject:abc];
-//                    [self.storyArray insertObject:newStory atIndex:0];
-//                }
-//            }//0
-//            else {
 //
-//                [self.originalIndexArray addObject:abc];
-//                [self.storyTitleArray addObject:abc];
-//                [self.changedIndexArray insertObject:abc atIndex:0];
-//                [self.storyArray insertObject:newStory atIndex:0];
-//                [self.staticStoryArray addObject:newStory];
-//            }
-            [self.staticStoryArray addObject:newStory];
-            [self.storyArray insertObject:newStory atIndex:0];
-            [self.storyFeedTableView reloadData];
-            [self configureTableView];
-        }//forLoop
+//        for (NSString* thisString in dict) {
+//            NSDictionary *thisDict = dict[thisString];
+//            Stories *newStory = [Stories new];
+//            NSLog(@"The key might be %@", self.ref.childByAutoId.key);
+//
+//            newStory.storyTitle = thisDict[@"Title"];
+//            newStory.storyBody = thisDict[@"Body"];
+//            newStory.storyDate = thisDict[@"Date"];
+//            newStory.isFinished = thisDict[@"Sender"];
+//            newStory.lastCollaborator = thisDict[@"LastCollaborator"];
+//
+//
+
+            
+            
+            
+//            NSString *abc = [NSString stringWithFormat:@"%@%@%@", newStory.storyTitle, newStory.storyBody, newStory.storyDate];
+            //            if (self.storyArray.count > 0) {
+            //
+            //                if (![self.storyTitleArray containsObject:abc]) {
+            //
+            //                    [self.originalIndexArray addObject:abc];
+            //                    [self.changedIndexArray insertObject:abc atIndex:0];
+            //                    [self.staticStoryArray addObject:newStory];
+            //                    [self.storyTitleArray addObject:abc];
+            //                    [self.storyArray insertObject:newStory atIndex:0];
+            //                }
+            //            }//0
+            //            else {
+            //
+            //                [self.originalIndexArray addObject:abc];
+            //                [self.storyTitleArray addObject:abc];
+            //                [self.changedIndexArray insertObject:abc atIndex:0];
+            //                [self.storyArray insertObject:newStory atIndex:0];
+            //                [self.staticStoryArray addObject:newStory];
+            //            }
+//            [self.staticStoryArray addObject:newStory];
+//            [self.storyArray insertObject:newStory atIndex:0];
+//            [self.storyFeedTableView reloadData];
+//            [self configureTableView];
+//        }//forLoop
         
         
-    } withCancelBlock:^(NSError * _Nonnull error) {
-        NSLog(@"%@", error.localizedDescription);
-    }];
-    
-    
+//    } withCancelBlock:^(NSError * _Nonnull error) {
+//        NSLog(@"%@", error.localizedDescription);
+//    }];
 
     
-}//retriveMessages
+    
+    
+//}//retriveMessages
 
 -(void)configureTableView {
     self.storyFeedTableView.rowHeight = UITableViewAutomaticDimension;
@@ -191,16 +179,16 @@
 }//configureTableView
 
 
-
--(void)searchForIndexNum{
-    if (self.storyArray.count > 0) {
-        Stories *story = [self.storyArray objectAtIndex:2];
-        NSString *test = [NSString stringWithFormat:@"%@%@%@", story.storyTitle, story.storyBody, story.storyDate];
-        int ab = [self.storyArray indexOfObject:story];
-    } // if
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
-
-} // searchForIndexNum
+    if ([segue.identifier isEqualToString:@"fullStory"]) {
+        
+        
+        FullStoryView * fvc = segue.destinationViewController;
+        fvc.fullStoryLocal = self.myStoryProperty;
+    }
+    
+}
 
 
 

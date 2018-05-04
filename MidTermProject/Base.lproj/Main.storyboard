@@ -169,26 +169,10 @@
             </objects>
             <point key="canvasLocation" x="822" y="-304"/>
         </scene>
-        <!--My Stories-->
-        <scene sceneID="cHh-Qr-gkm">
-            <objects>
-                <viewController id="oTV-XC-mVa" customClass="CurrentStoryViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Gl6-ub-KRI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="xVL-ux-ndh"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="My Stories" id="O1U-sX-rjy"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Gjq-3W-xrQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1582" y="360"/>
-        </scene>
-        <!--View Controller-->
+        <!--Full Story View-->
         <scene sceneID="b59-Nc-iZI">
             <objects>
-                <viewController id="gT6-9A-ATh" sceneMemberID="viewController">
+                <viewController id="gT6-9A-ATh" customClass="FullStoryView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0za-iq-Y5J">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -198,23 +182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tMz-eW-zjg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2534" y="430"/>
-        </scene>
-        <!--Random-->
-        <scene sceneID="FlW-Ji-NkX">
-            <objects>
-                <viewController id="LaO-cg-MGv" customClass="RandomViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="FvG-4R-4el">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="kSg-WH-UMU"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Random" id="kYA-Lo-YVw"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1QK-Aq-nJv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="628" y="1057"/>
+            <point key="canvasLocation" x="1380" y="552"/>
         </scene>
         <!--Feed-->
         <scene sceneID="4n7-2q-FfJ">
@@ -321,7 +289,7 @@
                     <tabBarItem key="tabBarItem" title="Feed" id="7GZ-rp-gEs"/>
                     <connections>
                         <outlet property="storyFeedTableView" destination="WZc-Ss-UJ7" id="Y93-ay-h66"/>
-                        <segue destination="gT6-9A-ATh" kind="show" id="Zmn-qs-Lmt"/>
+                        <segue destination="gT6-9A-ATh" kind="show" identifier="fullStory" id="Zmn-qs-Lmt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pfG-ro-Mpa" userLabel="First Responder" sceneMemberID="firstResponder"/>

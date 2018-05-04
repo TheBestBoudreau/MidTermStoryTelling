@@ -19,7 +19,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *publishOut;
 
 
-    
+
 
 @end
 
@@ -58,7 +58,7 @@
 }
 
 - (IBAction)titleDone:(UITextField *)sender {
-     [self.storyTextView becomeFirstResponder];
+    [self.storyTextView becomeFirstResponder];
     if ((![self.storyTitleTextField.text isEqual: @" "]) && (![self.storyTextView.text isEqual: @" "])) {
         
         self.publishOut.enabled = true;
@@ -86,9 +86,9 @@
 -(void)doneWithNumberPad {
     [self.storyTextView resignFirstResponder];
     if ((![self.storyTitleTextField.text isEqual: @" "]) && (![self.storyTextView.text isEqual: @" "])) {
-    
+        
         self.publishOut.enabled = true;
-    
+        
     }//if empty text
     
 }//doneWithNumberPad
@@ -101,31 +101,27 @@
 
 - (IBAction)publishAction:(id)sender {
     if ((![self.storyTitleTextField.text isEqual: @""]) && (![self.storyTextView.text isEqual: @""])) {
-    
-    [self.storyTextView resignFirstResponder];
-    self.ref = [[FIRDatabase database] reference];
-    NSMutableDictionary *myDict = [NSMutableDictionary new];
-    [myDict setObject:self.storyTitleTextField.text forKey:@"Title"];
-    [myDict setObject:self.storyTextView.text forKey:@"Body"];
-    [myDict setObject:[self getDate] forKey:@"Date"];
-    [myDict setObject:[[FIRAuth auth] currentUser].email forKey:@"Sender"];
-    [myDict setObject:[[FIRAuth auth] currentUser].email forKey:@"LastCollaborator"];
-    [myDict setObject:@"0" forKey:@"Total Ratings"];
-    [myDict setObject:@"0" forKey:@"Total Raters"];
-    [myDict setObject:[self getDate] forKey:@"Date"];
-    
-    
+        
+        [self.storyTextView resignFirstResponder];
+        self.ref = [[FIRDatabase database] reference];
+        NSMutableDictionary *myDict = [NSMutableDictionary new];
+        [myDict setObject:self.storyTitleTextField.text forKey:@"Title"];
+        [myDict setObject:self.storyTextView.text forKey:@"Body"];
+        [myDict setObject:[self getDate] forKey:@"Date"];
+        [myDict setObject:[[FIRAuth auth] currentUser].email forKey:@"Sender"];
+        [myDict setObject:[[FIRAuth auth] currentUser].email forKey:@"LastCollaborator"];
+        [myDict setObject:@"0" forKey:@"Total Ratings"];
+        [myDict setObject:@"0" forKey:@"Total Raters"];
+        [myDict setObject:[self getDate] forKey:@"Date"];
         
         
         
-     FIRDatabaseReference *myID2 = [[self.ref child:@"Stories"] childByAutoId];
-    [myDict setObject:myID2.key forKey:@"Key"];
-    
-//        [myID2 setValue:myDict forKey:myID2.key];
+        
+        
+        
+        FIRDatabaseReference *myID2 = [[self.ref child:@"Stories"] childByAutoId];
+        [myDict setObject:myID2.key forKey:@"Key"];
         [myID2 setValue:myDict];
-     
-     
-//    [[[_ref child:@"Stories"] childByAutoId] setValue:myDict];
         [self dismissViewControllerAnimated:true completion:nil];
         
     }//if
@@ -135,13 +131,13 @@
 
 - (IBAction)cancelAction:(id)sender {
     
-//[self performSegueWithIdentifier:@"takeMeBack" sender:self];
-
+    //[self performSegueWithIdentifier:@"takeMeBack" sender:self];
+    
     [self dismissViewControllerAnimated:true completion:nil];
     
     
-
-
+    
+    
 }//cancelAction
 
 

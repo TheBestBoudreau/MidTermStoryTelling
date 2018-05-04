@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MidTermProject-Swift.h"
 
 @interface FullStoryView : UIViewController
-
+@property (nonatomic) Stories* fullStoryLocal;
 @end
