@@ -240,13 +240,15 @@
 }//checkLastCollaborator
 
 -(void) updateLocalUser {
+    
+    
     self.ref = [[FIRDatabase database] reference];
     NSString *key = self.fullStoryLocal.key;
     
     
     [[self.ref child:[@"/Stories/" stringByAppendingString:key]] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         NSDictionary *thisDict = snapshot.value;
-                NSLog(@"timer ran");
+        
             self.fullStoryLocal.storyTitle = thisDict[@"Title"];
             self.fullStoryLocal.storyBody = thisDict[@"Body"];
             self.fullStoryLocal.storyDate = thisDict[@"Date"];
@@ -258,9 +260,23 @@
             self.fullStoryLocal.totalCollaborators = thisDict[@"Total Collaborators"];
             self.fullStoryLocal.key = thisDict[@"Key"];
             self.fullStoryLocal.ratersString = thisDict[@"Raters Array"];
-        [self checkLastCollaborator];
+            [self checkLastCollaborator];
+
+        
+        
+        if (self.editView.isHidden) {
+        self.storyArray = [NSMutableArray new];
+        [self.storyArray addObject:self.fullStoryLocal.storyTitle];
+        NSArray *this = [self.fullStoryLocal.storyBody componentsSeparatedByString:@"\n"];
+        [self.storyArray addObjectsFromArray:this];
+        [self.tableView reloadData];
+        [self configureTableView];
+        self.editStoryTextView.text = self.fullStoryLocal.storyBody;
+        }//self.editView.isHidden
+        
  } withCancelBlock:^(NSError * _Nonnull error) {
         NSLog(@"%@", error.localizedDescription);
+     
     }];
 }//updateLocalUser
 
