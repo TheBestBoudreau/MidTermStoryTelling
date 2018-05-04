@@ -112,7 +112,7 @@
         self.editView.hidden = true;
         [self.backButtonOut setTitle:@"Back" forState:UIControlStateNormal];
     }
-    self.editStoryTextView.text = @"";
+    
     [self.editStoryTextView resignFirstResponder];
     self.commentRateView.hidden = false;
 }//backButtonAction
@@ -150,7 +150,7 @@
 #pragma Publish Button
 
 - (IBAction)publishAction:(UIButton *)sender {
-    
+//    NSLog(@"Beginning %@", self.editStoryTextView.text);
     if (![self.editStoryTextView.text isEqual: @""]) {
         
         //publish story
@@ -165,9 +165,15 @@
         
         //update Story in this view
         self.commentRateView.hidden = false;
-//        [self.storyArray removeObjectAtIndex:self.storyArray.count - 1];
-        [self.storyArray addObject:self.editStoryTextView.text];
         
+        
+        [self.backButtonOut setTitle:@"Back" forState:UIControlStateNormal];
+        [self.storyArray addObject:self.editStoryTextView.text];
+        [self.storyArray removeObjectAtIndex:1];
+//        NSLog(@"Ending %@", self.editStoryTextView.text);
+        [self.tableView reloadData];
+        NSLog(@"%@", self.storyArray);
+        NSLog(@"%lu", self.storyArray.count);
         
     }//if empty text
     
@@ -206,9 +212,9 @@
     
 
     
-    [self.storyArray addObject:self.editStoryTextView.text];
+    
     [self.tableView reloadData];
-    self.editStoryTextView.text = @"";
+//    self.editStoryTextView.text = @"";
     
     
     
