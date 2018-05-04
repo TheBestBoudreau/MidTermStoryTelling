@@ -98,42 +98,33 @@
     
 }
 
--(void) tryThis {
-    NSString *key = [[_ref child:@"Stories"] childByAutoId].key;
-    NSDictionary *post = @{@"uid": @"RA",
-                           @"author":@"username",
-                           @"title": @"title",
-                           @"body": @"body"};
-    
-//    NSDictionary *childUpdates = @{[@"/posts/" stringByAppendingString:key]: post,
-//                                   [NSString stringWithFormat:@"/user-posts/%@/%@/", userID, key]: post};
-//    [_ref updateChildValues:childUpdates];
-    
-}//tryThis
-
-
 
 
 -(void) retriveMessages {
     self.ref = [[FIRDatabase database] reference];
     [[self.ref child:@"Stories"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         NSDictionary *dict = snapshot.value;
-        NSLog(@"%@",dict);
+//        NSLog(@"%@",dict);
 
         
         
         for (NSString* thisString in dict) {
             NSDictionary *thisDict = dict[thisString];
             Stories *newStory = [Stories new];
-            NSLog(@"The key might be %@", self.ref.childByAutoId.key);
+
 
             newStory.storyTitle = thisDict[@"Title"];
             newStory.storyBody = thisDict[@"Body"];
             newStory.storyDate = thisDict[@"Date"];
             newStory.isFinished = thisDict[@"Sender"];
             newStory.lastCollaborator = thisDict[@"LastCollaborator"];
+            newStory.totalRaters = thisDict[@"Key"];
+            newStory.totalRatings = thisDict[@"Key"];
+            newStory.comments = thisDict[@"Key"];
+            newStory.totalCollaborators = thisDict[@"Key"];
+            newStory.ratersString = thisDict[@"Key"];
             newStory.key = thisDict[@"Key"];
-
+           
             [self.storyArray insertObject:newStory atIndex:0];
             [self.storyFeedTableView reloadData];
             [self configureTableView];

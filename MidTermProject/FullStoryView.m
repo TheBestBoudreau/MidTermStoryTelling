@@ -18,6 +18,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *backButtonOut;
 @property (strong, nonatomic) IBOutlet UIView *editView;
 @property (strong, nonatomic) IBOutlet UITextView *editStoryTextView;
+@property (strong, nonatomic) FIRDatabaseReference *ref;
+@property (strong, nonatomic) IBOutlet UIImageView *doneView;
 
 @end
 
@@ -34,6 +36,8 @@
     [self configureTableView];
     self.editView.hidden = true;
     self.editStoryTextView.delegate = self;
+    [self addKeyboardButtons];
+    self.doneView.hidden = true;
     
     
     
@@ -107,5 +111,84 @@
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     return textView.text.length + (text.length - range.length) <= 300;
 }//shouldChangeTextInRange
+
+-(void) addKeyboardButtons {
+    UIToolbar* keyboardToolbar = [[UIToolbar alloc] init];
+    [keyboardToolbar sizeToFit];
+    UIBarButtonItem *flexBarButton = [[UIBarButtonItem alloc]
+                                      initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                      target:nil action:nil];
+    UIBarButtonItem *doneBarButton = [[UIBarButtonItem alloc]
+                                      initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                      target:self action:@selector(doneWithNumberPad)];
+    keyboardToolbar.items = @[flexBarButton, doneBarButton];
+    self.editStoryTextView.inputAccessoryView = keyboardToolbar;
+}//addKeyboardButtons
+
+
+-(void)doneWithNumberPad {
+    
+    [self.editStoryTextView resignFirstResponder];
+    
+}//doneWithNumberPad
+
+#pragma Publish Button
+
+- (IBAction)publishAction:(UIButton *)sender {
+    
+    if (![self.editStoryTextView.text isEqual: @""]) {
+        
+        //publish story
+        
+        [self tryThis];
+        self.doneView.hidden = false;
+        
+        [self performSelector:@selector(hideDoneScreen) withObject:nil afterDelay:1.0];
+        self.editView.hidden = true;
+        
+        
+        
+        //update Story in this view
+        
+    }//if empty text
+    
+}//publishAction
+
+-(void)hideDoneScreen {
+    self.doneView.hidden = true;
+    
+}//hideDoneScreen
+
+
+
+
+-(void) tryThis {
+    NSString *key = self.fullStoryLocal.key;
+    self.ref = [[FIRDatabase database] reference];
+    NSDictionary *post = @{@"Title": @"RA",
+                           @"Body": self.editStoryTextView.text,
+                           @"Date": @"title",
+                           @"Sender": @"body",
+                           @"LastCollaborator": @"body",
+                           @"Total Ratings": @"body",
+                           @"Total Raters": @"body",
+                           @"Key": key,
+                           
+                           
+                           };
+    
+        NSDictionary *childUpdates = @{[@"/Stories/" stringByAppendingString:key]: post};
+        [self.ref updateChildValues:childUpdates];
+    
+
+    
+    
+    NSLog(@"I tried");
+    
+}//tryThis
+
+
+
+
 
 @end

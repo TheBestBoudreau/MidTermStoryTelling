@@ -85,7 +85,7 @@
 
 -(void)doneWithNumberPad {
     [self.storyTextView resignFirstResponder];
-    if ((![self.storyTitleTextField.text isEqual: @" "]) && (![self.storyTextView.text isEqual: @" "])) {
+    if ((![self.storyTitleTextField.text isEqual: @""]) && (![self.storyTextView.text isEqual: @""])) {
         
         self.publishOut.enabled = true;
         
@@ -113,8 +113,11 @@
         [myDict setObject:@"0" forKey:@"Total Ratings"];
         [myDict setObject:@"0" forKey:@"Total Raters"];
         [myDict setObject:[self getDate] forKey:@"Date"];
-        
-        
+        [myDict setObject:@"0" forKey:@"Total Raters"];
+        [myDict setObject:@"0" forKey:@"Total Ratings"];
+        [myDict setObject:@"" forKey:@"Comments"];
+        [myDict setObject:@"" forKey:@"Total Collaborators"];
+        [myDict setObject:@"" forKey:@"Raters Array"];
         
         
         

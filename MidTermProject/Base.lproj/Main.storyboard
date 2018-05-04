@@ -254,7 +254,7 @@
                                     <constraint firstAttribute="height" constant="60" id="8lD-Pr-bWC"/>
                                     <constraint firstAttribute="width" constant="60" id="Bpx-jf-Efs"/>
                                 </constraints>
-                                <state key="normal" image="editButton.png"/>
+                                <state key="normal" image="editButton2.png"/>
                                 <connections>
                                     <action selector="editButtonAction:" destination="gT6-9A-ATh" eventType="touchUpInside" id="6vG-bm-zIZ"/>
                                 </connections>
@@ -272,19 +272,42 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Chx-gd-kZS">
+                                        <rect key="frame" x="106" y="507" width="163" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="163" id="BJv-dH-kMc"/>
+                                            <constraint firstAttribute="height" constant="42" id="Bx5-j0-h7C"/>
+                                        </constraints>
+                                        <state key="normal" title="Publish" backgroundImage="blueCapsuleButton2.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="publishAction:" destination="gT6-9A-ATh" eventType="touchUpInside" id="cq5-Wa-eti"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="dPH-ua-ecy" firstAttribute="leading" secondItem="BO2-9l-v9L" secondAttribute="leading" constant="20" id="PPX-du-sXf"/>
+                                    <constraint firstItem="Chx-gd-kZS" firstAttribute="centerX" secondItem="BO2-9l-v9L" secondAttribute="centerX" id="Qw2-DH-l7x"/>
                                     <constraint firstAttribute="trailing" secondItem="dPH-ua-ecy" secondAttribute="trailing" constant="20" id="cnD-gd-ZIS"/>
                                     <constraint firstItem="dPH-ua-ecy" firstAttribute="top" secondItem="BO2-9l-v9L" secondAttribute="top" constant="20" id="m1F-vq-AgT"/>
+                                    <constraint firstAttribute="bottom" secondItem="Chx-gd-kZS" secondAttribute="bottom" constant="50" id="pHx-oj-phP"/>
                                 </constraints>
                             </view>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="done2.png" translatesAutoresizingMaskIntoConstraints="NO" id="8lr-vy-R8U">
+                                <rect key="frame" x="147" y="293" width="81" height="81"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="81" id="65O-Nm-M9J"/>
+                                    <constraint firstAttribute="height" constant="81" id="zTe-Ve-iHF"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.19215686269999999" green="0.5568627451" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="pKa-uz-ChK" firstAttribute="top" secondItem="0za-iq-Y5J" secondAttribute="top" id="5aL-6I-TZM"/>
                             <constraint firstItem="EyY-Ks-9ex" firstAttribute="trailing" secondItem="cbK-O9-w1I" secondAttribute="trailing" constant="30" id="Alt-H9-Qsw"/>
+                            <constraint firstItem="8lr-vy-R8U" firstAttribute="centerX" secondItem="0za-iq-Y5J" secondAttribute="centerX" id="CE1-gw-Ftg"/>
                             <constraint firstItem="EyY-Ks-9ex" firstAttribute="bottom" secondItem="cbK-O9-w1I" secondAttribute="bottom" constant="30" id="EXC-tm-8Og"/>
                             <constraint firstItem="pKa-uz-ChK" firstAttribute="trailing" secondItem="EyY-Ks-9ex" secondAttribute="trailing" id="FsX-YB-nvB"/>
                             <constraint firstItem="qLR-L8-na2" firstAttribute="top" secondItem="pKa-uz-ChK" secondAttribute="bottom" id="L1Q-Hq-YiV"/>
@@ -296,11 +319,13 @@
                             <constraint firstItem="qLR-L8-na2" firstAttribute="leading" secondItem="EyY-Ks-9ex" secondAttribute="leading" id="aSX-s9-9sh"/>
                             <constraint firstItem="qLR-L8-na2" firstAttribute="bottom" secondItem="EyY-Ks-9ex" secondAttribute="bottom" id="rFI-jo-byK"/>
                             <constraint firstItem="BO2-9l-v9L" firstAttribute="bottom" secondItem="EyY-Ks-9ex" secondAttribute="bottom" id="ri8-9a-7vD"/>
+                            <constraint firstItem="8lr-vy-R8U" firstAttribute="centerY" secondItem="0za-iq-Y5J" secondAttribute="centerY" id="vrj-jn-suP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EyY-Ks-9ex"/>
                     </view>
                     <connections>
                         <outlet property="backButtonOut" destination="qBl-52-ZRI" id="W7x-re-ype"/>
+                        <outlet property="doneView" destination="8lr-vy-R8U" id="cYl-8B-big"/>
                         <outlet property="editButtonOutlet" destination="cbK-O9-w1I" id="ifR-Xf-h7r"/>
                         <outlet property="editStoryTextView" destination="dPH-ua-ecy" id="qQL-Eo-Gz9"/>
                         <outlet property="editView" destination="BO2-9l-v9L" id="M9m-8X-EaZ"/>
@@ -546,11 +571,14 @@
     <resources>
         <image name=" Register.png" width="375" height="667"/>
         <image name="bigAssButton.png" width="95" height="95"/>
+        <image name="blueCapsuleButton2.png" width="171" height="50"/>
         <image name="capsuleButton.png" width="163" height="42"/>
-        <image name="editButton.png" width="60" height="60"/>
+        <image name="done2.png" width="81" height="79"/>
+        <image name="editButton2.png" width="68" height="68"/>
         <image name="line.png" width="335" height="1"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Zmn-qs-Lmt"/>
         <segue reference="gYI-6g-IlZ"/>
     </inferredMetricsTieBreakers>
 </document>

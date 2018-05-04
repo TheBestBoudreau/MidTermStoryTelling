@@ -15,6 +15,15 @@ class Stories: NSObject {
     @objc var storyDate:String = ""
     @objc var isFinished:String = ""
     @objc var lastCollaborator:String = ""
+    @objc var totalRaters:String = ""
+    @objc var totalRatings:String = ""
+    @objc var comments:String = ""
+    @objc var totalCollaborators:String = ""
+    @objc var ratersString:String = ""
     @objc var key:String = ""
+    
+    
+    
+    
     
 }
