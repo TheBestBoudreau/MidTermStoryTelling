@@ -113,9 +113,19 @@
     [myDict setObject:@"0" forKey:@"Total Ratings"];
     [myDict setObject:@"0" forKey:@"Total Raters"];
     [myDict setObject:[self getDate] forKey:@"Date"];
+    
+    
         
         
-    [[[_ref child:@"Stories"] childByAutoId] setValue:myDict];
+        
+     FIRDatabaseReference *myID2 = [[self.ref child:@"Stories"] childByAutoId];
+    [myDict setObject:myID2.key forKey:@"Key"];
+    
+//        [myID2 setValue:myDict forKey:myID2.key];
+        [myID2 setValue:myDict];
+     
+     
+//    [[[_ref child:@"Stories"] childByAutoId] setValue:myDict];
         [self dismissViewControllerAnimated:true completion:nil];
         
     }//if

@@ -58,7 +58,7 @@
     
     _originalIndexArray = [[NSMutableArray alloc] init];
     _changedIndexArray = [[NSMutableArray alloc] init];
-
+    [self tryThis];
 }//viewDidAppear
 
 
@@ -109,6 +109,19 @@
     
     
 }
+
+-(void) tryThis {
+    NSString *key = [[_ref child:@"Stories"] childByAutoId].key;
+    NSDictionary *post = @{@"uid": @"RA",
+                           @"author":@"username",
+                           @"title": @"title",
+                           @"body": @"body"};
+    
+//    NSDictionary *childUpdates = @{[@"/posts/" stringByAppendingString:key]: post,
+//                                   [NSString stringWithFormat:@"/user-posts/%@/%@/", userID, key]: post};
+//    [_ref updateChildValues:childUpdates];
+    
+}//tryThis
 
 -(void) retriveMessages {
     self.ref = [[FIRDatabase database] reference];
