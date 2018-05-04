@@ -21,7 +21,8 @@
 @property (strong, nonatomic) FIRDatabaseReference *ref;
 @property (strong, nonatomic) IBOutlet UIImageView *doneView;
 @property (strong, nonatomic) IBOutlet UIView *commentRateView;
-
+@property (nonatomic) NSTimer *timer;
+@property int timerInt;
 
 
 
@@ -45,8 +46,18 @@
     self.editStoryTextView.text = self.fullStoryLocal.storyBody;
     
     
+    self.timer = [[NSTimer alloc] init];
+    self.timerInt = 0;
+    
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateLocalUser) userInfo:nil repeats:true];
+    
+    
     NSLog(@"MY BODY:::%@",self.fullStoryLocal.key);
 //    NSLog(@"%@", self.storyArray);
+    
+    [self updateLocalUser];
+    
     
 }//load
 
@@ -227,6 +238,36 @@
         self.editButtonOutlet.enabled = true;
     }
 }//checkLastCollaborator
+
+-(void) updateLocalUser {
+    self.ref = [[FIRDatabase database] reference];
+    NSString *key = self.fullStoryLocal.key;
+    
+    
+    [[self.ref child:[@"/Stories/" stringByAppendingString:key]] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSDictionary *thisDict = snapshot.value;
+                NSLog(@"timer ran");
+            self.fullStoryLocal.storyTitle = thisDict[@"Title"];
+            self.fullStoryLocal.storyBody = thisDict[@"Body"];
+            self.fullStoryLocal.storyDate = thisDict[@"Date"];
+            self.fullStoryLocal.sender = thisDict[@"Sender"];
+            self.fullStoryLocal.lastCollaborator = thisDict[@"LastCollaborator"];
+            self.fullStoryLocal.totalRaters = thisDict[@"Total Raters"];
+            self.fullStoryLocal.totalRatings = thisDict[@"Total Ratings"];
+            self.fullStoryLocal.comments = thisDict[@"Comments"];
+            self.fullStoryLocal.totalCollaborators = thisDict[@"Total Collaborators"];
+            self.fullStoryLocal.key = thisDict[@"Key"];
+            self.fullStoryLocal.ratersString = thisDict[@"Raters Array"];
+        [self checkLastCollaborator];
+ } withCancelBlock:^(NSError * _Nonnull error) {
+        NSLog(@"%@", error.localizedDescription);
+    }];
+}//updateLocalUser
+
+
+
+
+
 
 
 @end
