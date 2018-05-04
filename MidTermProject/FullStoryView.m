@@ -20,6 +20,10 @@
 @property (strong, nonatomic) IBOutlet UITextView *editStoryTextView;
 @property (strong, nonatomic) FIRDatabaseReference *ref;
 @property (strong, nonatomic) IBOutlet UIImageView *doneView;
+@property (strong, nonatomic) IBOutlet UIView *commentRateView;
+
+
+
 
 @end
 
@@ -38,13 +42,15 @@
     self.editStoryTextView.delegate = self;
     [self addKeyboardButtons];
     self.doneView.hidden = true;
-    
+    self.editStoryTextView.text = self.fullStoryLocal.storyBody;
     
     
     NSLog(@"MY BODY:::%@",self.fullStoryLocal.key);
 //    NSLog(@"%@", self.storyArray);
     
 }//load
+
+
 
 #pragma Setup TableView
 
@@ -90,6 +96,10 @@
     self.editView.hidden = false;
     [self.backButtonOut setTitle:@"Hide" forState:UIControlStateNormal];
     [self.editStoryTextView becomeFirstResponder];
+    self.commentRateView.hidden = true;
+    
+    self.fullStoryLocal.storyBody = self.editStoryTextView.text;
+//    self.editStoryTextView.text = self.fullStoryLocal.storyBody;
 
 }//editButtonAction
 
@@ -102,14 +112,19 @@
         self.editView.hidden = true;
         [self.backButtonOut setTitle:@"Back" forState:UIControlStateNormal];
     }
-
-
+    self.editStoryTextView.text = @"";
+    [self.editStoryTextView resignFirstResponder];
+    self.commentRateView.hidden = false;
 }//backButtonAction
 
 #pragma TextView Delegate Methods
 
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    return textView.text.length + (text.length - range.length) <= 300;
+    if (range.location < self.fullStoryLocal.storyBody.length){
+        return NO;
+    }
+    
+    return textView.text.length + (text.length - range.length) <= self.fullStoryLocal.storyBody.length + 300;
 }//shouldChangeTextInRange
 
 -(void) addKeyboardButtons {
@@ -149,6 +164,10 @@
         
         
         //update Story in this view
+        self.commentRateView.hidden = false;
+//        [self.storyArray removeObjectAtIndex:self.storyArray.count - 1];
+        [self.storyArray addObject:self.editStoryTextView.text];
+        
         
     }//if empty text
     
@@ -170,7 +189,7 @@
     
     
     NSDictionary *post = @{@"Title": self.fullStoryLocal.storyTitle,
-                           @"Body": storyBody,
+                           @"Body": self.editStoryTextView.text,
                            @"Date": self.fullStoryLocal.storyDate,
                            @"Sender": self.fullStoryLocal.sender,
                            @"LastCollaborator": [[FIRAuth auth] currentUser].email,
@@ -194,7 +213,6 @@
     
     
 }//tryThis
-
 
 
 
