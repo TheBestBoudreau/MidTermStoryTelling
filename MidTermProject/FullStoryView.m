@@ -180,11 +180,6 @@
                            @"Comments": self.fullStoryLocal.comments,
                            @"Total Collaborators": self.fullStoryLocal.totalCollaborators,
                            @"Raters Array": self.fullStoryLocal.ratersString,
-                           
-                           
-                           
-                           
-                           
                            };
     
         NSDictionary *childUpdates = @{[@"/Stories/" stringByAppendingString:key]: post};
@@ -192,8 +187,11 @@
     
 
     
+    [self.storyArray addObject:self.editStoryTextView.text];
+    [self.tableView reloadData];
+    self.editStoryTextView.text = @"";
     
-    NSLog(@"I tried");
+    
     
 }//tryThis
 
