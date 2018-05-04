@@ -113,7 +113,8 @@
     [myDict setObject:@"0" forKey:@"Total Ratings"];
     [myDict setObject:@"0" forKey:@"Total Raters"];
     [myDict setObject:[self getDate] forKey:@"Date"];
-    
+        
+        
     [[[_ref child:@"Stories"] childByAutoId] setValue:myDict];
         [self dismissViewControllerAnimated:true completion:nil];
         
