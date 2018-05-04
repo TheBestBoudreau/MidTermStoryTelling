@@ -22,6 +22,10 @@
 		F1149800209B9F16005674A3 /* capsuleButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F11497FD209B9F15005674A3 /* capsuleButton@3x.png */; };
 		F1149803209BB0BF005674A3 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1149802209BB0BF005674A3 /* TableViewCell.m */; };
 		F1149806209BCE32005674A3 /* FullStoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1149805209BCE32005674A3 /* FullStoryView.m */; };
+		F1149809209C775D005674A3 /* FullStoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1149808209C775D005674A3 /* FullStoryTableViewCell.m */; };
+		F114980D209C7E1C005674A3 /* editButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F114980A209C7E19005674A3 /* editButton.png */; };
+		F114980E209C7E1C005674A3 /* editButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F114980B209C7E1A005674A3 /* editButton@2x.png */; };
+		F114980F209C7E1C005674A3 /* editButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F114980C209C7E1B005674A3 /* editButton@3x.png */; };
 		F182B6CD209A632300CCE11B /*  Register.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6C7209A632100CCE11B /*  Register.png */; };
 		F182B6CE209A632300CCE11B /*  Register@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6C8209A632200CCE11B /*  Register@3x.png */; };
 		F182B6CF209A632300CCE11B /* Launch Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6C9209A632200CCE11B /* Launch Screen.png */; };
@@ -66,6 +70,11 @@
 		F1149802209BB0BF005674A3 /* TableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 		F1149804209BCE32005674A3 /* FullStoryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FullStoryView.h; sourceTree = "<group>"; };
 		F1149805209BCE32005674A3 /* FullStoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FullStoryView.m; sourceTree = "<group>"; };
+		F1149807209C775D005674A3 /* FullStoryTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FullStoryTableViewCell.h; sourceTree = "<group>"; };
+		F1149808209C775D005674A3 /* FullStoryTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FullStoryTableViewCell.m; sourceTree = "<group>"; };
+		F114980A209C7E19005674A3 /* editButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = editButton.png; sourceTree = "<group>"; };
+		F114980B209C7E1A005674A3 /* editButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "editButton@2x.png"; sourceTree = "<group>"; };
+		F114980C209C7E1B005674A3 /* editButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "editButton@3x.png"; sourceTree = "<group>"; };
 		F182B6C7209A632100CCE11B /*  Register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = " Register.png"; sourceTree = "<group>"; };
 		F182B6C8209A632200CCE11B /*  Register@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = " Register@3x.png"; sourceTree = "<group>"; };
 		F182B6C9209A632200CCE11B /* Launch Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Launch Screen.png"; sourceTree = "<group>"; };
@@ -141,6 +150,8 @@
 				7EA3CF74209A58B600007961 /* AppDelegate.swift */,
 				7EA3CF76209A58B600007961 /* ViewController.swift */,
 				7EA3CF78209A58B600007961 /* Main.storyboard */,
+				F1149807209C775D005674A3 /* FullStoryTableViewCell.h */,
+				F1149808209C775D005674A3 /* FullStoryTableViewCell.m */,
 				F1149804209BCE32005674A3 /* FullStoryView.h */,
 				F1149805209BCE32005674A3 /* FullStoryView.m */,
 				F1149801209BB0BF005674A3 /* TableViewCell.h */,
@@ -171,6 +182,9 @@
 		F182B6BA209A629400CCE11B /* images */ = {
 			isa = PBXGroup;
 			children = (
+				F114980A209C7E19005674A3 /* editButton.png */,
+				F114980B209C7E1A005674A3 /* editButton@2x.png */,
+				F114980C209C7E1B005674A3 /* editButton@3x.png */,
 				F11497FC209B9F15005674A3 /* capsuleButton.png */,
 				F11497FB209B9F14005674A3 /* capsuleButton@2x.png */,
 				F11497FD209B9F15005674A3 /* capsuleButton@3x.png */,
@@ -271,10 +285,12 @@
 				7EA3CF87209A59B300007961 /* GoogleService-Info.plist in Resources */,
 				F182B6D2209A632300CCE11B /*  Register@2x.png in Resources */,
 				F182B6CF209A632300CCE11B /* Launch Screen.png in Resources */,
+				F114980E209C7E1C005674A3 /* editButton@2x.png in Resources */,
 				F11497F8209B94B9005674A3 /* line@3x.png in Resources */,
 				F182B6ED209A8B4A00CCE11B /* bigAssButton.png in Resources */,
 				F182B6EE209A8B4A00CCE11B /* bigAssButton@2x.png in Resources */,
 				F182B6F5209B5C5800CCE11B /* bigAssButton2@2x.png in Resources */,
+				F114980D209C7E1C005674A3 /* editButton.png in Resources */,
 				F11497FE209B9F16005674A3 /* capsuleButton@2x.png in Resources */,
 				F182B6CD209A632300CCE11B /*  Register.png in Resources */,
 				F182B6EF209A8B4A00CCE11B /* bigAssButton@3x.png in Resources */,
@@ -283,6 +299,7 @@
 				F182B6D1209A632300CCE11B /* Launch Screen@2x.png in Resources */,
 				F182B6D0209A632300CCE11B /* Launch Screen@3x.png in Resources */,
 				7EA3CF7A209A58B600007961 /* Main.storyboard in Resources */,
+				F114980F209C7E1C005674A3 /* editButton@3x.png in Resources */,
 				F11497F9209B94B9005674A3 /* line@2x.png in Resources */,
 				F182B6CE209A632300CCE11B /*  Register@3x.png in Resources */,
 			);
@@ -354,6 +371,7 @@
 				7EA3CF75209A58B600007961 /* AppDelegate.swift in Sources */,
 				F182B6DC209A80DE00CCE11B /* StoryViewController.m in Sources */,
 				F182B6E7209A879300CCE11B /* Stories.swift in Sources */,
+				F1149809209C775D005674A3 /* FullStoryTableViewCell.m in Sources */,
 				F1149803209BB0BF005674A3 /* TableViewCell.m in Sources */,
 				F182B700209B881200CCE11B /* AddStory.m in Sources */,
 			);

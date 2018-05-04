@@ -12,29 +12,100 @@
 
 @interface FullStoryView ()
 
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic) NSMutableArray *storyArray;
+@property (strong, nonatomic) IBOutlet UIButton *editButtonOutlet;
+@property (strong, nonatomic) IBOutlet UIButton *backButtonOut;
+@property (strong, nonatomic) IBOutlet UIView *editView;
+@property (strong, nonatomic) IBOutlet UITextView *editStoryTextView;
+
 @end
 
 @implementation FullStoryView
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"MY BODY:::%@",self.fullStoryLocal.storyBody);
     
+    self.storyArray = [NSMutableArray new];
+    [self.storyArray addObject:self.fullStoryLocal.storyTitle];
+    NSArray *this = [self.fullStoryLocal.storyBody componentsSeparatedByString:@"\n"];
+    [self.storyArray addObjectsFromArray:this];
+    [self.tableView reloadData];
+    [self configureTableView];
+    self.editView.hidden = true;
+    self.editStoryTextView.delegate = self;
+    
+    
+    
+    NSLog(@"MY BODY:::%@",self.fullStoryLocal.key);
+//    NSLog(@"%@", self.storyArray);
+    
+}//load
+
+#pragma Setup TableView
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.storyArray.count;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    FullStoryTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier: @"Cell"];
+    
+    Stories *thisStory = [self.storyArray objectAtIndex:indexPath.row];
+    
+    if (indexPath.row == 0) {
+    cell.label1.text = [self.storyArray objectAtIndex:0];
+    cell.label2.text = @"";
+        return cell;
+    } else {
+    cell.label1.text = @"";
+    cell.label2.text = [self.storyArray objectAtIndex:indexPath.row];
+        return cell;
+    }
 }
 
-/*
-#pragma mark - Navigation
+-(void)configureTableView {
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 120;
+    
+    
+}//configureTableView
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+#pragma Hide Status Bar
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
-*/
+
+#pragma Edit Button Action
+
+- (IBAction)editButtonAction:(UIButton *)sender {
+    self.editView.hidden = false;
+    [self.backButtonOut setTitle:@"Hide" forState:UIControlStateNormal];
+    [self.editStoryTextView becomeFirstResponder];
+
+}//editButtonAction
+
+#pragma Back Button Action
+
+- (IBAction)backButtonAction:(id)sender {
+    if (self.editView.isHidden) {
+        [self performSegueWithIdentifier:@"takeMeBack" sender:self];
+    } else {
+        self.editView.hidden = true;
+        [self.backButtonOut setTitle:@"Back" forState:UIControlStateNormal];
+    }
+
+
+}//backButtonAction
+
+#pragma TextView Delegate Methods
+
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    return textView.text.length + (text.length - range.length) <= 300;
+}//shouldChangeTextInRange
 
 @end

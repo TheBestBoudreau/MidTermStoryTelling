@@ -132,6 +132,7 @@
             newStory.storyDate = thisDict[@"Date"];
             newStory.isFinished = thisDict[@"Sender"];
             newStory.lastCollaborator = thisDict[@"LastCollaborator"];
+            newStory.key = thisDict[@"Key"];
 
             [self.storyArray insertObject:newStory atIndex:0];
             [self.storyFeedTableView reloadData];

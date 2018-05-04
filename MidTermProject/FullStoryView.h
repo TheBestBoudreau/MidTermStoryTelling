@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "MidTermProject-Swift.h"
+#import "FullStoryTableViewCell.h"
 
-@interface FullStoryView : UIViewController
+@interface FullStoryView : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
 @property (nonatomic) Stories* fullStoryLocal;
 @end
