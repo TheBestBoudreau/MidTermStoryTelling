@@ -120,7 +120,7 @@
         NSDictionary *dict = snapshot.value;
         NSLog(@"%@",dict);
 
-            
+        
         
         for (NSString* thisString in dict) {
             NSDictionary *thisDict = dict[thisString];
@@ -133,8 +133,6 @@
             newStory.isFinished = thisDict[@"Sender"];
             newStory.lastCollaborator = thisDict[@"LastCollaborator"];
 
-
-            
             [self.storyArray insertObject:newStory atIndex:0];
             [self.storyFeedTableView reloadData];
             [self configureTableView];
