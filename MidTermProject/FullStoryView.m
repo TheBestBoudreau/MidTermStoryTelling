@@ -25,6 +25,15 @@
 @property (strong, nonatomic) IBOutlet UIView *commentRateView;
 @property (nonatomic) NSTimer *timer;
 @property int timerInt;
+@property (strong, nonatomic) IBOutlet UIView *rateView;
+@property (strong, nonatomic) IBOutlet UIButton *oneStarOutlet;
+@property (strong, nonatomic) IBOutlet UIButton *twoStarOutlet;
+@property (strong, nonatomic) IBOutlet UIButton *threeStarOutlet;
+@property (strong, nonatomic) IBOutlet UIButton *fourStarOutlet;
+@property (strong, nonatomic) IBOutlet UIButton *fiveStarOutlet;
+@property (nonatomic) int starCount;
+@property (nonatomic) BOOL alreadyRated;
+@property (nonatomic) NSString *ratedKey;
 
 
 
@@ -54,13 +63,18 @@
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateLocalUser) userInfo:nil repeats:true];
     
-    
-    
+   
     
     NSLog(@"MY BODY:::%@",self.fullStoryLocal.key);
 //    NSLog(@"%@", self.storyArray);
     
     [self updateLocalUser];
+    
+    [self checkIfAlreadyRated];
+    
+    
+    
+    
     
     
 }//load
@@ -195,43 +209,8 @@
     
     UpdateManager *newUpdateManager = [UpdateManager new];
     [newUpdateManager tryThisWithStory:self.fullStoryLocal andRef:self.ref andStoryBody:self.editStoryTextView.text];
-    
-    
-    
-    
-    
-    
-    
-//    NSString *key = self.fullStoryLocal.key;
-//    self.ref = [[FIRDatabase database] reference];
-//    NSString *storyBody = self.fullStoryLocal.storyBody;
-//    storyBody = [NSString stringWithFormat:@"%@\n%@", self.fullStoryLocal.storyBody, self.editStoryTextView.text];
-//
-//
-//    NSDictionary *post = @{@"Title": self.fullStoryLocal.storyTitle,
-//                           @"Body": self.editStoryTextView.text,
-//                           @"Date": self.fullStoryLocal.storyDate,
-//                           @"Sender": self.fullStoryLocal.sender,
-//                           @"LastCollaborator": [[FIRAuth auth] currentUser].email,
-//                           @"Total Ratings": self.fullStoryLocal.totalRatings,
-//                           @"Total Raters": self.fullStoryLocal.totalRaters,
-//                           @"Key": key,
-//                           @"Comments": self.fullStoryLocal.comments,
-//                           @"Total Collaborators": self.fullStoryLocal.totalCollaborators,
-//                           @"Raters Array": self.fullStoryLocal.ratersString,
-//                           };
-//
-//        NSDictionary *childUpdates = @{[@"/Stories/" stringByAppendingString:key]: post};
-//        [self.ref updateChildValues:childUpdates];
-    
-
-    
-    
     [self.tableView reloadData];
-//    self.editStoryTextView.text = @"";
-    
-    
-    
+
 }//tryThis
 
 -(void) checkLastCollaborator {
@@ -302,46 +281,140 @@
     
 }//prepareForSegue
 
+
+
+#pragma stars
+
 - (IBAction)oneStarAction:(id)sender {
-
-
-}//oneStarAction
+    
+    self.starCount = 1;
+    [self renderStars];
+    
+}
 
 - (IBAction)twoStarAction:(id)sender {
-}//twoStarAction
-
+    self.starCount = 2;
+    [self renderStars];
+}
 
 - (IBAction)threeStarAction:(id)sender {
-}//threeStarAction
-
+    self.starCount = 3;
+    [self renderStars];
+}
 
 - (IBAction)fourStarAction:(id)sender {
-}//fourStarAction
+    self.starCount = 4;
+    [self renderStars];
+}
 
 - (IBAction)fiveStarAction:(id)sender {
-}//fiveStarAction
+    self.starCount = 5;
+    [self renderStars];
+}
 
 
 
 
+-(void)renderStars {
+    
+    switch (self.starCount) {
+        case 1:
+            {
+                [self allWhiteStars];
+                [self.oneStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+                [self sendRatings];
+                break;
+            }
+            
+        case 2:
+        {
+            [self allWhiteStars];
+            [self.oneStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+            [self.twoStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+            [self sendRatings];
+            break;
+        }
+            
+        case 3:
+        {
+            [self allWhiteStars];
+            [self.oneStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+            [self.twoStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+            [self.threeStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+            [self sendRatings];
+            break;
+        }
+            
+        case 4:
+        {
+            [self allWhiteStars];
+            [self.oneStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+            [self.twoStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+            [self.threeStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+            [self.fourStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+            [self sendRatings];
+            break;
+        }
+            
+        case 5:
+        {
+            
+            [self.oneStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+            [self.twoStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+            [self.threeStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+            [self.fourStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+            [self.fiveStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+            [self sendRatings];
+            break;
+        }
+            
+        default:
+            break;
+    }
+    
+}//renderStars
 
 
 
+-(void) allWhiteStars {
+    [self.oneStarOutlet setImage:[UIImage imageNamed:@"starBlue.png"] forState:UIControlStateNormal];
+    [self.twoStarOutlet setImage:[UIImage imageNamed:@"starBlue.png"] forState:UIControlStateNormal];
+    [self.threeStarOutlet setImage:[UIImage imageNamed:@"starBlue.png"] forState:UIControlStateNormal];
+    [self.fourStarOutlet setImage:[UIImage imageNamed:@"starBlue.png"] forState:UIControlStateNormal];
+    [self.fiveStarOutlet setImage:[UIImage imageNamed:@"starBlue.png"] forState:UIControlStateNormal];
+}
+
+-(void)sendRatings {
+    NSString *localRating = [NSString stringWithFormat:@"%d", self.starCount];
+    UpdateManager *newUM = [UpdateManager new];
+    
+    if (self.alreadyRated) {
+        NSLog(@"Raters key is %@", self.ratedKey);
+        
+        [newUM updateRating:self.ref withObj:self.fullStoryLocal withRating:localRating andUsername:[[FIRAuth auth] currentUser].email andRatersKey:self.ratedKey];
+        
+        
+    } else {
+    [newUM addNewRatings:self.ref withObj:self.fullStoryLocal withRating:localRating andUsername:[[FIRAuth auth] currentUser].email];
+    }
+    
+}//sendRatings
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+-(void)checkIfAlreadyRated {
+    self.alreadyRated = false;
+    for  (int i = 1; i<self.fullStoryLocal.ratersArray.count; i++) {
+        Ratings *thisRating = [self.fullStoryLocal.ratersArray objectAtIndex:i];
+        
+        if ([thisRating.raterName isEqual:[[FIRAuth auth] currentUser].email]) {
+            NSLog(@"You already commented");
+            self.ratedKey = thisRating.ratingKey;
+            self.alreadyRated = true;
+        }
+        
+    }//forLoop
+}//checkIf
 
 
 

@@ -22,7 +22,9 @@ class Stories: NSObject {
     @objc var ratersString:String = ""
     @objc var key:String = ""
     @objc var createdBy:String = ""
-    @objc var ratersArray = [String]()
+    @objc var ratersArray:NSMutableArray = NSMutableArray()
+    
+    
     
     
     

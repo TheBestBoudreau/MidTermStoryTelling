@@ -54,55 +54,61 @@
         NSLog(@"%@", error.localizedDescription);
     }];
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-   
-    //    self.ref = [[FIRDatabase database] reference];
-    //    NSString *storyBody = self.fullStoryLocal.storyBody;
-    //    storyBody = [NSString stringWithFormat:@"%@\n%@", self.fullStoryLocal.storyBody, self.editStoryTextView.text];
-    //
-    //
-    //    NSDictionary *post = @{@"Title": self.fullStoryLocal.storyTitle,
-    //                           @"Body": self.editStoryTextView.text,
-    //                           @"Date": self.fullStoryLocal.storyDate,
-    //                           @"Sender": self.fullStoryLocal.sender,
-    //                           @"LastCollaborator": [[FIRAuth auth] currentUser].email,
-    //                           @"Total Ratings": self.fullStoryLocal.totalRatings,
-    //                           @"Total Raters": self.fullStoryLocal.totalRaters,
-    //                           @"Key": key,
-    //                           @"Comments": self.fullStoryLocal.comments,
-    //                           @"Total Collaborators": self.fullStoryLocal.totalCollaborators,
-    //                           @"Raters Array": self.fullStoryLocal.ratersString,
-    //                           };
-    //
-    //        NSDictionary *childUpdates = @{[@"/Stories/" stringByAppendingString:key]: post};
-    //        [self.ref updateChildValues:childUpdates];
-
-
-
-
-
-
-
-
-
-
-
-
 }//tryThis
 
 
 
+-(void) addNewRatings:(FIRDatabaseReference *)ref withObj:(Stories *)thisStory withRating:(NSString *)userRating andUsername:(NSString *)username {
+    ref = [[FIRDatabase database] reference];
+    NSMutableDictionary *myDict = [NSMutableDictionary new];
+    [myDict setObject:username forKey:@"Rater Name"];
+    [myDict setObject:userRating forKey:@"Rater Rating"];
+    
+    
+    NSString *key = thisStory.key;
+    NSString *path = [NSString stringWithFormat:@"Stories/%@/Raters", key];
+    
+    FIRDatabaseReference *myID2 = [[ref child:path] childByAutoId];
+    [myDict setObject:myID2.key forKey:@"Key"];
+    [myID2 setValue:myDict];
+    
+    
+}
 
+
+-(void) updateRating:(FIRDatabaseReference *)ref withObj:(Stories *)thisStory withRating:(NSString *)userRating andUsername:(NSString *)username andRatersKey:(NSString *)raterKey {
+    
+    NSString *key = thisStory.key;
+    ref = [[FIRDatabase database] reference];
+    NSString *path = [NSString stringWithFormat:@"Stories/%@", key];
+    
+    [[ref child:path] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        
+        
+        
+        NSDictionary *dict = snapshot.value;
+        NSLog(@"Dictionary is %@",dict);
+        NSDictionary *ratingDict = dict[@"Raters"];
+        
+        
+        [ratingDict setValue:userRating forKey:@"Rater Rating"];
+        
+        
+        [dict setValue:ratingDict forKey:@"Raters"];
+        
+        
+        
+        NSString *path2 = [NSString stringWithFormat:@"Stories/%@/Raters", key];
+        FIRDatabaseReference *myID2 = [ref child:path2];
+        [myID2 updateChildValues:ratingDict];
+//
+        
+        
+    } withCancelBlock:^(NSError * _Nonnull error) {
+        NSLog(@"%@", error.localizedDescription);
+    }];
+    
+}//tryThis
 
 
 

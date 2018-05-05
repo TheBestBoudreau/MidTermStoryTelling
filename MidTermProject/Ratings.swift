@@ -12,4 +12,5 @@ class Ratings: NSObject {
 @objc var raterName = ""
 @objc var raterRating = ""
 @objc var averageRating = ""
+    @objc var ratingKey = ""
 }

@@ -43,7 +43,7 @@
     self.commentPostButton.hidden = YES;
     self.commentPostButton.enabled = false;
     
-    //experiment
+    
 
     
     
@@ -54,7 +54,9 @@
     
     
     
-    //experiment
+    
+    
+    
 }//load
 
 -(void)downloadComments {

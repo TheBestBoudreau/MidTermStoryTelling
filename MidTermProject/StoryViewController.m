@@ -125,6 +125,28 @@
             newStory.key = thisDict[@"Key"];
             newStory.ratersString = thisDict[@"Raters Array"];
             
+            NSDictionary *ratingsDictionary = thisDict[@"Raters"];
+            
+            
+            
+            for (NSString *this in ratingsDictionary) {
+                
+                NSDictionary *thisDict = ratingsDictionary[this];
+                
+                
+                Ratings *newRating = [Ratings new];
+                newRating.raterName = thisDict[@"Rater Name"];
+                newRating.raterRating = thisDict[@"Rater Rating"];
+//                NSLog(@"rater name is %@", newRating.raterName);
+//                NSLog(@"rater rating is %@", newRating.raterRating);
+                newRating.ratingKey = thisDict[@"Key"];
+                [newStory.ratersArray addObject:newRating];
+//                NSLog(@"this array count SSISS : %lu", newStory.ratersArray.count);
+                
+                
+            }//ratingsDictionary for loop
+            
+            
             
             
             [self.storyArray insertObject:newStory atIndex:0];
@@ -164,6 +186,11 @@
 -(UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
+
+
+-(void) createUserNameArraysFromRatings {
+    
+}//createUserNameArraysFromRatings
 
 
 @end
