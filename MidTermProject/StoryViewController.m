@@ -79,6 +79,7 @@
     cell.titleLabel.text = thisStory.storyTitle;
     cell.dateLabel.text = thisStory.storyDate;
     cell.bodyLabel.text = thisStory.storyBody;
+    cell.ratingsLabel.text = thisStory.doubleRatings;
     cell.cellView.layer.cornerRadius = 15;
     cell.cellView.layer.masksToBounds = true;
     
