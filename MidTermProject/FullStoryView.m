@@ -7,6 +7,7 @@
 //
 
 #import "FullStoryView.h"
+#import "CommentsViewController.h"
 
 
 
@@ -279,11 +280,28 @@
      
     }];
 }//updateLocalUser
+#pragma Comments Action
+
+- (IBAction)commentsAction:(UIButton *)sender {
+
+    [self performSegueWithIdentifier:@"toComments" sender:self];
+
+}//commentsAction
 
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"toComments"]) {
+        
+        CommentsViewController *cvf = segue.destinationViewController;
+        cvf.commentsLocalStory = self.fullStoryLocal;
+        
+    }//if
+    
+}//prepareForSegue
 
 
-
+//toComments
 
 
 @end
