@@ -12,4 +12,6 @@ class Comments: NSObject {
 @objc var comments = ""
 @objc var username = ""
 @objc var commentDate = ""
+    
+    
 }

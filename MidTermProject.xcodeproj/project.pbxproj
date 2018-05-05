@@ -47,6 +47,7 @@
 		F1149878209D1648005674A3 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1149877209D1648005674A3 /* CommentsViewController.m */; };
 		F114987B209D1EAA005674A3 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F114987A209D1EAA005674A3 /* CommentTableViewCell.m */; };
 		F114987D209D20CF005674A3 /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = F114987C209D20CF005674A3 /* Comments.swift */; };
+		F1149882209D3AA0005674A3 /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1149881209D3AA0005674A3 /* DownloadManager.m */; };
 		F182B6CD209A632300CCE11B /*  Register.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6C7209A632100CCE11B /*  Register.png */; };
 		F182B6CE209A632300CCE11B /*  Register@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6C8209A632200CCE11B /*  Register@3x.png */; };
 		F182B6CF209A632300CCE11B /* Launch Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6C9209A632200CCE11B /* Launch Screen.png */; };
@@ -119,6 +120,8 @@
 		F1149879209D1EAA005674A3 /* CommentTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentTableViewCell.h; sourceTree = "<group>"; };
 		F114987A209D1EAA005674A3 /* CommentTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewCell.m; sourceTree = "<group>"; };
 		F114987C209D20CF005674A3 /* Comments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
+		F1149880209D3AA0005674A3 /* DownloadManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadManager.h; sourceTree = "<group>"; };
+		F1149881209D3AA0005674A3 /* DownloadManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadManager.m; sourceTree = "<group>"; };
 		F182B6C7209A632100CCE11B /*  Register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = " Register.png"; sourceTree = "<group>"; };
 		F182B6C8209A632200CCE11B /*  Register@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = " Register@3x.png"; sourceTree = "<group>"; };
 		F182B6C9209A632200CCE11B /* Launch Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Launch Screen.png"; sourceTree = "<group>"; };
@@ -190,6 +193,7 @@
 		7EA3CF73209A58B600007961 /* MidTermProject */ = {
 			isa = PBXGroup;
 			children = (
+				F1149883209D3AC7005674A3 /* Model */,
 				F182B6BA209A629400CCE11B /* images */,
 				7EA3CF74209A58B600007961 /* AppDelegate.swift */,
 				7EA3CF76209A58B600007961 /* ViewController.swift */,
@@ -220,12 +224,21 @@
 				F182B6E1209A80F400CCE11B /* RandomViewController.m */,
 				F182B6E3209A810900CCE11B /* CurrentStoryViewController.h */,
 				F182B6E4209A810900CCE11B /* CurrentStoryViewController.m */,
+				F182B6D9209A80DE00CCE11B /* MidTermProject-Bridging-Header.h */,
 				7EA3CF7D209A58B600007961 /* LaunchScreen.storyboard */,
 				7EA3CF80209A58B600007961 /* Info.plist */,
 				7EA3CF86209A59B200007961 /* GoogleService-Info.plist */,
-				F182B6D9209A80DE00CCE11B /* MidTermProject-Bridging-Header.h */,
 			);
 			path = MidTermProject;
+			sourceTree = "<group>";
+		};
+		F1149883209D3AC7005674A3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F1149880209D3AA0005674A3 /* DownloadManager.h */,
+				F1149881209D3AA0005674A3 /* DownloadManager.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		F182B6BA209A629400CCE11B /* images */ = {
@@ -462,6 +475,7 @@
 				F114987B209D1EAA005674A3 /* CommentTableViewCell.m in Sources */,
 				F182B700209B881200CCE11B /* AddStory.m in Sources */,
 				F114987D209D20CF005674A3 /* Comments.swift in Sources */,
+				F1149882209D3AA0005674A3 /* DownloadManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,6 +612,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 45806DBD28476955D552CBB9 /* Pods-MidTermProject.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -617,6 +632,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 45E5E1885702B868F9829BB9 /* Pods-MidTermProject.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;

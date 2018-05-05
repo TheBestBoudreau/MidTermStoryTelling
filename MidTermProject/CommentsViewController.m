@@ -21,6 +21,8 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomContraint;
 @property (strong, nonatomic) IBOutlet UIButton *commentPostButton;
 
+
+
 @end
 
 @implementation CommentsViewController
@@ -32,13 +34,14 @@
     _commentTextField.delegate = self;
     
     NSLog(@"%@", self.commentsLocalStory.storyTitle);
-//    [self addComments];
+
     
     [self addCommentObjects];
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [self watchKeyboardNotifications:notificationCenter];
     self.commentPostButton.hidden = YES;
     self.commentPostButton.enabled = false;
+    
     
 }//load
 
@@ -59,35 +62,10 @@
 }
 
 
--(void)addComments {
-    
-    NSString *commentString = self.commentsLocalStory.comments;
-    NSString *addCommentString = @"";
-    
-        
-        NSString *username = @"Tyler";
-        NSString *time = @"337 pm";
-        NSString *comment = @"Cool story bro";
-        
-        addCommentString = [NSString stringWithFormat:@"BushDid911:%@BushDid911:%@BushDid911:%@BushFinallyAchievedit", username, time, comment];
-    commentString = [NSString stringWithFormat:@"%@%@", commentString,addCommentString];
-        [self tryThis:commentString];
-        
-        
-    
-    
-    
-    
-}//addComments
-
-
 
 -(void) tryThis:(NSString *)comment {
     NSString *key = self.commentsLocalStory.key;
     self.ref = [[FIRDatabase database] reference];
-    
-    
-    
     NSDictionary *post = @{@"Title": self.commentsLocalStory.storyTitle,
                            @"Body": self.commentsLocalStory.storyBody,
                            @"Date": self.commentsLocalStory.storyDate,
@@ -104,12 +82,7 @@
     NSDictionary *childUpdates = @{[@"/Stories/" stringByAppendingString:key]: post};
     [self.ref updateChildValues:childUpdates];
     
-    
-    
-    
-    
-    
-    
+    NSLog(@"Posted Comment");
     
     
 }//tryThis
@@ -238,6 +211,59 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [self.commentTextField resignFirstResponder];
     return YES;
+}
+
+- (IBAction)postAction:(UIButton *)sender {
+
+    NSString *commentString = [self updateCommentsAndReturnString];
+    NSString *userName = [[FIRAuth auth] currentUser].email;
+    NSString *time = [self getDate];
+    NSString *comment = self.commentTextField.text;
+    
+    NSString *addCommentString = [NSString stringWithFormat:@"BushDid911:%@BushDid911:%@BushDid911:%@BushFinallyAchievedit", userName, time, comment];
+    commentString = [NSString stringWithFormat:@"%@%@", commentString,addCommentString];
+    [self tryThis:commentString];
+    
+}//postAction
+
+
+-(NSString *)updateCommentsAndReturnString {
+    self.ref = [[FIRDatabase database] reference];
+    NSString *key = self.commentsLocalStory.key;
+    [[self.ref child:[@"/Stories/" stringByAppendingString:key]] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSDictionary *thisDict = snapshot.value;
+        
+        
+        self.commentsLocalStory.storyTitle = thisDict[@"Title"];
+        self.commentsLocalStory.storyBody = thisDict[@"Body"];
+        self.commentsLocalStory.storyDate = thisDict[@"Date"];
+        self.commentsLocalStory.sender = thisDict[@"Sender"];
+        self.commentsLocalStory.lastCollaborator = thisDict[@"LastCollaborator"];
+        self.commentsLocalStory.totalRaters = thisDict[@"Total Raters"];
+        self.commentsLocalStory.totalRatings = thisDict[@"Total Ratings"];
+        self.commentsLocalStory.comments = thisDict[@"Comments"];
+        self.commentsLocalStory.totalCollaborators = thisDict[@"Total Collaborators"];
+        self.commentsLocalStory.key = thisDict[@"Key"];
+        self.commentsLocalStory.ratersString = thisDict[@"Raters Array"];
+        
+    
+        
+        
+    } withCancelBlock:^(NSError * _Nonnull error) {
+        NSLog(@"%@", error.localizedDescription);
+        
+    }];
+    NSLog(@"%@",  self.commentsLocalStory.comments);
+    return  self.commentsLocalStory.comments;
+    
+
+}//updateComments
+
+
+-(NSString *) getDate {
+    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+    dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+    return [dateFormatter stringFromDate:[NSDate date]];
 }
 
 @end
