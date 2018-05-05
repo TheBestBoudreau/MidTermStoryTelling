@@ -617,7 +617,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="btI-cf-4JM">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="583"/>
+                                <rect key="frame" x="0.0" y="68" width="375" height="515"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="commentCell" id="R9n-qQ-MTi" customClass="CommentTableViewCell">
@@ -696,16 +696,44 @@
                                     <constraint firstItem="jBj-Ts-caN" firstAttribute="top" secondItem="mcs-m4-XE7" secondAttribute="bottom" constant="7" id="yuh-3P-Hpa"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SbF-5A-8kd">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u70-XL-i6k">
+                                        <rect key="frame" x="20" y="30" width="46" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="DKV-s4-dBp"/>
+                                            <constraint firstAttribute="width" constant="46" id="tYb-UQ-bvV"/>
+                                        </constraints>
+                                        <state key="normal" title="Back">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backAction:" destination="FTF-uc-Bhc" eventType="touchUpInside" id="CC0-pv-gT3"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.33725490200000002" green="0.66274509800000003" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="8AN-gX-blL"/>
+                                    <constraint firstItem="u70-XL-i6k" firstAttribute="top" secondItem="SbF-5A-8kd" secondAttribute="top" constant="30" id="CG4-De-2Yu"/>
+                                    <constraint firstItem="u70-XL-i6k" firstAttribute="leading" secondItem="SbF-5A-8kd" secondAttribute="leading" constant="20" id="Cf6-4W-nTo"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="SbF-5A-8kd" firstAttribute="leading" secondItem="3kM-uZ-Eis" secondAttribute="leading" id="0Sd-XC-Q18"/>
                             <constraint firstItem="BxH-eH-rCE" firstAttribute="top" secondItem="btI-cf-4JM" secondAttribute="bottom" id="SHj-KA-2OY"/>
+                            <constraint firstItem="SbF-5A-8kd" firstAttribute="trailing" secondItem="3kM-uZ-Eis" secondAttribute="trailing" id="Wq4-Me-lhj"/>
                             <constraint firstItem="BxH-eH-rCE" firstAttribute="leading" secondItem="3kM-uZ-Eis" secondAttribute="leading" id="dVH-bF-IxQ"/>
                             <constraint firstItem="BxH-eH-rCE" firstAttribute="trailing" secondItem="3kM-uZ-Eis" secondAttribute="trailing" id="eg8-P1-Kk1"/>
                             <constraint firstItem="btI-cf-4JM" firstAttribute="trailing" secondItem="3kM-uZ-Eis" secondAttribute="trailing" id="hMK-6M-Lad"/>
-                            <constraint firstItem="btI-cf-4JM" firstAttribute="top" secondItem="IpP-hk-1g3" secondAttribute="top" id="hv6-sT-CWd"/>
+                            <constraint firstItem="btI-cf-4JM" firstAttribute="top" secondItem="IpP-hk-1g3" secondAttribute="top" constant="68" id="hv6-sT-CWd"/>
                             <constraint firstItem="BxH-eH-rCE" firstAttribute="bottom" secondItem="3kM-uZ-Eis" secondAttribute="bottom" id="nRc-AQ-SoE"/>
                             <constraint firstItem="btI-cf-4JM" firstAttribute="leading" secondItem="3kM-uZ-Eis" secondAttribute="leading" id="sFN-xz-tuX"/>
+                            <constraint firstItem="SbF-5A-8kd" firstAttribute="top" secondItem="IpP-hk-1g3" secondAttribute="top" id="zoR-lX-G7L"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3kM-uZ-Eis"/>
                     </view>
@@ -719,7 +747,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gr1-wC-oNK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3284" y="-283.80809595202402"/>
+            <point key="canvasLocation" x="3505" y="343"/>
         </scene>
     </scenes>
     <resources>

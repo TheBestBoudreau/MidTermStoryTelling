@@ -115,9 +115,26 @@
         [myDict setObject:@"" forKey:@"Comments"];
         [myDict setObject:@"" forKey:@"Total Collaborators"];
         [myDict setObject:@"" forKey:@"Raters Array"];
+
+        //commenters
+        NSMutableDictionary *commentDictionary = [NSMutableDictionary new];
+        NSMutableDictionary *IgnoreMe = [NSMutableDictionary new];
+        [IgnoreMe setObject:@"daddaa" forKey:@"ComentSenderGuy"];
+        [IgnoreMe setObject:@"dadada" forKey:@"CommentBodee"];
+        [IgnoreMe setObject:@"dadaada" forKey:@"key"];
+        [commentDictionary setObject:IgnoreMe forKey:@"IgnoreMe"];
+        [myDict setObject:commentDictionary forKey:@"commenters"];
         
+        //raters
+        NSMutableDictionary *ratersDictionary = [NSMutableDictionary new];
+        NSMutableDictionary *plsIgnoreMe = [NSMutableDictionary new];
+        [plsIgnoreMe setObject:@"tyler" forKey:@"Rater Name"];
+        [plsIgnoreMe setObject:@"4 out of 5" forKey:@"Rater Rating"];
+        [plsIgnoreMe setObject:@"key?" forKey:@"key"];
+        [ratersDictionary setObject:plsIgnoreMe forKey:@"IgnoreMe"];
+        [myDict setObject:ratersDictionary forKey:@"Raters"];
         
-        
+
         
         FIRDatabaseReference *myID2 = [[self.ref child:@"Stories"] childByAutoId];
         [myDict setObject:myID2.key forKey:@"Key"];

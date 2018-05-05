@@ -47,7 +47,7 @@
 		F1149878209D1648005674A3 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1149877209D1648005674A3 /* CommentsViewController.m */; };
 		F114987B209D1EAA005674A3 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F114987A209D1EAA005674A3 /* CommentTableViewCell.m */; };
 		F114987D209D20CF005674A3 /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = F114987C209D20CF005674A3 /* Comments.swift */; };
-		F1149882209D3AA0005674A3 /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1149881209D3AA0005674A3 /* DownloadManager.m */; };
+		F1149882209D3AA0005674A3 /* UpdateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1149881209D3AA0005674A3 /* UpdateManager.m */; };
 		F182B6CD209A632300CCE11B /*  Register.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6C7209A632100CCE11B /*  Register.png */; };
 		F182B6CE209A632300CCE11B /*  Register@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6C8209A632200CCE11B /*  Register@3x.png */; };
 		F182B6CF209A632300CCE11B /* Launch Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6C9209A632200CCE11B /* Launch Screen.png */; };
@@ -68,6 +68,8 @@
 		F182B6F5209B5C5800CCE11B /* bigAssButton2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6F2209B5C5700CCE11B /* bigAssButton2@2x.png */; };
 		F182B6FD209B606500CCE11B /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B6FC209B606500CCE11B /* CollectionViewCell.m */; };
 		F182B700209B881200CCE11B /* AddStory.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B6FF209B881200CCE11B /* AddStory.m */; };
+		F19AB395209DD21900640BF9 /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F19AB394209DD21900640BF9 /* DownloadManager.m */; };
+		F19AB397209DFF4A00640BF9 /* Ratings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19AB396209DFF4A00640BF9 /* Ratings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,8 +122,8 @@
 		F1149879209D1EAA005674A3 /* CommentTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentTableViewCell.h; sourceTree = "<group>"; };
 		F114987A209D1EAA005674A3 /* CommentTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewCell.m; sourceTree = "<group>"; };
 		F114987C209D20CF005674A3 /* Comments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
-		F1149880209D3AA0005674A3 /* DownloadManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadManager.h; sourceTree = "<group>"; };
-		F1149881209D3AA0005674A3 /* DownloadManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadManager.m; sourceTree = "<group>"; };
+		F1149880209D3AA0005674A3 /* UpdateManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpdateManager.h; sourceTree = "<group>"; };
+		F1149881209D3AA0005674A3 /* UpdateManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpdateManager.m; sourceTree = "<group>"; };
 		F182B6C7209A632100CCE11B /*  Register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = " Register.png"; sourceTree = "<group>"; };
 		F182B6C8209A632200CCE11B /*  Register@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = " Register@3x.png"; sourceTree = "<group>"; };
 		F182B6C9209A632200CCE11B /* Launch Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Launch Screen.png"; sourceTree = "<group>"; };
@@ -149,6 +151,9 @@
 		F182B6FC209B606500CCE11B /* CollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		F182B6FE209B881200CCE11B /* AddStory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddStory.h; sourceTree = "<group>"; };
 		F182B6FF209B881200CCE11B /* AddStory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddStory.m; sourceTree = "<group>"; };
+		F19AB393209DD21900640BF9 /* DownloadManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadManager.h; sourceTree = "<group>"; };
+		F19AB394209DD21900640BF9 /* DownloadManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadManager.m; sourceTree = "<group>"; };
+		F19AB396209DFF4A00640BF9 /* Ratings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ratings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,7 +198,16 @@
 		7EA3CF73209A58B600007961 /* MidTermProject */ = {
 			isa = PBXGroup;
 			children = (
-				F1149883209D3AC7005674A3 /* Model */,
+				F19AB392209D40F000640BF9 /* Model */,
+				F114987C209D20CF005674A3 /* Comments.swift */,
+				F19AB396209DFF4A00640BF9 /* Ratings.swift */,
+				F182B6E6209A879300CCE11B /* Stories.swift */,
+				F182B6E8209A896F00CCE11B /* User.swift */,
+				F19AB398209DFF5D00640BF9 /* Controller */,
+				F1149880209D3AA0005674A3 /* UpdateManager.h */,
+				F1149881209D3AA0005674A3 /* UpdateManager.m */,
+				F19AB393209DD21900640BF9 /* DownloadManager.h */,
+				F19AB394209DD21900640BF9 /* DownloadManager.m */,
 				F182B6BA209A629400CCE11B /* images */,
 				7EA3CF74209A58B600007961 /* AppDelegate.swift */,
 				7EA3CF76209A58B600007961 /* ViewController.swift */,
@@ -211,9 +225,6 @@
 				7EA3CF7B209A58B600007961 /* Assets.xcassets */,
 				F182B6DA209A80DE00CCE11B /* StoryViewController.h */,
 				F182B6DB209A80DE00CCE11B /* StoryViewController.m */,
-				F114987C209D20CF005674A3 /* Comments.swift */,
-				F182B6E6209A879300CCE11B /* Stories.swift */,
-				F182B6E8209A896F00CCE11B /* User.swift */,
 				F182B6DD209A80EA00CCE11B /* FriendsViewController.h */,
 				F182B6FE209B881200CCE11B /* AddStory.h */,
 				F182B6FF209B881200CCE11B /* AddStory.m */,
@@ -230,15 +241,6 @@
 				7EA3CF86209A59B200007961 /* GoogleService-Info.plist */,
 			);
 			path = MidTermProject;
-			sourceTree = "<group>";
-		};
-		F1149883209D3AC7005674A3 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				F1149880209D3AA0005674A3 /* DownloadManager.h */,
-				F1149881209D3AA0005674A3 /* DownloadManager.m */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		F182B6BA209A629400CCE11B /* images */ = {
@@ -285,6 +287,20 @@
 				F182B6CA209A632200CCE11B /* Launch Screen@3x.png */,
 			);
 			path = images;
+			sourceTree = "<group>";
+		};
+		F19AB392209D40F000640BF9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F19AB398209DFF5D00640BF9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		FD3841CFFE72B7CE717C6BCE /* Frameworks */ = {
@@ -475,7 +491,9 @@
 				F114987B209D1EAA005674A3 /* CommentTableViewCell.m in Sources */,
 				F182B700209B881200CCE11B /* AddStory.m in Sources */,
 				F114987D209D20CF005674A3 /* Comments.swift in Sources */,
-				F1149882209D3AA0005674A3 /* DownloadManager.m in Sources */,
+				F19AB397209DFF4A00640BF9 /* Ratings.swift in Sources */,
+				F1149882209D3AA0005674A3 /* UpdateManager.m in Sources */,
+				F19AB395209DD21900640BF9 /* DownloadManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,7 +630,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 45806DBD28476955D552CBB9 /* Pods-MidTermProject.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -632,7 +650,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 45E5E1885702B868F9829BB9 /* Pods-MidTermProject.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;

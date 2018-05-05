@@ -8,6 +8,8 @@
 
 #import "CommentsViewController.h"
 #import "CommentTableViewCell.h"
+#import "UpdateManager.h"
+#import "DownloadManager.h"
 
 
 @interface CommentsViewController ()
@@ -29,20 +31,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _testArray = [[NSMutableArray alloc] initWithObjects:@"a",@"b",@"c", nil];
+    
     _commentsArray = [NSMutableArray new];
     _commentTextField.delegate = self;
     
-    NSLog(@"%@", self.commentsLocalStory.storyTitle);
-
     
-    [self addCommentObjects];
+    
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [self watchKeyboardNotifications:notificationCenter];
     self.commentPostButton.hidden = YES;
     self.commentPostButton.enabled = false;
     
+    //experiment
+  
+    DownloadManager *downMan = [DownloadManager new];
+    [self downloadCommentsWithRef:self.ref andStory:self.commentsLocalStory];
     
+    
+    
+    
+    
+    //experiment
 }//load
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:
@@ -56,36 +65,11 @@
         self.commentPostButton.enabled = TRUE;
     }
     return textField.text.length + (string.length - range.length) <= 150;
-    
-    
-    
 }
 
 
 
--(void) tryThis:(NSString *)comment {
-    NSString *key = self.commentsLocalStory.key;
-    self.ref = [[FIRDatabase database] reference];
-    NSDictionary *post = @{@"Title": self.commentsLocalStory.storyTitle,
-                           @"Body": self.commentsLocalStory.storyBody,
-                           @"Date": self.commentsLocalStory.storyDate,
-                           @"Sender": self.commentsLocalStory.sender,
-                           @"LastCollaborator": [[FIRAuth auth] currentUser].email,
-                           @"Total Ratings": self.commentsLocalStory.totalRatings,
-                           @"Total Raters": self.commentsLocalStory.totalRaters,
-                           @"Key": key,
-                           @"Comments": comment,
-                           @"Total Collaborators": self.commentsLocalStory.totalCollaborators,
-                           @"Raters Array": self.commentsLocalStory.ratersString,
-                           };
-    
-    NSDictionary *childUpdates = @{[@"/Stories/" stringByAppendingString:key]: post};
-    [self.ref updateChildValues:childUpdates];
-    
-    NSLog(@"Posted Comment");
-    
-    
-}//tryThis
+
 
 
 
@@ -109,41 +93,6 @@
     return self.commentsArray.count;
 
 }
-
-
--(void)unzipComments{
-    
-    
-}
-
--(void)addCommentObjects{
-    NSArray *bigStringArray = [NSArray new];
-    NSString *commentString = self.commentsLocalStory.comments;
-    
-    bigStringArray = [commentString componentsSeparatedByString:@"BushFinallyAchievedit"];
-    
-//    NSLog(@" In This Array %@",bigStringArray);
-    
-    for (int i = 0 ; i< bigStringArray.count-1 ; i++){
-        Comments *newComment = [Comments new];
-        NSString *individualCommentString = [bigStringArray objectAtIndex:i];
-        NSArray *combineStringArray = [[NSArray alloc] init];
-        combineStringArray = [individualCommentString componentsSeparatedByString:@"BushDid911:"];
-        
-        newComment.username = [combineStringArray objectAtIndex:1];
-        newComment.comments = [combineStringArray objectAtIndex:3];
-        newComment.commentDate = [combineStringArray objectAtIndex:2];
-        
-        [self.commentsArray addObject:newComment];
-        [self.commentTableView reloadData];
-        [self configureTableView];
-        
-        NSLog(@"THIS IS THE COMMENTS ARRAY COUNT :  %lu",self.commentsArray.count);
-        
-    }
-}
-
-//commentCell
 
 -(void)configureTableView {
     self.commentTableView.rowHeight = UITableViewAutomaticDimension;
@@ -177,8 +126,6 @@
         [self.view layoutIfNeeded];
 
     } completion:^(BOOL finished){
-        //            self.calculateBottomConstraint.constant = 10 +  kbSize.height;
-        
     }];
     
     
@@ -186,21 +133,20 @@
     
 }
 - (void)UIKeyboardDidHideNotification:(NSNotification *)notification {
-    NSLog(@"%@", notification.name);
-    
-    
     NSDictionary* info = [notification userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-    
     [self.commentTextField layoutIfNeeded];
     
     [UIView animateWithDuration:0.3 animations:^{
         
         self.bottomContraint.constant = 0;
         [self.commentUIView layoutIfNeeded];
+    
     } completion:^(BOOL finished){
         
-        
+        self.commentsArray = [NSMutableArray new];
+        [self downloadCommentsWithRef:self.ref andStory:self.commentsLocalStory];
+        [self.commentTableView reloadData];
+
     }];
     
     self.commentPostButton.hidden = TRUE;
@@ -209,61 +155,82 @@
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [self.commentTextField resignFirstResponder];
+    if (![self.commentTextField.text isEqual:@""]) {
+        UpdateManager *newUpdateManager = [UpdateManager new];
+        [newUpdateManager addNewCommentWith:self.ref withObj:self.commentsLocalStory withCommentBody:self.commentTextField.text andUsername:[[FIRAuth auth] currentUser].email];
+        self.commentTextField.text = @"";
+    }
+     [self.commentTextField resignFirstResponder];
     return YES;
 }
 
 - (IBAction)postAction:(UIButton *)sender {
-
-    NSString *commentString = [self updateCommentsAndReturnString];
-    NSString *userName = [[FIRAuth auth] currentUser].email;
-    NSString *time = [self getDate];
-    NSString *comment = self.commentTextField.text;
-    
-    NSString *addCommentString = [NSString stringWithFormat:@"BushDid911:%@BushDid911:%@BushDid911:%@BushFinallyAchievedit", userName, time, comment];
-    commentString = [NSString stringWithFormat:@"%@%@", commentString,addCommentString];
-    [self tryThis:commentString];
+    if (![self.commentTextField.text isEqual:@""]) {
+        UpdateManager *newUpdateManager = [UpdateManager new];
+        [newUpdateManager addNewCommentWith:self.ref withObj:self.commentsLocalStory withCommentBody:self.commentTextField.text andUsername:[[FIRAuth auth] currentUser].email];
+        self.commentTextField.text = @"";
+        [self.commentTextField resignFirstResponder];
+    }
     
 }//postAction
 
 
--(NSString *)updateCommentsAndReturnString {
-    self.ref = [[FIRDatabase database] reference];
-    NSString *key = self.commentsLocalStory.key;
-    [[self.ref child:[@"/Stories/" stringByAppendingString:key]] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-        NSDictionary *thisDict = snapshot.value;
-        
-        
-        self.commentsLocalStory.storyTitle = thisDict[@"Title"];
-        self.commentsLocalStory.storyBody = thisDict[@"Body"];
-        self.commentsLocalStory.storyDate = thisDict[@"Date"];
-        self.commentsLocalStory.sender = thisDict[@"Sender"];
-        self.commentsLocalStory.lastCollaborator = thisDict[@"LastCollaborator"];
-        self.commentsLocalStory.totalRaters = thisDict[@"Total Raters"];
-        self.commentsLocalStory.totalRatings = thisDict[@"Total Ratings"];
-        self.commentsLocalStory.comments = thisDict[@"Comments"];
-        self.commentsLocalStory.totalCollaborators = thisDict[@"Total Collaborators"];
-        self.commentsLocalStory.key = thisDict[@"Key"];
-        self.commentsLocalStory.ratersString = thisDict[@"Raters Array"];
-        
+
+
+
+
+
+
+-(UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
+- (IBAction)backAction:(id)sender {
+    [self dismissViewControllerAnimated:true completion:nil];
+}
+
+
+//methods
+
+-(void) downloadCommentsWithRef:(FIRDatabaseReference *)ref andStory:(Stories *)localStory {
+    NSMutableArray *commentsArray = [NSMutableArray new];
     
-        
+    
+    ref = [[FIRDatabase database] reference];
+    NSString *key = localStory.key;
+    NSString *path = [NSString stringWithFormat:@"Stories/%@/commenters", key];
+    [[ref child:path] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSDictionary *dict = snapshot.value;
+        NSLog(@"%@",dict);
+        if (dict.count != 0) {
+            
+            for (NSString* thisString in dict) {
+                if (![thisString isEqual:@"IgnoreMe"]) {
+                NSDictionary *thisDict = dict[thisString];
+                
+                
+                Comments *thisComment = [Comments new];
+                thisComment.comments = thisDict[@"CommentBodee"];
+                thisComment.username = thisDict[@"ComentSenderGuy"];
+                [self.commentsArray addObject:thisComment];
+                [self.commentTableView reloadData];
+                
+                }
+            }//forLoop
+            
+            
+        }//check if null
         
     } withCancelBlock:^(NSError * _Nonnull error) {
         NSLog(@"%@", error.localizedDescription);
-        
     }];
-    NSLog(@"%@",  self.commentsLocalStory.comments);
-    return  self.commentsLocalStory.comments;
     
+    
+    
+    
+}//retriveMessages
 
-}//updateComments
 
 
--(NSString *) getDate {
-    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
-    dateFormatter.dateStyle = NSDateFormatterMediumStyle;
-    return [dateFormatter stringFromDate:[NSDate date]];
-}
 
 @end

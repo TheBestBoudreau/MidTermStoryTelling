@@ -5,4 +5,4 @@
 #import "FriendsViewController.h"
 #import "RandomViewController.h"
 #import "CurrentStoryViewController.h"
-#import "DownloadManager.h"
+

@@ -12,4 +12,8 @@
 
 @interface CommentsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 @property (nonatomic) Stories *commentsLocalStory;
+
+
+
+
 @end
