@@ -127,32 +127,67 @@
             
             NSDictionary *ratingsDictionary = thisDict[@"Raters"];
             
+            newStory.totalRaters = [NSString stringWithFormat:@"%lu", ratingsDictionary.count - 1];
             
+            
+            NSLog(@"Total raters are %@", newStory.totalRaters);
             
             for (NSString *this in ratingsDictionary) {
                 
                 NSDictionary *thisDict = ratingsDictionary[this];
                 
-                
                 Ratings *newRating = [Ratings new];
                 newRating.raterName = thisDict[@"Rater Name"];
                 newRating.raterRating = thisDict[@"Rater Rating"];
-//                NSLog(@"rater name is %@", newRating.raterName);
-//                NSLog(@"rater rating is %@", newRating.raterRating);
                 newRating.ratingKey = thisDict[@"Key"];
+                
+                if (![newRating.raterRating isEqualToString:@"4 out of 5"]) {
+                    NSLog(@"%@", newRating.raterRating);
                 [newStory.ratersArray addObject:newRating];
-//                NSLog(@"this array count SSISS : %lu", newStory.ratersArray.count);
+                    
+                    int initialRatings = [newStory.totalRatings intValue];
+                    int thisRating = [newRating.raterRating intValue];
+                    
+                    int finalRating = initialRatings + thisRating;
+                    newStory.totalRatings = [NSString stringWithFormat:@"%d", finalRating];
+                    NSLog(@"newStory.totalRatings is %@", newStory.totalRatings);
+                    int averageValue = [newStory.totalRatings intValue]/[newStory.totalRaters intValue];
+                    newStory.averageRatings = averageValue;
+                    
+                    double averageDouble = [newStory.totalRatings doubleValue]/[newStory.totalRaters doubleValue];
+                    newStory.doubleRatings = [NSString stringWithFormat:@"%.1f", averageDouble];
+                    
+                    
+                    NSLog(@"Double value is %@", newStory.doubleRatings);
+                    
+                }
+
+            
                 
                 
             }//ratingsDictionary for loop
             
             
             
-            
             [self.storyArray insertObject:newStory atIndex:0];
             [self.storyFeedTableView reloadData];
             [self configureTableView];
+            
+            
+            
+            
         }//forLoop
+        
+        
+        
+        //experimentation
+        
+        
+//        for (int i = 0; i < )
+        
+        
+        //experimentation
+        
 
         
     } withCancelBlock:^(NSError * _Nonnull error) {

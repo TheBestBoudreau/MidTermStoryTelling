@@ -7,7 +7,7 @@
 //
 
 #import "AddStory.h"
-#import "CollectionViewCell.h"
+
 @import Firebase;
 
 

@@ -23,6 +23,14 @@ class Stories: NSObject {
     @objc var key:String = ""
     @objc var createdBy:String = ""
     @objc var ratersArray:NSMutableArray = NSMutableArray()
+    @objc var averageRatings:Int = 0
+    @objc var doubleRatings:String = ""
+    
+    func calcRatings () {
+        
+    }
+    
+    
     
     
     

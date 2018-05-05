@@ -316,6 +316,7 @@
 
 
 -(void)renderStars {
+    [self checkIfAlreadyRated];
     
     switch (self.starCount) {
         case 1:
@@ -390,13 +391,22 @@
     
     if (self.alreadyRated) {
         NSLog(@"Raters key is %@", self.ratedKey);
-        
         [newUM updateRating:self.ref withObj:self.fullStoryLocal withRating:localRating andUsername:[[FIRAuth auth] currentUser].email andRatersKey:self.ratedKey];
-        
-        
     } else {
     [newUM addNewRatings:self.ref withObj:self.fullStoryLocal withRating:localRating andUsername:[[FIRAuth auth] currentUser].email];
     }
+    
+  
+    Ratings *thisRating = [Ratings new];
+    thisRating.raterName = [[FIRAuth auth] currentUser].email;
+    thisRating.raterRating = localRating;
+    thisRating.ratingKey = self.ratedKey;
+    
+    [self.fullStoryLocal.ratersArray addObject:thisRating];
+    [self checkIfAlreadyRated];
+    
+    
+    
     
 }//sendRatings
 
