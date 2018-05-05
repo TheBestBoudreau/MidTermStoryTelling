@@ -10,7 +10,10 @@
 #import "MidTermProject-Swift.h"
 @import Firebase;
 
+
+
 @interface DownloadManager : NSObject
 -(void) downloadCommentsWithRef:(FIRDatabaseReference *)ref andStory:(Stories *)localStory;
 @property (nonatomic) NSMutableArray *myArray;
+-(void) downloadCommentsWithRef2:(FIRDatabaseReference *)ref andStory:(Stories *)localStory completionHandler:(void(^)(NSMutableArray *returnDict, NSError *error))completion;
 @end

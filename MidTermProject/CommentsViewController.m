@@ -25,6 +25,7 @@
 
 
 
+
 @end
 
 @implementation CommentsViewController
@@ -43,10 +44,12 @@
     self.commentPostButton.enabled = false;
     
     //experiment
-  
-    DownloadManager *downMan = [DownloadManager new];
-    [self downloadCommentsWithRef:self.ref andStory:self.commentsLocalStory];
+
     
+    
+    self.downMan = [DownloadManager new];
+    [self.downMan downloadCommentsWithRef:self.ref andStory:self.commentsLocalStory];
+    [self performSelector:@selector(downloadComments) withObject:nil afterDelay:1.0];
     
     
     
@@ -54,13 +57,21 @@
     //experiment
 }//load
 
+-(void)downloadComments {
+    
+    self.commentsArray = self.downMan.myArray;
+    [self.commentTableView reloadData];
+}
+
+
+
+
+
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:
 (NSString *)string {
     
-    
     if([self.commentTextField.text isEqualToString:@""]){
         self.commentPostButton.enabled = FALSE;
-        
     }else{
         self.commentPostButton.enabled = TRUE;
     }
@@ -133,7 +144,7 @@
     
 }
 - (void)UIKeyboardDidHideNotification:(NSNotification *)notification {
-    NSDictionary* info = [notification userInfo];
+    
     [self.commentTextField layoutIfNeeded];
     
     [UIView animateWithDuration:0.3 animations:^{
@@ -144,7 +155,8 @@
     } completion:^(BOOL finished){
         
         self.commentsArray = [NSMutableArray new];
-        [self downloadCommentsWithRef:self.ref andStory:self.commentsLocalStory];
+        [self.downMan downloadCommentsWithRef:self.ref andStory:self.commentsLocalStory];
+        [self performSelector:@selector(downloadComments) withObject:nil afterDelay:1.0];
         [self.commentTableView reloadData];
 
     }];
@@ -189,46 +201,6 @@
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
-
-//methods
-
--(void) downloadCommentsWithRef:(FIRDatabaseReference *)ref andStory:(Stories *)localStory {
-    NSMutableArray *commentsArray = [NSMutableArray new];
-    
-    
-    ref = [[FIRDatabase database] reference];
-    NSString *key = localStory.key;
-    NSString *path = [NSString stringWithFormat:@"Stories/%@/commenters", key];
-    [[ref child:path] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-        NSDictionary *dict = snapshot.value;
-        NSLog(@"%@",dict);
-        if (dict.count != 0) {
-            
-            for (NSString* thisString in dict) {
-                if (![thisString isEqual:@"IgnoreMe"]) {
-                NSDictionary *thisDict = dict[thisString];
-                
-                
-                Comments *thisComment = [Comments new];
-                thisComment.comments = thisDict[@"CommentBodee"];
-                thisComment.username = thisDict[@"ComentSenderGuy"];
-                [self.commentsArray addObject:thisComment];
-                [self.commentTableView reloadData];
-                
-                }
-            }//forLoop
-            
-            
-        }//check if null
-        
-    } withCancelBlock:^(NSError * _Nonnull error) {
-        NSLog(@"%@", error.localizedDescription);
-    }];
-    
-    
-    
-    
-}//retriveMessages
 
 
 

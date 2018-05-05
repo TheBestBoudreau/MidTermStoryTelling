@@ -8,6 +8,7 @@
 
 #import "FullStoryView.h"
 #import "CommentsViewController.h"
+#import "UpdateManager.h"
 
 
 
@@ -52,6 +53,8 @@
     
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateLocalUser) userInfo:nil repeats:true];
+    
+    
     
     
     NSLog(@"MY BODY:::%@",self.fullStoryLocal.key);
@@ -164,25 +167,14 @@
 - (IBAction)publishAction:(UIButton *)sender {
 //    NSLog(@"Beginning %@", self.editStoryTextView.text);
     if (![self.editStoryTextView.text isEqual: @""]) {
-        
-        //publish story
-        
         [self tryThis];
         self.doneView.hidden = false;
-        
         [self performSelector:@selector(hideDoneScreen) withObject:nil afterDelay:1.0];
         self.editView.hidden = true;
-        
-        
-        
-        //update Story in this view
         self.commentRateView.hidden = false;
-        
-        
         [self.backButtonOut setTitle:@"Back" forState:UIControlStateNormal];
         [self.storyArray addObject:self.editStoryTextView.text];
         [self.storyArray removeObjectAtIndex:1];
-//        NSLog(@"Ending %@", self.editStoryTextView.text);
         [self.tableView reloadData];
         NSLog(@"%@", self.storyArray);
         NSLog(@"%lu", self.storyArray.count);
@@ -200,27 +192,37 @@
 
 
 -(void) tryThis {
-    NSString *key = self.fullStoryLocal.key;
-    self.ref = [[FIRDatabase database] reference];
-    NSString *storyBody = self.fullStoryLocal.storyBody;
-    storyBody = [NSString stringWithFormat:@"%@\n%@", self.fullStoryLocal.storyBody, self.editStoryTextView.text];
+    
+    UpdateManager *newUpdateManager = [UpdateManager new];
+    [newUpdateManager tryThisWithStory:self.fullStoryLocal andRef:self.ref andStoryBody:self.editStoryTextView.text];
     
     
-    NSDictionary *post = @{@"Title": self.fullStoryLocal.storyTitle,
-                           @"Body": self.editStoryTextView.text,
-                           @"Date": self.fullStoryLocal.storyDate,
-                           @"Sender": self.fullStoryLocal.sender,
-                           @"LastCollaborator": [[FIRAuth auth] currentUser].email,
-                           @"Total Ratings": self.fullStoryLocal.totalRatings,
-                           @"Total Raters": self.fullStoryLocal.totalRaters,
-                           @"Key": key,
-                           @"Comments": self.fullStoryLocal.comments,
-                           @"Total Collaborators": self.fullStoryLocal.totalCollaborators,
-                           @"Raters Array": self.fullStoryLocal.ratersString,
-                           };
     
-        NSDictionary *childUpdates = @{[@"/Stories/" stringByAppendingString:key]: post};
-        [self.ref updateChildValues:childUpdates];
+    
+    
+    
+    
+//    NSString *key = self.fullStoryLocal.key;
+//    self.ref = [[FIRDatabase database] reference];
+//    NSString *storyBody = self.fullStoryLocal.storyBody;
+//    storyBody = [NSString stringWithFormat:@"%@\n%@", self.fullStoryLocal.storyBody, self.editStoryTextView.text];
+//
+//
+//    NSDictionary *post = @{@"Title": self.fullStoryLocal.storyTitle,
+//                           @"Body": self.editStoryTextView.text,
+//                           @"Date": self.fullStoryLocal.storyDate,
+//                           @"Sender": self.fullStoryLocal.sender,
+//                           @"LastCollaborator": [[FIRAuth auth] currentUser].email,
+//                           @"Total Ratings": self.fullStoryLocal.totalRatings,
+//                           @"Total Raters": self.fullStoryLocal.totalRaters,
+//                           @"Key": key,
+//                           @"Comments": self.fullStoryLocal.comments,
+//                           @"Total Collaborators": self.fullStoryLocal.totalCollaborators,
+//                           @"Raters Array": self.fullStoryLocal.ratersString,
+//                           };
+//
+//        NSDictionary *childUpdates = @{[@"/Stories/" stringByAppendingString:key]: post};
+//        [self.ref updateChildValues:childUpdates];
     
 
     
@@ -300,8 +302,50 @@
     
 }//prepareForSegue
 
+- (IBAction)oneStarAction:(id)sender {
 
-//toComments
+
+}//oneStarAction
+
+- (IBAction)twoStarAction:(id)sender {
+}//twoStarAction
+
+
+- (IBAction)threeStarAction:(id)sender {
+}//threeStarAction
+
+
+- (IBAction)fourStarAction:(id)sender {
+}//fourStarAction
+
+- (IBAction)fiveStarAction:(id)sender {
+}//fiveStarAction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @end

@@ -70,6 +70,16 @@
 		F182B700209B881200CCE11B /* AddStory.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B6FF209B881200CCE11B /* AddStory.m */; };
 		F19AB395209DD21900640BF9 /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F19AB394209DD21900640BF9 /* DownloadManager.m */; };
 		F19AB397209DFF4A00640BF9 /* Ratings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19AB396209DFF4A00640BF9 /* Ratings.swift */; };
+		F19AB3A0209E029100640BF9 /* RatingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F19AB39F209E029100640BF9 /* RatingsViewController.m */; };
+		F19AB3AA209E068900640BF9 /* starwhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F19AB3A7209E068600640BF9 /* starwhite@2x.png */; };
+		F19AB3AB209E068900640BF9 /* starwhite.png in Resources */ = {isa = PBXBuildFile; fileRef = F19AB3A8209E068700640BF9 /* starwhite.png */; };
+		F19AB3AC209E068900640BF9 /* starwhite@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F19AB3A9209E068800640BF9 /* starwhite@3x.png */; };
+		F19AB3B0209E06CB00640BF9 /* starGold.png in Resources */ = {isa = PBXBuildFile; fileRef = F19AB3AD209E06C800640BF9 /* starGold.png */; };
+		F19AB3B1209E06CB00640BF9 /* starGold@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F19AB3AE209E06C900640BF9 /* starGold@2x.png */; };
+		F19AB3B2209E06CB00640BF9 /* starGold@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F19AB3AF209E06CA00640BF9 /* starGold@3x.png */; };
+		F19AB3B6209E07B100640BF9 /* starBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F19AB3B3209E07AF00640BF9 /* starBlue@2x.png */; };
+		F19AB3B7209E07B100640BF9 /* starBlue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F19AB3B4209E07B000640BF9 /* starBlue@3x.png */; };
+		F19AB3B8209E07B100640BF9 /* starBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = F19AB3B5209E07B000640BF9 /* starBlue.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -154,6 +164,17 @@
 		F19AB393209DD21900640BF9 /* DownloadManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadManager.h; sourceTree = "<group>"; };
 		F19AB394209DD21900640BF9 /* DownloadManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadManager.m; sourceTree = "<group>"; };
 		F19AB396209DFF4A00640BF9 /* Ratings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ratings.swift; sourceTree = "<group>"; };
+		F19AB39E209E029100640BF9 /* RatingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RatingsViewController.h; sourceTree = "<group>"; };
+		F19AB39F209E029100640BF9 /* RatingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RatingsViewController.m; sourceTree = "<group>"; };
+		F19AB3A7209E068600640BF9 /* starwhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "starwhite@2x.png"; sourceTree = "<group>"; };
+		F19AB3A8209E068700640BF9 /* starwhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starwhite.png; sourceTree = "<group>"; };
+		F19AB3A9209E068800640BF9 /* starwhite@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "starwhite@3x.png"; sourceTree = "<group>"; };
+		F19AB3AD209E06C800640BF9 /* starGold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starGold.png; sourceTree = "<group>"; };
+		F19AB3AE209E06C900640BF9 /* starGold@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "starGold@2x.png"; sourceTree = "<group>"; };
+		F19AB3AF209E06CA00640BF9 /* starGold@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "starGold@3x.png"; sourceTree = "<group>"; };
+		F19AB3B3209E07AF00640BF9 /* starBlue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "starBlue@2x.png"; sourceTree = "<group>"; };
+		F19AB3B4209E07B000640BF9 /* starBlue@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "starBlue@3x.png"; sourceTree = "<group>"; };
+		F19AB3B5209E07B000640BF9 /* starBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starBlue.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +235,8 @@
 				7EA3CF78209A58B600007961 /* Main.storyboard */,
 				F1149876209D1648005674A3 /* CommentsViewController.h */,
 				F1149877209D1648005674A3 /* CommentsViewController.m */,
+				F19AB39E209E029100640BF9 /* RatingsViewController.h */,
+				F19AB39F209E029100640BF9 /* RatingsViewController.m */,
 				F1149879209D1EAA005674A3 /* CommentTableViewCell.h */,
 				F114987A209D1EAA005674A3 /* CommentTableViewCell.m */,
 				F1149807209C775D005674A3 /* FullStoryTableViewCell.h */,
@@ -246,6 +269,15 @@
 		F182B6BA209A629400CCE11B /* images */ = {
 			isa = PBXGroup;
 			children = (
+				F19AB3B5209E07B000640BF9 /* starBlue.png */,
+				F19AB3B3209E07AF00640BF9 /* starBlue@2x.png */,
+				F19AB3B4209E07B000640BF9 /* starBlue@3x.png */,
+				F19AB3AD209E06C800640BF9 /* starGold.png */,
+				F19AB3AE209E06C900640BF9 /* starGold@2x.png */,
+				F19AB3AF209E06CA00640BF9 /* starGold@3x.png */,
+				F19AB3A8209E068700640BF9 /* starwhite.png */,
+				F19AB3A7209E068600640BF9 /* starwhite@2x.png */,
+				F19AB3A9209E068800640BF9 /* starwhite@3x.png */,
 				F114982F209CAD95005674A3 /* done2.png */,
 				F1149830209CAD97005674A3 /* done2@2x.png */,
 				F114982E209CAD94005674A3 /* done2@3x.png */,
@@ -382,22 +414,29 @@
 				F1149826209CA8E6005674A3 /* blueCapsuleButton2@3x.png in Resources */,
 				F182B6F3209B5C5800CCE11B /* bigAssButton2@3x.png in Resources */,
 				7EA3CF87209A59B300007961 /* GoogleService-Info.plist in Resources */,
+				F19AB3B8209E07B100640BF9 /* starBlue.png in Resources */,
 				F182B6D2209A632300CCE11B /*  Register@2x.png in Resources */,
 				F182B6CF209A632300CCE11B /* Launch Screen.png in Resources */,
+				F19AB3B7209E07B100640BF9 /* starBlue@3x.png in Resources */,
 				F114980E209C7E1C005674A3 /* editButton@2x.png in Resources */,
 				F1149831209CAD99005674A3 /* done2@3x.png in Resources */,
+				F19AB3B0209E06CB00640BF9 /* starGold.png in Resources */,
 				F1149815209CA685005674A3 /* yellowCapsuleButton Copy@3x.png in Resources */,
 				F11497F8209B94B9005674A3 /* line@3x.png in Resources */,
 				F182B6ED209A8B4A00CCE11B /* bigAssButton.png in Resources */,
 				F182B6EE209A8B4A00CCE11B /* bigAssButton@2x.png in Resources */,
 				F1149825209CA8E6005674A3 /* blueCapsuleButton2.png in Resources */,
 				F1149820209CA856005674A3 /* editButton2@3x.png in Resources */,
+				F19AB3B2209E06CB00640BF9 /* starGold@3x.png in Resources */,
 				F182B6F5209B5C5800CCE11B /* bigAssButton2@2x.png in Resources */,
+				F19AB3AC209E068900640BF9 /* starwhite@3x.png in Resources */,
 				F114982C209CAA5F005674A3 /* done@2x.png in Resources */,
+				F19AB3AA209E068900640BF9 /* starwhite@2x.png in Resources */,
 				F114980D209C7E1C005674A3 /* editButton.png in Resources */,
 				F11497FE209B9F16005674A3 /* capsuleButton@2x.png in Resources */,
 				F182B6CD209A632300CCE11B /*  Register.png in Resources */,
 				F114981B209CA6FF005674A3 /* blueCapsuleButton@2x.png in Resources */,
+				F19AB3B1209E06CB00640BF9 /* starGold@2x.png in Resources */,
 				F182B6EF209A8B4A00CCE11B /* bigAssButton@3x.png in Resources */,
 				F1149827209CA8E6005674A3 /* blueCapsuleButton2@2x.png in Resources */,
 				F1149821209CA856005674A3 /* editButton2.png in Resources */,
@@ -412,6 +451,8 @@
 				7EA3CF7A209A58B600007961 /* Main.storyboard in Resources */,
 				F114980F209C7E1C005674A3 /* editButton@3x.png in Resources */,
 				F11497F9209B94B9005674A3 /* line@2x.png in Resources */,
+				F19AB3B6209E07B100640BF9 /* starBlue@2x.png in Resources */,
+				F19AB3AB209E068900640BF9 /* starwhite.png in Resources */,
 				F182B6CE209A632300CCE11B /*  Register@3x.png in Resources */,
 				F1149833209CAD99005674A3 /* done2@2x.png in Resources */,
 				F1149813209CA685005674A3 /* yellowCapsuleButton Copy.png in Resources */,
@@ -476,6 +517,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F182B6DF209A80EA00CCE11B /* FriendsViewController.m in Sources */,
+				F19AB3A0209E029100640BF9 /* RatingsViewController.m in Sources */,
 				F1149806209BCE32005674A3 /* FullStoryView.m in Sources */,
 				F182B6E2209A80F400CCE11B /* RandomViewController.m in Sources */,
 				F182B6E5209A810900CCE11B /* CurrentStoryViewController.m in Sources */,

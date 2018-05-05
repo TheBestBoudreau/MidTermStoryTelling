@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MidTermProject-Swift.h"
+#import "DownloadManager.h"
 @import Firebase;
 
 @interface CommentsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
@@ -15,5 +16,6 @@
 
 
 
+@property (nonatomic) DownloadManager *downMan;
 
 @end
