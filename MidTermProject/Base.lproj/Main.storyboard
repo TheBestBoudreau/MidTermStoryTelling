@@ -272,6 +272,13 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTM-T3-ISw">
+                                        <rect key="frame" x="20" y="289" width="335" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Chx-gd-kZS">
                                         <rect key="frame" x="106" y="507" width="163" height="42"/>
                                         <constraints>
@@ -372,6 +379,7 @@
                         <outlet property="commentRateView" destination="aNd-e8-WmY" id="yCi-yB-sre"/>
                         <outlet property="doneView" destination="8lr-vy-R8U" id="cYl-8B-big"/>
                         <outlet property="editButtonOutlet" destination="cbK-O9-w1I" id="ifR-Xf-h7r"/>
+                        <outlet property="editCharacterCounter" destination="uTM-T3-ISw" id="wcH-99-CXr"/>
                         <outlet property="editStoryTextView" destination="dPH-ua-ecy" id="qQL-Eo-Gz9"/>
                         <outlet property="editView" destination="BO2-9l-v9L" id="M9m-8X-EaZ"/>
                         <outlet property="tableView" destination="qLR-L8-na2" id="aoj-KV-ITu"/>
@@ -381,7 +389,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tMz-eW-zjg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1581.5999999999999" y="464.6176911544228"/>
+            <point key="canvasLocation" x="1581.5" y="464.5"/>
         </scene>
         <!--Feed-->
         <scene sceneID="4n7-2q-FfJ">

@@ -13,6 +13,7 @@
 
 @interface FullStoryView ()
 
+@property (weak, nonatomic) IBOutlet UILabel *editCharacterCounter;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) NSMutableArray *storyArray;
 @property (strong, nonatomic) IBOutlet UIButton *editButtonOutlet;
@@ -23,6 +24,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *doneView;
 @property (strong, nonatomic) IBOutlet UIView *commentRateView;
 @property (nonatomic) NSTimer *timer;
+@property (nonatomic) NSUInteger previousTextLength;
 @property int timerInt;
 
 
@@ -56,6 +58,8 @@
     
     NSLog(@"MY BODY:::%@",self.fullStoryLocal.key);
 //    NSLog(@"%@", self.storyArray);
+    
+    _previousTextLength = self.fullStoryLocal.storyBody.length;
     
     [self updateLocalUser];
     
@@ -130,6 +134,13 @@
 }//backButtonAction
 
 #pragma TextView Delegate Methods
+
+-(void)textViewDidChange:(UITextView *)textView{
+    NSUInteger length = textView.text.length - self.previousTextLength;
+
+        self.editCharacterCounter.text = [NSString stringWithFormat:@"Characters Left: %lu", 300 - length];
+}
+
 
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     if (range.location < self.fullStoryLocal.storyBody.length){
