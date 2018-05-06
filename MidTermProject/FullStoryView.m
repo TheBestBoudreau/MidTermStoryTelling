@@ -14,6 +14,7 @@
 
 @interface FullStoryView ()
 
+@property (weak, nonatomic) IBOutlet UILabel *editCharacterCounter;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) NSMutableArray *storyArray;
 @property (strong, nonatomic) IBOutlet UIButton *editButtonOutlet;
@@ -24,6 +25,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *doneView;
 @property (strong, nonatomic) IBOutlet UIView *commentRateView;
 @property (nonatomic) NSTimer *timer;
+@property (nonatomic) NSUInteger previousTextLength;
 @property int timerInt;
 @property (strong, nonatomic) IBOutlet UIView *rateView;
 @property (strong, nonatomic) IBOutlet UIButton *oneStarOutlet;
@@ -67,6 +69,8 @@
     
     NSLog(@"MY BODY:::%@",self.fullStoryLocal.key);
 //    NSLog(@"%@", self.storyArray);
+    
+    _previousTextLength = self.fullStoryLocal.storyBody.length;
     
     [self updateLocalUser];
     
@@ -147,6 +151,13 @@
 }//backButtonAction
 
 #pragma TextView Delegate Methods
+
+-(void)textViewDidChange:(UITextView *)textView{
+    NSUInteger length = textView.text.length - self.previousTextLength;
+
+        self.editCharacterCounter.text = [NSString stringWithFormat:@"Characters Left: %lu", 300 - length];
+}
+
 
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     if (range.location < self.fullStoryLocal.storyBody.length){
@@ -316,6 +327,7 @@
 
 
 -(void)renderStars {
+    [self checkIfAlreadyRated];
     
     switch (self.starCount) {
         case 1:
@@ -390,13 +402,22 @@
     
     if (self.alreadyRated) {
         NSLog(@"Raters key is %@", self.ratedKey);
-        
         [newUM updateRating:self.ref withObj:self.fullStoryLocal withRating:localRating andUsername:[[FIRAuth auth] currentUser].email andRatersKey:self.ratedKey];
-        
-        
     } else {
     [newUM addNewRatings:self.ref withObj:self.fullStoryLocal withRating:localRating andUsername:[[FIRAuth auth] currentUser].email];
     }
+    
+  
+    Ratings *thisRating = [Ratings new];
+    thisRating.raterName = [[FIRAuth auth] currentUser].email;
+    thisRating.raterRating = localRating;
+    thisRating.ratingKey = self.ratedKey;
+    
+    [self.fullStoryLocal.ratersArray addObject:thisRating];
+    [self checkIfAlreadyRated];
+    
+    
+    
     
 }//sendRatings
 

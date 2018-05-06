@@ -7,7 +7,7 @@
 //
 
 #import "AddStory.h"
-#import "CollectionViewCell.h"
+
 @import Firebase;
 
 
@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UITextView *storyTextView;
 @property (strong, nonatomic) FIRDatabaseReference *ref;
 @property (strong, nonatomic) IBOutlet UIButton *publishOut;
+@property (weak, nonatomic) IBOutlet UILabel *characterCounter;
 
 
 
@@ -157,6 +158,17 @@
     
 }//cancelAction
 
+-(void)textViewDidChange:(UITextView *)textView{
+    
+    if ([[textView text] length] > 300){
+        
+        textView.text = [textView.text substringFromIndex:300];
+        
+    }
+    
+    self.characterCounter.text = [NSString stringWithFormat: @"Characters left : %lu", 300 - [[textView text]length]];
+    
+}
 
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {

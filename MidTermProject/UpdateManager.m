@@ -80,29 +80,19 @@
     
     NSString *key = thisStory.key;
     ref = [[FIRDatabase database] reference];
-    NSString *path = [NSString stringWithFormat:@"Stories/%@", key];
+    NSString *path = [NSString stringWithFormat:@"Stories/%@/Raters", key];
     
     [[ref child:path] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         
         
         
         NSDictionary *dict = snapshot.value;
-        NSLog(@"Dictionary is %@",dict);
-        NSDictionary *ratingDict = dict[@"Raters"];
+        NSDictionary *ratingDict = dict[raterKey];
         
-        
-        [ratingDict setValue:userRating forKey:@"Rater Rating"];
-        
-        
-        [dict setValue:ratingDict forKey:@"Raters"];
-        
-        
-        
-        NSString *path2 = [NSString stringWithFormat:@"Stories/%@/Raters", key];
-        FIRDatabaseReference *myID2 = [ref child:path2];
-        [myID2 updateChildValues:ratingDict];
-//
-        
+        NSLog(@"rating dict is %@", ratingDict);
+         [ratingDict setValue:userRating forKey:@"Rater Rating"];
+        FIRDatabaseReference *myID2 = [ref child:path];
+        [myID2 updateChildValues:dict];
         
     } withCancelBlock:^(NSError * _Nonnull error) {
         NSLog(@"%@", error.localizedDescription);
