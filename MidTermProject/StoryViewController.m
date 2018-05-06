@@ -79,10 +79,13 @@
     cell.titleLabel.text = thisStory.storyTitle;
     cell.dateLabel.text = thisStory.storyDate;
     cell.bodyLabel.text = thisStory.storyBody;
-    cell.ratingsLabel.text = thisStory.doubleRatings;
+    cell.ratingsLabel.text = [NSString stringWithFormat:@"Rating %@",thisStory.doubleRatings];
     cell.cellView.layer.cornerRadius = 15;
     cell.cellView.layer.masksToBounds = true;
     
+    if ([cell.ratingsLabel.text isEqualToString:[NSString stringWithFormat:@"Rating "]]){
+        cell.ratingsLabel.text = @"Not Rated";
+    }
     
     
     return cell;
@@ -91,7 +94,6 @@
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    Stories *staticStory = [Stories new];
     self.myStoryProperty = [_storyArray objectAtIndex:indexPath.row];
     
     [self performSegueWithIdentifier:@"fullStory" sender:self];
