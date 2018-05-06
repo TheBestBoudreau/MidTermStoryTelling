@@ -48,6 +48,7 @@
 		F114987B209D1EAA005674A3 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F114987A209D1EAA005674A3 /* CommentTableViewCell.m */; };
 		F114987D209D20CF005674A3 /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = F114987C209D20CF005674A3 /* Comments.swift */; };
 		F1149882209D3AA0005674A3 /* UpdateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1149881209D3AA0005674A3 /* UpdateManager.m */; };
+		F1399146209F889100A92E5A /* StoriesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1399145209F889100A92E5A /* StoriesManager.m */; };
 		F182B6CD209A632300CCE11B /*  Register.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6C7209A632100CCE11B /*  Register.png */; };
 		F182B6CE209A632300CCE11B /*  Register@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6C8209A632200CCE11B /*  Register@3x.png */; };
 		F182B6CF209A632300CCE11B /* Launch Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6C9209A632200CCE11B /* Launch Screen.png */; };
@@ -93,6 +94,7 @@
 		F19AB3FC209E329800640BF9 /* 0 star.png in Resources */ = {isa = PBXBuildFile; fileRef = F19AB3EA209E329800640BF9 /* 0 star.png */; };
 		F19AB3FD209E329800640BF9 /* 2 star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F19AB3EB209E329800640BF9 /* 2 star@2x.png */; };
 		F19AB3FE209E329800640BF9 /* 1 star@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F19AB3EC209E329800640BF9 /* 1 star@3x.png */; };
+		F19AB405209F667200640BF9 /* UploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F19AB404209F667200640BF9 /* UploadManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -147,6 +149,9 @@
 		F114987C209D20CF005674A3 /* Comments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
 		F1149880209D3AA0005674A3 /* UpdateManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpdateManager.h; sourceTree = "<group>"; };
 		F1149881209D3AA0005674A3 /* UpdateManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpdateManager.m; sourceTree = "<group>"; };
+		F1399143209F7EC300A92E5A /* protocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = protocol.h; sourceTree = "<group>"; };
+		F1399144209F889100A92E5A /* StoriesManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoriesManager.h; sourceTree = "<group>"; };
+		F1399145209F889100A92E5A /* StoriesManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoriesManager.m; sourceTree = "<group>"; };
 		F182B6C7209A632100CCE11B /*  Register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = " Register.png"; sourceTree = "<group>"; };
 		F182B6C8209A632200CCE11B /*  Register@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = " Register@3x.png"; sourceTree = "<group>"; };
 		F182B6C9209A632200CCE11B /* Launch Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Launch Screen.png"; sourceTree = "<group>"; };
@@ -196,6 +201,8 @@
 		F19AB3EA209E329800640BF9 /* 0 star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "0 star.png"; sourceTree = "<group>"; };
 		F19AB3EB209E329800640BF9 /* 2 star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2 star@2x.png"; sourceTree = "<group>"; };
 		F19AB3EC209E329800640BF9 /* 1 star@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1 star@3x.png"; sourceTree = "<group>"; };
+		F19AB403209F667200640BF9 /* UploadManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UploadManager.h; sourceTree = "<group>"; };
+		F19AB404209F667200640BF9 /* UploadManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UploadManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,10 +253,15 @@
 				F182B6E6209A879300CCE11B /* Stories.swift */,
 				F182B6E8209A896F00CCE11B /* User.swift */,
 				F19AB398209DFF5D00640BF9 /* Controller */,
+				F19AB403209F667200640BF9 /* UploadManager.h */,
+				F19AB404209F667200640BF9 /* UploadManager.m */,
 				F1149880209D3AA0005674A3 /* UpdateManager.h */,
 				F1149881209D3AA0005674A3 /* UpdateManager.m */,
 				F19AB393209DD21900640BF9 /* DownloadManager.h */,
 				F19AB394209DD21900640BF9 /* DownloadManager.m */,
+				F1399144209F889100A92E5A /* StoriesManager.h */,
+				F1399145209F889100A92E5A /* StoriesManager.m */,
+				F1399143209F7EC300A92E5A /* protocol.h */,
 				F182B6BA209A629400CCE11B /* images */,
 				7EA3CF74209A58B600007961 /* AppDelegate.swift */,
 				7EA3CF76209A58B600007961 /* ViewController.swift */,
@@ -572,7 +584,9 @@
 				F1149809209C775D005674A3 /* FullStoryTableViewCell.m in Sources */,
 				F1149803209BB0BF005674A3 /* TableViewCell.m in Sources */,
 				F1149878209D1648005674A3 /* CommentsViewController.m in Sources */,
+				F1399146209F889100A92E5A /* StoriesManager.m in Sources */,
 				F114987B209D1EAA005674A3 /* CommentTableViewCell.m in Sources */,
+				F19AB405209F667200640BF9 /* UploadManager.m in Sources */,
 				F182B700209B881200CCE11B /* AddStory.m in Sources */,
 				F114987D209D20CF005674A3 /* Comments.swift in Sources */,
 				F19AB397209DFF4A00640BF9 /* Ratings.swift in Sources */,

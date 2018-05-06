@@ -9,6 +9,7 @@
 #import "FullStoryView.h"
 #import "CommentsViewController.h"
 #import "UpdateManager.h"
+#import "DownloadManager.h"
 
 
 

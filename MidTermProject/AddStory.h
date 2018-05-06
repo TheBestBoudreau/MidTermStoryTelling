@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UploadManager.h"
 
 @interface AddStory : UIViewController <UITextViewDelegate, UITextFieldDelegate>
 

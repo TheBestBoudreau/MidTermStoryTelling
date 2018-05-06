@@ -167,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="822" y="-304"/>
+            <point key="canvasLocation" x="821.60000000000002" y="-304.4977511244378"/>
         </scene>
         <!--Full Story View-->
         <scene sceneID="b59-Nc-iZI">
@@ -857,6 +857,6 @@
         <image name="yellowCapsuleButton Copy.png" width="163" height="42"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gYI-6g-IlZ"/>
+        <segue reference="eTf-x5-BDs"/>
     </inferredMetricsTieBreakers>
 </document>

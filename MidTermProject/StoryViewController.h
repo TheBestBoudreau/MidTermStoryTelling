@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 @import Firebase;
+#import "StoriesManager.h"
+#import "DownloadManager.h"
 
 
 
-@interface StoryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,UITextViewDelegate>
+
+@interface StoryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,UITextViewDelegate, DownloadMethod>
 
 @end

@@ -8,7 +8,8 @@
 
 import UIKit
 
-class Stories: NSObject {
+@objcMembers
+ class Stories: NSObject {
 
    @objc var storyTitle:String = ""
    @objc var storyBody:String = ""
