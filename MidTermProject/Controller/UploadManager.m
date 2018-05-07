@@ -50,14 +50,17 @@
     [myDict setObject:myID2.key forKey:@"Key"];
     [myID2 setValue:myDict];
     
-    
 }//uploadStoryWithRef
 
+
 -(NSString *) getDate {
+    
     NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
     dateFormatter.dateStyle = NSDateFormatterMediumStyle;
     return [dateFormatter stringFromDate:[NSDate date]];
+    
 }//getDate
+
 
 
 @end

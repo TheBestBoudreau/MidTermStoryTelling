@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @import Firebase;
-#import "StoriesManager.h"
+
 #import "DownloadManager.h"
 
 

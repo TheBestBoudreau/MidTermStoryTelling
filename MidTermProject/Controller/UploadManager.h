@@ -7,10 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MidTermProject-Swift.h"
+
 @import Firebase;
 
-
 @interface UploadManager : NSObject
+
 -(void) uploadStoryWithRef:(FIRDatabaseReference *)ref withStoryTitle:(NSString *)storyTitle andStoryBody:(NSString *)storyBody;
+
 -(NSString *) getDate;
+
 @end

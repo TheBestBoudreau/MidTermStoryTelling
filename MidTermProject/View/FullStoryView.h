@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "MidTermProject-Swift.h"
 #import "FullStoryTableViewCell.h"
+#import "UpdateManager.h"
 @import Firebase;
 
-@interface FullStoryView : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
+@interface FullStoryView : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UpdateUserAbility>
 @property (nonatomic) Stories* fullStoryLocal;
 @end

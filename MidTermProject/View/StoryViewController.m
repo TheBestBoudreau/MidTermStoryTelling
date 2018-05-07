@@ -21,6 +21,7 @@
 @property (nonatomic) Stories * myStoryProperty;
 @property (strong, nonatomic) NSMutableArray *storyArray;
 @property (nonatomic) NSTimer *timer;
+
 @end
 
 @implementation StoryViewController
@@ -28,34 +29,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     self.storyArray = [NSMutableArray new];
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(checkCount) userInfo:nil repeats:true];
     
 }//load
 
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:true];
     
-    [self retriveMessages];
+    [self downloadStories];
     self.storyArray = [NSMutableArray new];
-    [self.storyFeedTableView reloadData];
-    [self configureTableView];
     
 }//viewWillAppear
 
-
 #pragma Setup TableView
-
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
     return self.storyArray.count;
-    
 }
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-  
+    
     TableViewCell * cell = [tableView dequeueReusableCellWithIdentifier: @"storyCell"];
     
     Stories *thisStory = [self.storyArray objectAtIndex:indexPath.row];
@@ -71,100 +66,75 @@
         cell.ratingsLabel.text = @"Not Rated";
     }
     
-    
     return cell;
     
 }
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
     self.myStoryProperty = [_storyArray objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:@"fullStory" sender:self];
     
 }
 
-
-
--(void) retriveMessages {
+#pragma Download Stories
+-(void) downloadStories {
     
     DownloadManager *newDownMan = [DownloadManager new];
     newDownMan.delegate = self;
     self.ref = [[FIRDatabase database] reference];
     [newDownMan downloadStoriesWithRef:self.ref];
     
-    
-}//retriveMessages
+}//downloadStories
 
 -(void)configureTableView {
+    
     self.storyFeedTableView.rowHeight = UITableViewAutomaticDimension;
     self.storyFeedTableView.estimatedRowHeight = 120;
     
-    
 }//configureTableView
 
-
+#pragma Prepare For Segue
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
     if ([segue.identifier isEqualToString:@"fullStory"]) {
         
-        
         FullStoryView * fvc = segue.destinationViewController;
         fvc.fullStoryLocal = self.myStoryProperty;
-    }
+    }//if
     
-}
+}//prepareForSegue
 
+#pragma StatusBarStyle
 -(UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
 
 
--(void) createUserNameArraysFromRatings {
-    
-}//createUserNameArraysFromRatings
-
--(void)addStoriesToArray:(Stories *)story {
-    
-    [self.storyArray insertObject:story atIndex:0];
-    [self.storyFeedTableView reloadData];
-    [self configureTableView];
-    
-    NSLog(@"addStoriesToArray");
-}//addStoriesToArray
-
--(void)keepRunningdownloadManager {
-    
-    
-    
-    
-    NSLog(@"Stories array is %lu", self.storyArray.count);
-    
-    
-    if (self.storyArray.count > 0) {
-        [self.timer invalidate];
-        NSLog(@"Im invalidated");
-    }
-}//keepRunningdownloadManager
-
-
--(void)updateStoriesArray:(DownloadManager *)newDownManger {
-    self.storyArray = newDownManger.storiesArray;
-}
-
-
+#pragma Delegate Method
 -(void)addNewStory:(Stories *)story {
     NSLog(@"Added story");
-    [self.storyArray insertObject:story atIndex:0];
-                    [self.storyFeedTableView reloadData];
-                    [self configureTableView];
-}
+    [self.storyArray addObject:story];
+    [self.storyFeedTableView reloadData];
+    [self configureTableView];
+}//addNewStory
+
+-(void)updateLocalStoriesArray:(NSMutableArray *)freshStoriesArray {
+    self.storyArray = freshStoriesArray;
+    [self.storyFeedTableView reloadData];
+    [self configureTableView];
+}//updateLocalStoriesArray
 
 
--(void)makeItPrint {
-    NSLog(@"delegate runs");
-}
-
+#pragma Check Timer
+-(void) checkCount {
+    DownloadManager *newDownMan = [DownloadManager new];
+    newDownMan.delegate = self;
+    self.ref = [[FIRDatabase database] reference];
+    [newDownMan updateStoriesWithRef:self.ref andArray:self.storyArray];
+    
+}//checkCount
 
 
 

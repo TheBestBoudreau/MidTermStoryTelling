@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "MidTermProject-Swift.h"
 #import "DownloadManager.h"
+#import "UploadManager.h"
 @import Firebase;
 
-@interface CommentsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+@interface CommentsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UpdateComments>
 @property (nonatomic) Stories *commentsLocalStory;
 
 
 
-@property (nonatomic) DownloadManager *downMan;
+
 
 @end

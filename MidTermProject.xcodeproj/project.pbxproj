@@ -48,7 +48,6 @@
 		F114987B209D1EAA005674A3 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F114987A209D1EAA005674A3 /* CommentTableViewCell.m */; };
 		F114987D209D20CF005674A3 /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = F114987C209D20CF005674A3 /* Comments.swift */; };
 		F1149882209D3AA0005674A3 /* UpdateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1149881209D3AA0005674A3 /* UpdateManager.m */; };
-		F1399146209F889100A92E5A /* StoriesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1399145209F889100A92E5A /* StoriesManager.m */; };
 		F182B6CD209A632300CCE11B /*  Register.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6C7209A632100CCE11B /*  Register.png */; };
 		F182B6CE209A632300CCE11B /*  Register@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6C8209A632200CCE11B /*  Register@3x.png */; };
 		F182B6CF209A632300CCE11B /* Launch Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = F182B6C9209A632200CCE11B /* Launch Screen.png */; };
@@ -149,9 +148,6 @@
 		F114987C209D20CF005674A3 /* Comments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
 		F1149880209D3AA0005674A3 /* UpdateManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpdateManager.h; sourceTree = "<group>"; };
 		F1149881209D3AA0005674A3 /* UpdateManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpdateManager.m; sourceTree = "<group>"; };
-		F1399143209F7EC300A92E5A /* protocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = protocol.h; sourceTree = "<group>"; };
-		F1399144209F889100A92E5A /* StoriesManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoriesManager.h; sourceTree = "<group>"; };
-		F1399145209F889100A92E5A /* StoriesManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoriesManager.m; sourceTree = "<group>"; };
 		F182B6C7209A632100CCE11B /*  Register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = " Register.png"; sourceTree = "<group>"; };
 		F182B6C8209A632200CCE11B /*  Register@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = " Register@3x.png"; sourceTree = "<group>"; };
 		F182B6C9209A632200CCE11B /* Launch Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Launch Screen.png"; sourceTree = "<group>"; };
@@ -247,46 +243,49 @@
 		7EA3CF73209A58B600007961 /* MidTermProject */ = {
 			isa = PBXGroup;
 			children = (
-				F19AB392209D40F000640BF9 /* Model */,
-				F114987C209D20CF005674A3 /* Comments.swift */,
-				F19AB396209DFF4A00640BF9 /* Ratings.swift */,
-				F182B6E6209A879300CCE11B /* Stories.swift */,
-				F182B6E8209A896F00CCE11B /* User.swift */,
-				F19AB398209DFF5D00640BF9 /* Controller */,
-				F19AB403209F667200640BF9 /* UploadManager.h */,
-				F19AB404209F667200640BF9 /* UploadManager.m */,
-				F1149880209D3AA0005674A3 /* UpdateManager.h */,
-				F1149881209D3AA0005674A3 /* UpdateManager.m */,
-				F19AB393209DD21900640BF9 /* DownloadManager.h */,
-				F19AB394209DD21900640BF9 /* DownloadManager.m */,
-				F1399144209F889100A92E5A /* StoriesManager.h */,
-				F1399145209F889100A92E5A /* StoriesManager.m */,
-				F1399143209F7EC300A92E5A /* protocol.h */,
-				F182B6BA209A629400CCE11B /* images */,
 				7EA3CF74209A58B600007961 /* AppDelegate.swift */,
-				7EA3CF76209A58B600007961 /* ViewController.swift */,
-				7EA3CF78209A58B600007961 /* Main.storyboard */,
-				F1149876209D1648005674A3 /* CommentsViewController.h */,
-				F1149877209D1648005674A3 /* CommentsViewController.m */,
-				F1149879209D1EAA005674A3 /* CommentTableViewCell.h */,
-				F114987A209D1EAA005674A3 /* CommentTableViewCell.m */,
-				F1149807209C775D005674A3 /* FullStoryTableViewCell.h */,
-				F1149808209C775D005674A3 /* FullStoryTableViewCell.m */,
-				F1149804209BCE32005674A3 /* FullStoryView.h */,
-				F1149805209BCE32005674A3 /* FullStoryView.m */,
-				F1149801209BB0BF005674A3 /* TableViewCell.h */,
-				F1149802209BB0BF005674A3 /* TableViewCell.m */,
+				F19AB392209D40F000640BF9 /* Model */,
+				F139916C20A09C2100A92E5A /* View */,
+				F19AB398209DFF5D00640BF9 /* Controller */,
+				F182B6BA209A629400CCE11B /* images */,
 				7EA3CF7B209A58B600007961 /* Assets.xcassets */,
-				F182B6DA209A80DE00CCE11B /* StoryViewController.h */,
-				F182B6DB209A80DE00CCE11B /* StoryViewController.m */,
-				F182B6FE209B881200CCE11B /* AddStory.h */,
-				F182B6FF209B881200CCE11B /* AddStory.m */,
 				F182B6D9209A80DE00CCE11B /* MidTermProject-Bridging-Header.h */,
 				7EA3CF7D209A58B600007961 /* LaunchScreen.storyboard */,
 				7EA3CF80209A58B600007961 /* Info.plist */,
 				7EA3CF86209A59B200007961 /* GoogleService-Info.plist */,
 			);
 			path = MidTermProject;
+			sourceTree = "<group>";
+		};
+		F139916C20A09C2100A92E5A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7EA3CF76209A58B600007961 /* ViewController.swift */,
+				7EA3CF78209A58B600007961 /* Main.storyboard */,
+				F1149876209D1648005674A3 /* CommentsViewController.h */,
+				F1149877209D1648005674A3 /* CommentsViewController.m */,
+				F1149804209BCE32005674A3 /* FullStoryView.h */,
+				F1149805209BCE32005674A3 /* FullStoryView.m */,
+				F182B6DA209A80DE00CCE11B /* StoryViewController.h */,
+				F182B6DB209A80DE00CCE11B /* StoryViewController.m */,
+				F182B6FE209B881200CCE11B /* AddStory.h */,
+				F182B6FF209B881200CCE11B /* AddStory.m */,
+				F139916D20A09C5200A92E5A /* Cells */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F139916D20A09C5200A92E5A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F1149879209D1EAA005674A3 /* CommentTableViewCell.h */,
+				F114987A209D1EAA005674A3 /* CommentTableViewCell.m */,
+				F1149807209C775D005674A3 /* FullStoryTableViewCell.h */,
+				F1149808209C775D005674A3 /* FullStoryTableViewCell.m */,
+				F1149801209BB0BF005674A3 /* TableViewCell.h */,
+				F1149802209BB0BF005674A3 /* TableViewCell.m */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		F182B6BA209A629400CCE11B /* images */ = {
@@ -365,6 +364,10 @@
 		F19AB392209D40F000640BF9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F114987C209D20CF005674A3 /* Comments.swift */,
+				F19AB396209DFF4A00640BF9 /* Ratings.swift */,
+				F182B6E6209A879300CCE11B /* Stories.swift */,
+				F182B6E8209A896F00CCE11B /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -372,6 +375,12 @@
 		F19AB398209DFF5D00640BF9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F19AB403209F667200640BF9 /* UploadManager.h */,
+				F19AB404209F667200640BF9 /* UploadManager.m */,
+				F1149880209D3AA0005674A3 /* UpdateManager.h */,
+				F1149881209D3AA0005674A3 /* UpdateManager.m */,
+				F19AB393209DD21900640BF9 /* DownloadManager.h */,
+				F19AB394209DD21900640BF9 /* DownloadManager.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -584,7 +593,6 @@
 				F1149809209C775D005674A3 /* FullStoryTableViewCell.m in Sources */,
 				F1149803209BB0BF005674A3 /* TableViewCell.m in Sources */,
 				F1149878209D1648005674A3 /* CommentsViewController.m in Sources */,
-				F1399146209F889100A92E5A /* StoriesManager.m in Sources */,
 				F114987B209D1EAA005674A3 /* CommentTableViewCell.m in Sources */,
 				F19AB405209F667200640BF9 /* UploadManager.m in Sources */,
 				F182B700209B881200CCE11B /* AddStory.m in Sources */,

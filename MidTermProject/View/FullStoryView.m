@@ -27,7 +27,7 @@
 @property (strong, nonatomic) IBOutlet UIView *commentRateView;
 @property (nonatomic) NSTimer *timer;
 @property (nonatomic) NSUInteger previousTextLength;
-@property int timerInt;
+
 @property (strong, nonatomic) IBOutlet UIView *rateView;
 @property (strong, nonatomic) IBOutlet UIButton *oneStarOutlet;
 @property (strong, nonatomic) IBOutlet UIButton *twoStarOutlet;
@@ -59,32 +59,15 @@
     self.doneView.hidden = true;
     self.editStoryTextView.text = self.fullStoryLocal.storyBody;
     
-    
     self.timer = [[NSTimer alloc] init];
-    self.timerInt = 0;
-    
-    
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateLocalUser) userInfo:nil repeats:true];
-    
-   
-    
-    NSLog(@"MY BODY:::%@",self.fullStoryLocal.key);
-//    NSLog(@"%@", self.storyArray);
     
     _previousTextLength = self.fullStoryLocal.storyBody.length;
     
     [self updateLocalUser];
-    
     [self checkIfAlreadyRated];
     
-    
-    
-    
-    
-    
 }//load
-
-
 
 #pragma Setup TableView
 
@@ -95,8 +78,6 @@
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     FullStoryTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier: @"Cell"];
-    
-    Stories *thisStory = [self.storyArray objectAtIndex:indexPath.row];
     
     if (indexPath.row == 0) {
     cell.label1.text = [self.storyArray objectAtIndex:0];
@@ -110,9 +91,9 @@
 }
 
 -(void)configureTableView {
+
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 120;
-    
     
 }//configureTableView
 
@@ -127,19 +108,19 @@
 #pragma Edit Button Action
 
 - (IBAction)editButtonAction:(UIButton *)sender {
+    
     self.editView.hidden = false;
     [self.backButtonOut setTitle:@"Hide" forState:UIControlStateNormal];
     [self.editStoryTextView becomeFirstResponder];
     self.commentRateView.hidden = true;
-    
     self.fullStoryLocal.storyBody = self.editStoryTextView.text;
-//    self.editStoryTextView.text = self.fullStoryLocal.storyBody;
 
 }//editButtonAction
 
 #pragma Back Button Action
 
 - (IBAction)backButtonAction:(id)sender {
+
     if (self.editView.isHidden) {
         [self performSegueWithIdentifier:@"takeMeBack" sender:self];
     } else {
@@ -149,6 +130,7 @@
     
     [self.editStoryTextView resignFirstResponder];
     self.commentRateView.hidden = false;
+    
 }//backButtonAction
 
 #pragma TextView Delegate Methods
@@ -161,14 +143,17 @@
 
 
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
     if (range.location < self.fullStoryLocal.storyBody.length){
         return NO;
     }
     
     return textView.text.length + (text.length - range.length) <= self.fullStoryLocal.storyBody.length + 300;
+    
 }//shouldChangeTextInRange
 
 -(void) addKeyboardButtons {
+   
     UIToolbar* keyboardToolbar = [[UIToolbar alloc] init];
     [keyboardToolbar sizeToFit];
     UIBarButtonItem *flexBarButton = [[UIBarButtonItem alloc]
@@ -179,6 +164,7 @@
                                       target:self action:@selector(doneWithNumberPad)];
     keyboardToolbar.items = @[flexBarButton, doneBarButton];
     self.editStoryTextView.inputAccessoryView = keyboardToolbar;
+    
 }//addKeyboardButtons
 
 
@@ -235,43 +221,13 @@
 
 -(void) updateLocalUser {
     
-    
     self.ref = [[FIRDatabase database] reference];
     NSString *key = self.fullStoryLocal.key;
     
+    UpdateManager *newUpdateManager = [UpdateManager new];
+    newUpdateManager.delegate = self;
+    [newUpdateManager updateUserWithRef:self.ref andKey:key andStory:self.fullStoryLocal];
     
-    [[self.ref child:[@"/Stories/" stringByAppendingString:key]] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-        NSDictionary *thisDict = snapshot.value;
-        
-            self.fullStoryLocal.storyTitle = thisDict[@"Title"];
-            self.fullStoryLocal.storyBody = thisDict[@"Body"];
-            self.fullStoryLocal.storyDate = thisDict[@"Date"];
-            self.fullStoryLocal.sender = thisDict[@"Sender"];
-            self.fullStoryLocal.lastCollaborator = thisDict[@"LastCollaborator"];
-            self.fullStoryLocal.totalRaters = thisDict[@"Total Raters"];
-            self.fullStoryLocal.totalRatings = thisDict[@"Total Ratings"];
-            self.fullStoryLocal.comments = thisDict[@"Comments"];
-            self.fullStoryLocal.totalCollaborators = thisDict[@"Total Collaborators"];
-            self.fullStoryLocal.key = thisDict[@"Key"];
-            self.fullStoryLocal.ratersString = thisDict[@"Raters Array"];
-            [self checkLastCollaborator];
-
-        
-        
-        if (self.editView.isHidden) {
-        self.storyArray = [NSMutableArray new];
-        [self.storyArray addObject:self.fullStoryLocal.storyTitle];
-        NSArray *this = [self.fullStoryLocal.storyBody componentsSeparatedByString:@"\n"];
-        [self.storyArray addObjectsFromArray:this];
-        [self.tableView reloadData];
-        [self configureTableView];
-        self.editStoryTextView.text = self.fullStoryLocal.storyBody;
-        }//self.editView.isHidden
-        
- } withCancelBlock:^(NSError * _Nonnull error) {
-        NSLog(@"%@", error.localizedDescription);
-     
-    }];
 }//updateLocalUser
 #pragma Comments Action
 
@@ -333,38 +289,28 @@
     switch (self.starCount) {
         case 1:
             {
-                [self allWhiteStars];
-                [self.oneStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+                [self oneGold];
                 [self sendRatings];
                 break;
             }
             
         case 2:
         {
-            [self allWhiteStars];
-            [self.oneStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
-            [self.twoStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+            [self twoGold];
             [self sendRatings];
             break;
         }
             
         case 3:
         {
-            [self allWhiteStars];
-            [self.oneStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
-            [self.twoStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
-            [self.threeStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+            [self threeGold];
             [self sendRatings];
             break;
         }
             
         case 4:
         {
-            [self allWhiteStars];
-            [self.oneStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
-            [self.twoStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
-            [self.threeStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
-            [self.fourStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+            [self fourGold];
             [self sendRatings];
             break;
         }
@@ -372,11 +318,7 @@
         case 5:
         {
             
-            [self.oneStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
-            [self.twoStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
-            [self.threeStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
-            [self.fourStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
-            [self.fiveStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+            [self fiveGold];
             [self sendRatings];
             break;
         }
@@ -388,7 +330,7 @@
 }//renderStars
 
 
-
+#pragma StarMethods
 -(void) allWhiteStars {
     [self.oneStarOutlet setImage:[UIImage imageNamed:@"starBlue.png"] forState:UIControlStateNormal];
     [self.twoStarOutlet setImage:[UIImage imageNamed:@"starBlue.png"] forState:UIControlStateNormal];
@@ -397,6 +339,41 @@
     [self.fiveStarOutlet setImage:[UIImage imageNamed:@"starBlue.png"] forState:UIControlStateNormal];
 }
 
+-(void) oneGold {
+    [self allWhiteStars];
+    [self.oneStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+}
+
+-(void) twoGold {
+    [self allWhiteStars];
+    [self.oneStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+    [self.twoStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+}
+
+-(void) threeGold {
+    [self allWhiteStars];
+    [self.oneStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+    [self.twoStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+    [self.threeStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+}
+
+-(void) fourGold {
+    [self allWhiteStars];
+    [self.oneStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+    [self.twoStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+    [self.threeStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+    [self.fourStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+}
+
+-(void) fiveGold {
+    [self.oneStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+    [self.twoStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+    [self.threeStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+    [self.fourStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+    [self.fiveStarOutlet setImage:[UIImage imageNamed:@"starGold.png"] forState:UIControlStateNormal];
+}
+
+#pragma Ratings
 -(void)sendRatings {
     NSString *localRating = [NSString stringWithFormat:@"%d", self.starCount];
     UpdateManager *newUM = [UpdateManager new];
@@ -408,7 +385,6 @@
     [newUM addNewRatings:self.ref withObj:self.fullStoryLocal withRating:localRating andUsername:[[FIRAuth auth] currentUser].email];
     }
     
-  
     Ratings *thisRating = [Ratings new];
     thisRating.raterName = [[FIRAuth auth] currentUser].email;
     thisRating.raterRating = localRating;
@@ -417,20 +393,16 @@
     [self.fullStoryLocal.ratersArray addObject:thisRating];
     [self checkIfAlreadyRated];
     
-    
-    
-    
 }//sendRatings
-
-
 
 -(void)checkIfAlreadyRated {
     self.alreadyRated = false;
-    for  (int i = 1; i<self.fullStoryLocal.ratersArray.count; i++) {
+    for  (int i = 0; i<self.fullStoryLocal.ratersArray.count; i++) {
         Ratings *thisRating = [self.fullStoryLocal.ratersArray objectAtIndex:i];
         
+        
         if ([thisRating.raterName isEqual:[[FIRAuth auth] currentUser].email]) {
-            NSLog(@"You already commented");
+            [self applyRatingsToButtons:thisRating.raterRating];
             self.ratedKey = thisRating.ratingKey;
             self.alreadyRated = true;
         }
@@ -438,6 +410,58 @@
     }//forLoop
 }//checkIf
 
+#pragma Delegate Method
+-(void)refreshArray:(Stories *)fullStoryLocal {
+    
+    [self checkLastCollaborator];
+    
+    if (self.editView.isHidden) {
+        self.storyArray = [NSMutableArray new];
+        [self.storyArray addObject:self.fullStoryLocal.storyTitle];
+        NSArray *this = [self.fullStoryLocal.storyBody componentsSeparatedByString:@"\n"];
+        [self.storyArray addObjectsFromArray:this];
+        [self.tableView reloadData];
+        [self configureTableView];
+        self.editStoryTextView.text = self.fullStoryLocal.storyBody;
+    }//self.editView.isHidden
+    
+}//refreshArray
+
+
+#pragma Apply Ratings
+-(void)applyRatingsToButtons:(NSString *)rating {
+    
+    if ([rating isEqualToString:@"1"]) {
+        [self oneGold];
+    }
+    
+    else if ([rating isEqualToString:@"2"]) {
+        [self twoGold];
+    }
+    
+    else if ([rating isEqualToString:@"3"]) {
+        [self threeGold];
+    }
+    
+    else if ([rating isEqualToString:@"4"]) {
+        [self fourGold];
+    }
+    
+    else if ([rating isEqualToString:@"5"]) {
+        [self fiveGold];
+    }
+    
+    else {
+        [self allWhiteStars];
+    }
+    
+}//applyRatingsToButtons
+
+
+#pragma Hide StatusBar
+-(BOOL)prefersStatusBarHidden {
+    return true;
+}
 
 
 

@@ -10,28 +10,27 @@
 #import "MidTermProject-Swift.h"
 @import Firebase;
 
-//StoriesManager
+
 @protocol DownloadMethod <NSObject>
 -(void)addNewStory:(Stories *)story;
+-(void)updateLocalStoriesArray:(NSMutableArray *)freshStoriesArray;
 @end
-//StoriesManager
+
+@protocol UpdateComments <NSObject>
+-(void)downloadCommentsWithArray:(NSMutableArray *)array;
+@end
+
 
 
 @interface DownloadManager : NSObject
 
 @property (nonatomic) NSMutableArray *myArray;
 @property (nonatomic) NSMutableArray *storiesArray;
--(void) downloadCommentsWithRef:(FIRDatabaseReference *)ref andStory:(Stories *)localStory;
-
-
 @property id <DownloadMethod> delegate;
+@property id <UpdateComments> commentDelegate;
+
 -(void) downloadStoriesWithRef:(FIRDatabaseReference *)ref;
-
-
-
+-(void) downloadCommentsWithRef:(FIRDatabaseReference *)ref andStory:(Stories *)localStory;
+-(void) updateStoriesWithRef:(FIRDatabaseReference *)ref andArray:(NSMutableArray *)storiesArray;
 
 @end
-
-//-(void) downloadCommentsWithRef2:(FIRDatabaseReference *)ref andStory:(Stories *)localStory completionHandler:(void(^)(NSMutableArray *returnDict, NSError *error))completion;
-//-(void) downloadCommentsWithRef:(FIRDatabaseReference *)ref andStory:(Stories *)localStory;
-

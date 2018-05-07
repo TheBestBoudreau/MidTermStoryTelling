@@ -19,9 +19,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *publishOut;
 @property (weak, nonatomic) IBOutlet UILabel *characterCounter;
 
-
-
-
 @end
 
 @implementation AddStory

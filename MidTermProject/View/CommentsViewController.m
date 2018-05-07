@@ -43,31 +43,17 @@
     self.commentPostButton.hidden = YES;
     self.commentPostButton.enabled = false;
     
-    
-
-    
-    
-    self.downMan = [DownloadManager new];
-    [self.downMan downloadCommentsWithRef:self.ref andStory:self.commentsLocalStory];
-    [self performSelector:@selector(downloadComments) withObject:nil afterDelay:1.0];
-    
-    
-    
-    
-    
-    
+    DownloadManager *downMan = [DownloadManager new];
+    downMan.commentDelegate = self;
+    [downMan downloadCommentsWithRef:self.ref andStory:self.commentsLocalStory];
     
 }//load
 
--(void)downloadComments {
+-(void)downloadCommentsWithArray:(NSMutableArray *)array {
     
-    self.commentsArray = self.downMan.myArray;
+    self.commentsArray = array;
     [self.commentTableView reloadData];
 }
-
-
-
-
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:
 (NSString *)string {
@@ -79,11 +65,6 @@
     }
     return textField.text.length + (string.length - range.length) <= 150;
 }
-
-
-
-
-
 
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -157,8 +138,12 @@
     } completion:^(BOOL finished){
         
         self.commentsArray = [NSMutableArray new];
-        [self.downMan downloadCommentsWithRef:self.ref andStory:self.commentsLocalStory];
-        [self performSelector:@selector(downloadComments) withObject:nil afterDelay:1.0];
+        
+        
+        DownloadManager *downMan = [DownloadManager new];
+        downMan.commentDelegate = self;
+        [downMan downloadCommentsWithRef:self.ref andStory:self.commentsLocalStory];
+        
         [self.commentTableView reloadData];
 
     }];
@@ -180,25 +165,21 @@
 
 - (IBAction)postAction:(UIButton *)sender {
     if (![self.commentTextField.text isEqual:@""]) {
+        
         UpdateManager *newUpdateManager = [UpdateManager new];
         [newUpdateManager addNewCommentWith:self.ref withObj:self.commentsLocalStory withCommentBody:self.commentTextField.text andUsername:[[FIRAuth auth] currentUser].email];
+        
+        
         self.commentTextField.text = @"";
         [self.commentTextField resignFirstResponder];
     }
     
 }//postAction
 
-
-
-
-
-
-
-
--(UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
+#pragma Hide StatusBar
+-(BOOL)prefersStatusBarHidden {
+    return true;
 }
-
 - (IBAction)backAction:(id)sender {
     [self dismissViewControllerAnimated:true completion:nil];
 }
