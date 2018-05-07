@@ -190,13 +190,21 @@
             [self.delegate updateLocalStoriesArray:freshStories];
             
         } else {
-            NSLog(@"No more stories were added");
+            
+            for (int i=0;i<freshStories.count;i++) {
+                
+                Stories *freshStory = [freshStories objectAtIndex:i];
+                Stories *fetchedStory = [storiesArray objectAtIndex:i];
+                
+                if (![freshStory.storyBody isEqual:fetchedStory.storyBody]) {
+                    [self.delegate updateLocalStoriesArray:freshStories];
+                }//if
+            }//else
             
             
             
             
-            
-        }
+        }//else
         
     } withCancelBlock:^(NSError * _Nonnull error) {
         NSLog(@"%@", error.localizedDescription);
